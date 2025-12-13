@@ -60,6 +60,54 @@
 			"isBackground": false,
 			"problemMatcher": [],
 			"group": "none"
+		},
+		{
+			"label": "append_css_lightbox",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Lightbox Styles */\n.lightbox {\n  display: none;\n  position: fixed;\n  z-index: 2000;\n  padding-top: 50px;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgba(0, 0, 0, 0.9);\n  backdrop-filter: blur(5px);\n}\n\n.lightbox-content {\n  margin: auto;\n  display: block;\n  width: 80%;\n  max-width: 900px;\n  max-height: 80vh;\n  object-fit: contain;\n  animation-name: zoom;\n  animation-duration: 0.4s;\n  border-radius: 8px;\n  box-shadow: 0 0 20px rgba(0,0,0,0.5);\n}\n\n@keyframes zoom {\n  from {transform:scale(0.8); opacity: 0;}\n  to {transform:scale(1); opacity: 1;}\n}\n\n.close-lightbox {\n  position: absolute;\n  top: 20px;\n  right: 35px;\n  color: #f1f1f1;\n  font-size: 40px;\n  font-weight: bold;\n  transition: 0.3s;\n  cursor: pointer;\n  z-index: 2001;\n}\n\n.close-lightbox:hover,\n.close-lightbox:focus {\n  color: #177c72;\n  text-decoration: none;\n  cursor: pointer;\n}\n"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
+		},
+		{
+			"label": "append_js_lightbox",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\script.js",
+				"\n        // Lightbox Logic for Projects Page\n        const lightboxImages = document.querySelectorAll('.post-thumb, .main');\n        \n        if (lightboxImages.length > 0) {\n            // Create Lightbox Elements\n            const lightbox = document.createElement('div');\n            lightbox.id = 'lightbox';\n            lightbox.className = 'lightbox';\n            lightbox.innerHTML = `\n                <span class=\"close-lightbox\">&times;</span>\n                <img class=\"lightbox-content\" id=\"lightbox-img\">\n            `;\n            document.body.appendChild(lightbox);\n\n            const lightboxImg = document.getElementById('lightbox-img');\n            const closeBtn = document.querySelector('.close-lightbox');\n\n            lightboxImages.forEach(img => {\n                img.style.cursor = 'zoom-in';\n                img.addEventListener('click', function(e) {\n                    e.preventDefault(); // Prevent navigation\n                    lightbox.style.display = 'block';\n                    lightboxImg.src = this.src;\n                    lightboxImg.alt = this.alt;\n                });\n            });\n\n            // Close logic\n            closeBtn.addEventListener('click', function() {\n                lightbox.style.display = 'none';\n            });\n\n            lightbox.addEventListener('click', function(e) {\n                if (e.target === lightbox) {\n                    lightbox.style.display = 'none';\n                }\n            });\n            \n            // Close on Escape key\n            document.addEventListener('keydown', function(e) {\n                if (e.key === 'Escape' && lightbox.style.display === 'block') {\n                    lightbox.style.display = 'none';\n                }\n            });\n        }\n"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
+		},
+		{
+			"label": "append_css_lightbox",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Image Lightbox */\n.lightbox {\n  display: none;\n  position: fixed;\n  z-index: 2000;\n  padding-top: 50px;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgba(0, 0, 0, 0.9);\n  backdrop-filter: blur(5px);\n}\n\n.lightbox-content {\n  margin: auto;\n  display: block;\n  width: auto;\n  max-width: 90%;\n  max-height: 85vh;\n  object-fit: contain;\n  border-radius: 4px;\n  box-shadow: 0 0 20px rgba(0,0,0,0.5);\n  animation-name: zoom;\n  animation-duration: 0.4s;\n}\n\n@keyframes zoom {\n  from {transform:scale(0.8); opacity: 0;}\n  to {transform:scale(1); opacity: 1;}\n}\n\n.close-lightbox {\n  position: absolute;\n  top: 20px;\n  right: 35px;\n  color: #f1f1f1;\n  font-size: 40px;\n  font-weight: bold;\n  transition: 0.3s;\n  cursor: pointer;\n  z-index: 2001;\n}\n\n.close-lightbox:hover,\n.close-lightbox:focus {\n  color: #177c72;\n  text-decoration: none;\n  cursor: pointer;\n}\n"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
+		},
+		{
+			"label": "append_js_lightbox",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\script.js",
+				"\n// Image Lightbox Logic\ndocument.addEventListener('DOMContentLoaded', function() {\n    // Create Lightbox Elements dynamically\n    const lightbox = document.createElement('div');\n    lightbox.id = 'image-lightbox';\n    lightbox.className = 'lightbox';\n    lightbox.innerHTML = '<span class=\"close-lightbox\">&times;</span><img class=\"lightbox-content\" id=\"lightbox-img\">';\n    document.body.appendChild(lightbox);\n\n    const lightboxImg = document.getElementById('lightbox-img');\n    const closeBtn = lightbox.querySelector('.close-lightbox');\n\n    // Select all project thumbnails (images with class 'post-thumb')\n    const images = document.querySelectorAll('.post-thumb');\n\n    images.forEach(img => {\n        // Ensure the parent anchor doesn't trigger navigation when image is clicked\n        img.addEventListener('click', function(e) {\n            e.preventDefault(); // Prevent default link behavior\n            e.stopPropagation(); // Stop event bubbling\n            \n            lightbox.style.display = 'block';\n            lightboxImg.src = this.src;\n            lightboxImg.alt = this.alt;\n        });\n        \n        // Optional: Add a visual cue that the image is clickable\n        img.style.cursor = 'zoom-in';\n    });\n\n    // Close Logic\n    const closeLightbox = () => {\n        lightbox.style.display = 'none';\n    };\n\n    if (closeBtn) {\n        closeBtn.addEventListener('click', closeLightbox);\n    }\n\n    lightbox.addEventListener('click', function(e) {\n        if (e.target === lightbox) {\n            closeLightbox();\n        }\n    });\n    \n    // Close on Escape key\n    document.addEventListener('keydown', function(e) {\n        if (e.key === 'Escape' && lightbox.style.display === 'block') {\n            closeLightbox();\n        }\n    });\n});\n"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
 		}
 	]
 }

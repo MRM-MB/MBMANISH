@@ -55,3 +55,56 @@
                 });
             }
         });
+
+        // Image Lightbox Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create Lightbox Elements dynamically
+            const lightbox = document.createElement('div');
+            lightbox.id = 'image-lightbox';
+            lightbox.className = 'lightbox';
+            lightbox.innerHTML = '<span class="close-lightbox">&times;</span><img class="lightbox-content" id="lightbox-img">';
+            document.body.appendChild(lightbox);
+
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = lightbox.querySelector('.close-lightbox');
+
+            // Select images for lightbox (excluding project thumbnails as per request)
+            const images = document.querySelectorAll('.top-image, .side-image, .image-container img');
+
+            images.forEach(img => {
+                // Ensure the parent anchor doesn't trigger navigation when image is clicked
+                img.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default link behavior
+                    e.stopPropagation(); // Stop event bubbling
+                    
+                    lightbox.style.display = 'flex';
+                    lightboxImg.src = this.src;
+                    lightboxImg.alt = this.alt;
+                });
+                
+                // Optional: Add a visual cue that the image is clickable
+                img.style.cursor = 'zoom-in';
+            });
+
+            // Close Logic
+            const closeLightbox = () => {
+                lightbox.style.display = 'none';
+            };
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeLightbox);
+            }
+
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                    closeLightbox();
+                }
+            });
+        });
