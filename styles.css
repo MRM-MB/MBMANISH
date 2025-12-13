@@ -1946,3 +1946,246 @@ Highlights (whatever that is)
 
 
 
+
+/**
+ ----------------------
+ Timeline
+ ----------------------
+ */
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 3rem 0;
+  padding-left: 20px;
+}
+
+/* Vertical Line (Dashed) */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 19px; /* Adjusted to perfectly center on 20px axis */
+  width: 0;
+  border-left: 2px dashed #ccc;
+}
+
+/* Timeline Item */
+.timeline-item {
+  position: relative;
+  padding: 0 0 50px 35px;
+}
+
+/* Item Dot */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: -9px; /* Center at 0px relative to item (20px relative to timeline) */
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border: 3px solid #177c72;
+  border-radius: 50%;
+  z-index: 1;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 4px #fff; /* White halo to separate from dashed line */
+}
+
+/* Hover Effects */
+.timeline-item:hover::after {
+  background-color: #177c72;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px rgba(23, 124, 114, 0.1);
+}
+
+.timeline-content {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content {
+  transform: translateX(5px);
+}
+
+.entry-date {
+  font-size: 0.85rem;
+  color: #177c72;
+  margin-bottom: 4px;
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.entry-title {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.entry-subtext {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Resume Item Specifics */
+.resume-item {
+  padding-bottom: 0;
+  margin-top: 10px;
+}
+
+.resume-item::after {
+  background: #177c72;
+  border-color: #177c72;
+  width: 14px;
+  height: 14px;
+  left: -10px; /* Center at 0px relative to item (20px relative to timeline) */
+  box-shadow: 0 0 0 4px #fff;
+}
+
+.resume-item:hover::after {
+  background-color: #21ab9d;
+  box-shadow: 0 0 0 6px rgba(33, 171, 157, 0.2);
+}
+
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  color: #177c72;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 20px;
+  border: 2px solid #177c72;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.resume-link:hover {
+  background-color: #177c72;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(23, 124, 114, 0.2);
+}
+
+/**
+ ----------------------
+ Resume Section & Modal
+ ----------------------
+ */
+/* Modal Styles */
+.modal-overlay {
+ display: none;
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0, 0, 0, 0.5);
+ z-index: 1000;
+ justify-content: center;
+ align-items: center;
+ opacity: 0;
+ transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+ display: flex;
+ opacity: 1;
+}
+
+.modal {
+ background-color: white;
+ padding: 2rem;
+ border-radius: 12px;
+ box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+ max-width: 400px;
+ width: 90%;
+ text-align: center;
+ transform: scale(0.9);
+ transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+ transform: scale(1);
+}
+
+.modal h3 {
+ color: #177c72;
+ margin-top: 0;
+ margin-bottom: 1rem;
+}
+
+.modal p {
+ margin-bottom: 1.5rem;
+ color: #555;
+}
+
+.modal-buttons {
+ display: flex;
+ justify-content: center;
+ gap: 1rem;
+}
+
+.modal-btn {
+ padding: 10px 20px;
+ border-radius: 6px;
+ cursor: pointer;
+ font-weight: bold;
+ border: none;
+ transition: background-color 0.2s;
+ text-decoration: none;
+ font-size: 0.9rem;
+}
+
+.modal-btn.cancel {
+ background-color: #f0f0f0;
+ color: #333;
+}
+
+.modal-btn.cancel:hover {
+ background-color: #e0e0e0;
+}
+
+.modal-btn.confirm {
+ background-color: #177c72;
+ color: white;
+}
+
+.modal-btn.confirm:hover {
+ background-color: #21ab9d;
+}
+
+
+
+
+
+/* Timeline Entry Details (Hover Reveal) */
+.entry-details {
+ max-height: 0;
+ opacity: 0;
+ overflow: hidden;
+ transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+ font-size: 0.9rem;
+ color: #555;
+ margin-top: 0;
+ line-height: 1.5;
+ padding-left: 2px;
+ border-left: 2px solid #177c72; /* Accent line for details */
+ margin-left: 2px;
+ padding-left: 10px;
+}
+
+.timeline-item:hover .entry-details {
+ max-height: 100px;
+ opacity: 1;
+ margin-top: 10px;
+}
+

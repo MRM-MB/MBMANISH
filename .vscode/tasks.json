@@ -1,0 +1,65 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "append_css",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/**\n ----------------------\n Timeline\n ----------------------\n */\n.timeline {\n  position: relative;\n  max-width: 1200px;\n  margin: 2rem auto;\n  width: 100%;\n}\n\n.timeline::after {\n  content: '';\n  position: absolute;\n  width: 4px;\n  background-color: #21ab9d;\n  top: 0;\n  bottom: 0;\n  left: 20px;\n  margin-left: -2px;\n}\n\n.timeline-item {\n  padding: 10px 10px 10px 40px;\n  position: relative;\n  background-color: inherit;\n  width: 100%;\n  box-sizing: border-box;\n}\n\n.timeline-item::after {\n  content: '';\n  position: absolute;\n  width: 16px;\n  height: 16px;\n  left: 12px;\n  background-color: white;\n  border: 4px solid #177c72;\n  top: 15px;\n  border-radius: 50%;\n  z-index: 1;\n}\n\n.timeline-content {\n  padding: 15px 20px;\n  background-color: white;\n  position: relative;\n  border-radius: 6px;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n  border: 1px solid #eee;\n}\n\n.timeline-date {\n  font-size: 0.85em;\n  color: #177c72;\n  font-weight: bold;\n  margin-bottom: 5px;\n  display: block;\n}\n\n.timeline-content h3 {\n  margin-top: 0;\n  margin-bottom: 5px;\n  font-size: 1.1em;\n  color: var(--text-blue);\n}\n\n.timeline-content h4 {\n  margin-top: 0;\n  margin-bottom: 10px;\n  font-size: 0.95em;\n  color: var(--text-primary);\n  font-weight: normal;\n  font-style: italic;\n}\n\n.timeline-content p {\n  margin-top: 0;\n  font-size: 0.9em;\n  line-height: 1.4;\n}\n"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
+		},
+		{
+			"label": "append_css_modal",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/**\n ----------------------\n Resume Section & Modal\n ----------------------\n */\n.resume-section {\n  text-align: center;\n  margin: 3rem 0;\n}\n\n.resume-link {\n  display: inline-block;\n  background-color: #177c72;\n  color: white;\n  padding: 12px 24px;\n  border-radius: 30px;\n  font-weight: bold;\n  text-decoration: none;\n  transition: background-color 0.3s ease, transform 0.2s ease;\n  box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n}\n\n.resume-link:hover {\n  background-color: #21ab9d;\n  transform: translateY(-2px);\n  color: white;\n}\n\n/* Modal Styles */\n.modal-overlay {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  z-index: 1000;\n  justify-content: center;\n  align-items: center;\n  opacity: 0;\n  transition: opacity 0.3s ease;\n}\n\n.modal-overlay.active {\n  display: flex;\n  opacity: 1;\n}\n\n.modal {\n  background-color: white;\n  padding: 2rem;\n  border-radius: 12px;\n  box-shadow: 0 10px 25px rgba(0,0,0,0.2);\n  max-width: 400px;\n  width: 90%;\n  text-align: center;\n  transform: scale(0.9);\n  transition: transform 0.3s ease;\n}\n\n.modal-overlay.active .modal {\n  transform: scale(1);\n}\n\n.modal h3 {\n  color: #177c72;\n  margin-top: 0;\n  margin-bottom: 1rem;\n}\n\n.modal p {\n  margin-bottom: 1.5rem;\n  color: #555;\n}\n\n.modal-buttons {\n  display: flex;\n  justify-content: center;\n  gap: 1rem;\n}\n\n.modal-btn {\n  padding: 10px 20px;\n  border-radius: 6px;\n  cursor: pointer;\n  font-weight: bold;\n  border: none;\n  transition: background-color 0.2s;\n  text-decoration: none;\n  font-size: 0.9rem;\n}\n\n.modal-btn.cancel {\n  background-color: #f0f0f0;\n  color: #333;\n}\n\n.modal-btn.cancel:hover {\n  background-color: #e0e0e0;\n}\n\n.modal-btn.confirm {\n  background-color: #177c72;\n  color: white;\n}\n\n.modal-btn.confirm:hover {\n  background-color: #21ab9d;\n}\n"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
+		},
+		{
+			"label": "append_js_modal",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\script.js",
+				"\n        // Resume Modal Logic\n        document.addEventListener('DOMContentLoaded', function() {\n            const resumeBtn = document.getElementById('resume-download-btn');\n            const modal = document.getElementById('resume-modal');\n            const cancelBtn = document.getElementById('cancel-download');\n            const confirmBtn = document.getElementById('confirm-download');\n\n            if (resumeBtn && modal) {\n                resumeBtn.addEventListener('click', function(e) {\n                    e.preventDefault();\n                    modal.classList.add('active');\n                });\n\n                cancelBtn.addEventListener('click', function() {\n                    modal.classList.remove('active');\n                });\n\n                confirmBtn.addEventListener('click', function() {\n                    modal.classList.remove('active');\n                    // The download will proceed as it's an anchor tag\n                });\n\n                // Close modal when clicking outside\n                modal.addEventListener('click', function(e) {\n                    if (e.target === modal) {\n                        modal.classList.remove('active');\n                    }\n                });\n            }\n        });\n"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
+		},
+		{
+			"label": "append_css_timeline_header",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n.timeline-header {\n  padding: 20px 0 10px 40px;\n  font-size: 1.1em;\n  color: #177c72;\n  font-weight: bold;\n  position: relative;\n}\n\n.timeline-header::before {\n  content: '';\n  position: absolute;\n  left: 16px;\n  top: 28px;\n  width: 8px;\n  height: 8px;\n  background: #177c72;\n  border-radius: 50%;\n  z-index: 2;\n}\n\n/* Update resume link to be more minimalistic */\n.resume-link {\n  background-color: transparent;\n  color: #177c72;\n  border: 2px solid #177c72;\n  padding: 8px 20px;\n  font-size: 0.9rem;\n  box-shadow: none;\n}\n\n.resume-link:hover {\n  background-color: #177c72;\n  color: white;\n  transform: none;\n}\n"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
+		},
+		{
+			"label": "append_css_timeline_details",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Timeline Entry Details (Hover Reveal) */\n.entry-details {\n  max-height: 0;\n  opacity: 0;\n  overflow: hidden;\n  transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;\n  font-size: 0.9rem;\n  color: #555;\n  margin-top: 0;\n  line-height: 1.5;\n  padding-left: 2px;\n  border-left: 2px solid #177c72; /* Accent line for details */\n  margin-left: 2px;\n  padding-left: 10px;\n}\n\n.timeline-item:hover .entry-details {\n  max-height: 100px;\n  opacity: 1;\n  margin-top: 10px;\n}\n"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
+		}
+	]
+}

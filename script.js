@@ -20,4 +20,38 @@
         const age = calculateAge(birthDate);
 
         // Update the HTML with the calculated age
-        document.getElementById('age').textContent = age;
+        const ageElement = document.getElementById('age');
+        if (ageElement) {
+            ageElement.textContent = age;
+        }
+
+        // Resume Modal Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const resumeBtn = document.getElementById('resume-download-btn');
+            const modal = document.getElementById('resume-modal');
+            const cancelBtn = document.getElementById('cancel-download');
+            const confirmBtn = document.getElementById('confirm-download');
+
+            if (resumeBtn && modal) {
+                resumeBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                });
+
+                cancelBtn.addEventListener('click', function() {
+                    modal.classList.remove('active');
+                });
+
+                confirmBtn.addEventListener('click', function() {
+                    modal.classList.remove('active');
+                    // The download will proceed as it's an anchor tag
+                });
+
+                // Close modal when clicking outside
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            }
+        });
