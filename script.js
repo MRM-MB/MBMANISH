@@ -98,7 +98,7 @@
             const closeBtn = lightbox.querySelector('.close-lightbox');
 
             // Select images for lightbox (excluding project thumbnails as per request)
-            const images = document.querySelectorAll('.top-image, .side-image, .image-container img, .hero-image-post');
+            const images = document.querySelectorAll('.top-image, .side-image, .image-container img, .hero-image-post, .project-screenshot');
 
             images.forEach(img => {
                 // Ensure the parent anchor doesn't trigger navigation when image is clicked

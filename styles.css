@@ -2872,3 +2872,25 @@ html.dark-mode .modal p {
     text-shadow: none;
 }
 
+
+/* Project Screenshot (Smaller) */
+.project-screenshot {
+  display: block;
+  max-width: 70%;
+  height: auto;
+  margin: 1rem auto 2rem auto; /* Centered with spacing */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
+}
+
+.project-screenshot:hover {
+  transform: scale(1.02);
+}
+
+html.dark-mode .project-screenshot {
+    border-color: #30363d;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
