@@ -2464,6 +2464,12 @@ html.dark-mode .blog-header {
     text-shadow: 0 0 10px rgba(79, 255, 211, 0.2);
 }
 
+/* Modal Text in Dark Mode */
+html.dark-mode .modal p {
+    color: #ffffff !important;
+    text-shadow: none;
+}
+
 /* Special Vibrant Effect for "Latest Upload" (New Project) Title */
 html.dark-mode .new-project h2 {
     background: linear-gradient(to right, #4fffd3, #00e5ff);
@@ -2857,5 +2863,12 @@ html.dark-mode .bg-layer-dark {
 @keyframes star-float {
     0% { background-position: 0 0; }
     100% { background-position: 0 1000px; }
+}
+
+
+/* Modal Text in Dark Mode */
+html.dark-mode .modal p {
+    color: #ffffff !important;
+    text-shadow: none;
 }
 
