@@ -56,6 +56,35 @@
             }
         });
 
+        // Game Download Modal Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameBtn = document.getElementById('game-download-btn');
+            const gameModal = document.getElementById('game-modal');
+            const gameCancelBtn = document.getElementById('cancel-game-download');
+            const gameConfirmBtn = document.getElementById('confirm-game-download');
+
+            if (gameBtn && gameModal) {
+                gameBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    gameModal.classList.add('active');
+                });
+
+                gameCancelBtn.addEventListener('click', function() {
+                    gameModal.classList.remove('active');
+                });
+
+                gameConfirmBtn.addEventListener('click', function() {
+                    gameModal.classList.remove('active');
+                });
+
+                gameModal.addEventListener('click', function(e) {
+                    if (e.target === gameModal) {
+                        gameModal.classList.remove('active');
+                    }
+                });
+            }
+        });
+
         // Image Lightbox Logic
         document.addEventListener('DOMContentLoaded', function() {
             // Create Lightbox Elements dynamically
@@ -69,7 +98,7 @@
             const closeBtn = lightbox.querySelector('.close-lightbox');
 
             // Select images for lightbox (excluding project thumbnails as per request)
-            const images = document.querySelectorAll('.top-image, .side-image, .image-container img');
+            const images = document.querySelectorAll('.top-image, .side-image, .image-container img, .hero-image-post');
 
             images.forEach(img => {
                 // Ensure the parent anchor doesn't trigger navigation when image is clicked
