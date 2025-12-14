@@ -1634,6 +1634,28 @@ article li code {
   font-size: 0.9em;
   margin: 1px;
 }
+
+/* Dark Mode Code Block Override */
+html.dark-mode article p code,
+html.dark-mode article li code {
+    background-color: rgba(79, 255, 211, 0.15);
+    border: 1px solid rgba(79, 255, 211, 0.3);
+    color: #e6edf3;
+}
+
+/* Special Override for the "WEBSITE" button inside code tag */
+html.dark-mode article p code a.standard-link {
+    color: #fbbf24 !important; /* Bright Amber/Yellow to contrast with Purple/Pink */
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+html.dark-mode article p code a.standard-link:hover {
+    color: #fcd34d !important;
+    text-shadow: 0 0 12px rgba(251, 191, 36, 0.7);
+}
+
 article p code.inline,
 article li code.inline {
   display: inline;
@@ -2353,5 +2375,419 @@ Highlights
 .project-actions-bar .github-button:hover {
   background-color: #000;
   color: white;
+}
+
+
+/* 
+ ----------------------
+ Dark Mode Support
+ ----------------------
+ */
+html.dark-mode {
+  --background-color: #0d1117; /* GitHub Dark Dimmed style - slightly blue-ish black */
+  --light-blue-bg: #1e293b;
+  --lightest-blue-bg: #0f172a;
+  --text-blue: #60a5fa;
+  --text-primary: #e6edf3;
+  --light-green: #4fffd3; /* Much brighter, neon teal/green */
+  --dark-green: #2dd4bf;
+  --github-gray: #f0f0f0;
+  --github-gray-hover: #ffffff;
+}
+
+/* Override hardcoded white backgrounds */
+html.dark-mode .timeline-content,
+html.dark-mode .modal,
+html.dark-mode .project-actions-bar,
+html.dark-mode .cta-sidebar,
+html.dark-mode blockquote p {
+    background-color: #161b22; /* Slightly lighter than bg */
+    border-color: #30363d;
+    color: #e6edf3;
+    box-shadow: none;
+}
+
+/* Timeline Content - Uniform Black */
+html.dark-mode .timeline-content {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding-left: 0;
+}
+
+html.dark-mode .entry-details {
+    background-color: transparent !important;
+    color: #8b949e !important; /* GitHub dimmed text */
+    border-left-color: var(--light-green);
+}
+
+html.dark-mode .entry-title,
+html.dark-mode .timeline-content h3,
+html.dark-mode .timeline-content h4 {
+    color: #ffffff !important; /* Bright white */
+}
+
+html.dark-mode .entry-subtext {
+    color: #d2a8ff !important; /* Light Purple for subtext to pop */
+}
+
+html.dark-mode .entry-date {
+    color: var(--light-green) !important;
+    text-shadow: 0 0 10px rgba(79, 255, 211, 0.3); /* Subtle glow */
+}
+
+/* Make Project Actions Bar blend in */
+html.dark-mode .project-actions-bar {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: #e6edf3;
+}
+
+/* Timeline dots */
+html.dark-mode .timeline-item::after {
+    background-color: #161b22;
+    box-shadow: 0 0 0 4px #0d1117; /* Match body background */
+}
+
+/* Fix text colors in dark mode */
+html.dark-mode h3,
+html.dark-mode .timeline-content h3,
+html.dark-mode .modal h3,
+html.dark-mode .cta-sidebar h3,
+html.dark-mode .post-link .description,
+html.dark-mode .section-header,
+html.dark-mode .index-header h1,
+html.dark-mode .blog-header {
+    color: #4fffd3 !important; /* Neon Teal/Green */
+    text-shadow: 0 0 10px rgba(79, 255, 211, 0.2);
+}
+
+/* Special Vibrant Effect for "Latest Upload" (New Project) Title */
+html.dark-mode .new-project h2 {
+    background: linear-gradient(to right, #4fffd3, #00e5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #4fffd3 !important; /* Fallback */
+    filter: drop-shadow(0 0 8px rgba(79, 255, 211, 0.6));
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+html.dark-mode .post-link p,
+html.dark-mode .new-project p {
+    color: #e6edf3 !important;
+}
+
+/* Fix Header Background to match Body Gradient */
+html.dark-mode header {
+    background: transparent !important;
+    border-bottom: none !important; /* Removed separator line */
+}
+
+/* Standard Link Class for overriding inline styles */
+.standard-link {
+    color: var(--dark-green); /* Established Teal/Green */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.standard-link:hover {
+    color: var(--light-green);
+    text-decoration: underline;
+}
+
+html.dark-mode .standard-link {
+    color: #d2a8ff !important; /* Light Purple (Matches "Research Project" subtext) */
+    text-shadow: 0 0 8px rgba(210, 168, 255, 0.4);
+}
+
+html.dark-mode .standard-link:hover {
+    color: #e2cbfb !important;
+    text-shadow: 0 0 12px rgba(210, 168, 255, 0.6);
+    text-decoration: none;
+}
+
+/* Vibrant Blog Header in Dark Mode */
+html.dark-mode .blog-header {
+    background: linear-gradient(to right, #4fffd3, #00e5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #4fffd3 !important;
+    filter: drop-shadow(0 0 8px rgba(79, 255, 211, 0.4));
+}
+
+/* Special Vibrant Red Effect for "Latest Upload" (New Red) Title */
+html.dark-mode .new-red h2 {
+    background: linear-gradient(to right, #ff4d4d, #ff9999);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #ff4d4d !important; /* Fallback */
+    filter: drop-shadow(0 0 8px rgba(255, 77, 77, 0.6));
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+html.dark-mode .new-red p {
+    color: #e6edf3 !important;
+}
+
+/* Vibrant Labels for "NEW" and "LATEST UPLOAD" in Dark Mode */
+html.dark-mode .new-project::before {
+    color: #4fffd3 !important; /* Neon Teal */
+    text-shadow: 0 0 5px rgba(79, 255, 211, 0.4);
+    background-color: #0d1117 !important; /* Ensure background matches dark theme */
+}
+
+html.dark-mode .new-red::before {
+    color: #ff4d4d !important; /* Neon Red */
+    text-shadow: 0 0 5px rgba(255, 77, 77, 0.4);
+    background-color: #0d1117 !important;
+}
+
+/* Cool Dark Mode Background Effect */
+html.dark-mode body {
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(79, 255, 211, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 20%);
+    background-attachment: fixed;
+}
+
+/* Dark Mode Image Handling */
+html.dark-mode img {
+    filter: brightness(0.85) contrast(1.1);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+html.dark-mode img:hover {
+    filter: brightness(1) contrast(1);
+    transform: scale(1.02);
+}
+
+/* Specific fix for transparent images/icons if needed */
+html.dark-mode .logo, 
+html.dark-mode .header-image,
+html.dark-mode .header-image-small {
+    filter: none; /* Don't dim the avatar/logo */
+}
+
+html.dark-mode .timeline-date {
+    color: var(--light-green);
+}
+
+html.dark-mode .resume-link {
+    color: var(--light-green);
+    border-color: var(--light-green);
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(79, 255, 211, 0.1);
+}
+
+html.dark-mode .resume-link:hover {
+    background-color: var(--light-green);
+    color: #0d1117;
+    box-shadow: 0 0 20px rgba(79, 255, 211, 0.4);
+}
+
+/* Pill Button Dark Mode */
+html.dark-mode .pill-button {
+    color: var(--light-green);
+    background: rgba(79, 255, 211, 0.1);
+    border: 1px solid rgba(79, 255, 211, 0.3);
+}
+html.dark-mode .pill-button:hover {
+    background: rgba(79, 255, 211, 0.2);
+    box-shadow: 0 0 15px rgba(79, 255, 211, 0.2);
+}
+
+/* GitHub Button Dark Mode (Global) */
+html.dark-mode .github-button {
+    background-color: transparent !important;
+    color: #f0f6fc !important;
+    border: 1px solid #30363d !important;
+    transition: all 0.3s ease;
+}
+
+html.dark-mode .github-button:hover {
+    background-color: #21262d !important;
+    color: #ffffff !important;
+    border-color: #8b949e !important;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Invert icon color on hover in dark mode */
+html.dark-mode .github-button:hover::before {
+    filter: brightness(100); /* Keep white */
+}
+
+/* Dark Mode Tag Overrides - Vibrant & Neon */
+html.dark-mode .variant-a { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+html.dark-mode .variant-a a { color: #38bdf8; }
+html.dark-mode .variant-a:hover { background: rgba(56, 189, 248, 0.25); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+
+html.dark-mode .variant-b { background: rgba(248, 113, 113, 0.15); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.3); }
+html.dark-mode .variant-b a { color: #f87171; }
+html.dark-mode .variant-b:hover { background: rgba(248, 113, 113, 0.25); box-shadow: 0 0 10px rgba(248, 113, 113, 0.2); }
+
+html.dark-mode .variant-c { background: rgba(232, 121, 249, 0.15); color: #e879f9; border: 1px solid rgba(232, 121, 249, 0.3); }
+html.dark-mode .variant-c a { color: #e879f9; }
+html.dark-mode .variant-c:hover { background: rgba(232, 121, 249, 0.25); box-shadow: 0 0 10px rgba(232, 121, 249, 0.2); }
+
+html.dark-mode .variant-d { background: rgba(45, 212, 191, 0.15); color: #2dd4bf; border: 1px solid rgba(45, 212, 191, 0.3); }
+html.dark-mode .variant-d a { color: #2dd4bf; }
+html.dark-mode .variant-d:hover { background: rgba(45, 212, 191, 0.25); box-shadow: 0 0 10px rgba(45, 212, 191, 0.2); }
+
+html.dark-mode .variant-e { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+html.dark-mode .variant-e a { color: #fbbf24; }
+html.dark-mode .variant-e:hover { background: rgba(251, 191, 36, 0.25); box-shadow: 0 0 10px rgba(251, 191, 36, 0.2); }
+
+html.dark-mode .variant-f { background: rgba(251, 146, 60, 0.15); color: #fb923c; border: 1px solid rgba(251, 146, 60, 0.3); }
+html.dark-mode .variant-f a { color: #fb923c; }
+html.dark-mode .variant-f:hover { background: rgba(251, 146, 60, 0.25); box-shadow: 0 0 10px rgba(251, 146, 60, 0.2); }
+
+html.dark-mode .variant-g { background: rgba(74, 222, 128, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
+html.dark-mode .variant-g a { color: #4ade80; }
+html.dark-mode .variant-g:hover { background: rgba(74, 222, 128, 0.25); box-shadow: 0 0 10px rgba(74, 222, 128, 0.2); }
+
+/* Navbar Fixes */
+html.dark-mode header nav li.selected a {
+    color: #ffffff;
+    background-color: rgba(45, 212, 191, 0.2);
+}
+
+html.dark-mode header nav a:hover {
+    background-color: rgba(45, 212, 191, 0.15);
+}
+
+/* Nav update for toggle button */
+nav ul {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    color: var(--text-primary);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+    transform: rotate(15deg);
+}
+
+
+html.dark-mode .header-promotion {
+    background: rgba(255, 100, 100, 0.1) !important;
+    border-bottom: 1px solid rgba(255, 100, 100, 0.2);
+}
+html.dark-mode .header-promotion a {
+    color: #ffb3b3 !important;
+}
+
+
+/* SDG Goal Colors */
+.sdg-link { text-decoration: none; font-weight: bold; }
+.goal-3 { color: #2ca02c; }
+.goal-4 { color: #d62728; }
+.goal-9 { color: #ff7f0e; }
+.goal-10 { color: #d43bab; }
+.goal-13 { color: #0d613e; }
+.goal-16 { color: #1f77b4; }
+.goal-17 { color: #033d67; }
+
+/* SDG Goal Colors for Dark Mode (Vibrant/Neon) */
+html.dark-mode .goal-3 { color: #4ade80 !important; text-shadow: 0 0 10px rgba(74, 222, 128, 0.3); }
+html.dark-mode .goal-4 { color: #f87171 !important; text-shadow: 0 0 10px rgba(248, 113, 113, 0.3); }
+html.dark-mode .goal-9 { color: #fb923c !important; text-shadow: 0 0 10px rgba(251, 146, 60, 0.3); }
+html.dark-mode .goal-10 { color: #e879f9 !important; text-shadow: 0 0 10px rgba(232, 121, 249, 0.3); }
+html.dark-mode .goal-13 { color: #34d399 !important; text-shadow: 0 0 10px rgba(52, 211, 153, 0.3); }
+html.dark-mode .goal-16 { color: #38bdf8 !important; text-shadow: 0 0 10px rgba(56, 189, 248, 0.3); }
+html.dark-mode .goal-17 { color: #818cf8 !important; text-shadow: 0 0 10px rgba(129, 140, 248, 0.3); }
+
+
+/* Dark Mode Code Block Overrides */
+html.dark-mode code {
+    background-color: rgba(45, 212, 191, 0.1) !important;
+    color: #e6edf3 !important;
+    border: 1px solid rgba(45, 212, 191, 0.2);
+}
+
+/* Special Override for the 'WEBSITE' button inside code tag */
+html.dark-mode article p code a.standard-link {
+    color: #d2a8ff !important; /* Light Purple */
+    text-shadow: 0 0 8px rgba(210, 168, 255, 0.5);
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+html.dark-mode article p code a.standard-link:hover {
+    color: #ff4d4d !important; /* Neon Red */
+    text-shadow: 0 0 12px rgba(255, 77, 77, 0.6);
+}
+
+
+/* Dark Mode Starry Background Animation */
+html.dark-mode body::before,
+html.dark-mode body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    z-index: -1;
+    pointer-events: none;
+    background-repeat: repeat-y;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+html.dark-mode body::before {
+    left: 0;
+    opacity: 0.6;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(2px 2px at 50px 160px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(2px 2px at 90px 40px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255, 255, 255, 0.6), transparent);
+    background-size: 200px 200px;
+    animation: star-float 60s linear infinite;
+}
+
+html.dark-mode body::after {
+    right: 0;
+    opacity: 0.6;
+    background-image: 
+        radial-gradient(2px 2px at 10px 50px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(2px 2px at 30px 120px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(2px 2px at 70px 10px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(2px 2px at 90px 230px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(2px 2px at 150px 50px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(2px 2px at 180px 180px, rgba(255, 255, 255, 0.5), transparent);
+    background-size: 200px 200px;
+    animation: star-float 75s linear infinite reverse;
+}
+
+@keyframes star-float {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 1000px; }
 }
 

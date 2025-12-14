@@ -137,3 +137,40 @@
                 }
             });
         });
+// Dark Mode Logic
+document.addEventListener('DOMContentLoaded', function() {
+    // Create Toggle Button
+    const navList = document.querySelector('nav ul');
+    if (navList) {
+        // Check if button already exists
+        if (document.querySelector('.theme-toggle-btn')) return;
+
+        const toggleLi = document.createElement('li');
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'theme-toggle-btn';
+        toggleBtn.ariaLabel = 'Toggle Dark Mode';
+        toggleBtn.innerHTML = '&#127769;'; // Moon icon
+        
+        toggleLi.appendChild(toggleBtn);
+        navList.appendChild(toggleLi);
+
+        // Check saved preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark-mode');
+            toggleBtn.innerHTML = '&#9728;&#65039;'; // Sun icon
+        }
+
+        // Toggle Event
+        toggleBtn.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            
+            toggleBtn.innerHTML = isDark ? '&#9728;&#65039;' : '&#127769;';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    }
+});
+
