@@ -701,7 +701,8 @@ footer {
 }
 
 .section-header:after,
-.about-page h1:after {
+.about-page h1:after,
+.all-tags h1:after {
   content: '';
   margin-top: 0.2em;
   display: block;
@@ -765,21 +766,22 @@ footer {
 
 .pill-button {
   display: inline-block;
-  color: #177c72;
-  background: #21ab9d3d;
-  font-weight: bolder;
+  color: #21ab9d !important;
+  background: transparent;
+  font-weight: bold;
   font-size: medium;
   margin: 1rem auto;
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   border-radius: 2em;
-  border: none;
-  transition: background-color 200ms ease-in-out;
+  border: 2px solid #21ab9d;
+  transition: all 200ms ease-in-out;
   cursor: pointer;
   text-decoration: none;
 }
 
 .pill-button:hover {
-  background: #21ab9d7a;
+  background: #21ab9d;
+  color: white !important;
 }
 
 .index-about-me p,
@@ -1137,6 +1139,12 @@ article img {
   Tags
   ----------------------
 */
+.all-tags h1 {
+  color: #177c72;
+  font-size: x-large;
+  margin-bottom: 1em;
+}
+
 .tags {
   font-size: large;
   padding: 1em 0em;
@@ -1212,6 +1220,7 @@ article img {
   background: hsl(305, 100%, 80%);
 }
 
+.variant-c,
 .variant-c a {
   color: hsl(305, 100%, 30%);
 }
@@ -1224,6 +1233,7 @@ article img {
   background-color: hsl(181, 100%, 80%);
 }
 
+.variant-d,
 .variant-d a {
   color: hsl(181, 100%, 20%);
 }
@@ -1236,6 +1246,7 @@ article img {
   background-color: hsl(39, 100%, 80%);
 }
 
+.variant-e,
 .variant-e a {
   color: hsl(39, 100%, 25%);
 }
@@ -1248,6 +1259,7 @@ article img {
   background-color: hsl(27, 100%, 80%);
 }
 
+.variant-f,
 .variant-f a {
   color: hsl(27, 100%, 30%);
 }
@@ -1260,6 +1272,7 @@ article img {
   background-color: hsl(120, 40%, 80%);
 }
 
+.variant-g,
 .variant-g a {
   color: hsl(120, 40%, 30%);
 }
@@ -2475,6 +2488,7 @@ html.dark-mode .timeline-content h3,
 html.dark-mode .modal h3,
 html.dark-mode .cta-sidebar h3,
 html.dark-mode .post-link .description,
+html.dark-mode .all-tags h1,
 html.dark-mode .section-header,
 html.dark-mode .index-header h1,
 html.dark-mode .blog-header {
@@ -2671,7 +2685,7 @@ html.dark-mode .variant-f { background: rgba(251, 146, 60, 0.15); color: #fb923c
 html.dark-mode .variant-f a { color: #fb923c; }
 html.dark-mode .variant-f:hover { background: rgba(251, 146, 60, 0.25); box-shadow: 0 0 10px rgba(251, 146, 60, 0.2); }
 
-html.dark-mode .variant-g { background: rgba(74, 222, 128, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
+html.dark-mode .variant-g { background: rgba(74, 222,  128, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
 html.dark-mode .variant-g a { color: #4ade80; }
 html.dark-mode .variant-g:hover { background: rgba(74, 222, 128, 0.25); box-shadow: 0 0 10px rgba(74, 222, 128, 0.2); }
 
@@ -2785,7 +2799,7 @@ html.dark-mode .goal-17 { color: #818cf8 !important; text-shadow: 0 0 10px rgba(
 html.dark-mode code {
     background-color: rgba(45, 212, 191, 0.1) !important;
     color: #e6edf3 !important;
-    border: 1px solid rgba(45, 212, 191, 0.2);
+    border: 1px solid #30363d;
 }
 
 /* Special Override for the 'WEBSITE' button inside code tag */
@@ -2794,7 +2808,6 @@ html.dark-mode article p code a.standard-link {
     text-shadow: 0 0 8px rgba(210, 168, 255, 0.5);
     font-weight: 900;
     letter-spacing: 1px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 html.dark-mode article p code a.standard-link:hover {
