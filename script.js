@@ -24,6 +24,12 @@
         if (ageElement) {
             ageElement.textContent = age;
         }
+        
+        // Also update any elements with class 'dynamic-age'
+        const ageElements = document.querySelectorAll('.dynamic-age');
+        ageElements.forEach(element => {
+            element.textContent = age;
+        });
 
         // Resume Modal Logic
         document.addEventListener('DOMContentLoaded', function() {
