@@ -3054,3 +3054,15 @@ html.dark-mode .gallery-item:hover {
   border-color: #177c72;
 }
 
+
+/* Hero Video Post (Same style as hero-image-post but for videos) */
+.hero-video-post {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin: 1.5rem 0;
+  border: 1px solid #eee;
+  display: block;
+}
+
