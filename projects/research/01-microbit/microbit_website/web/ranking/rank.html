@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>MB Manish - Ranking</title>
+  <!-- MATT -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- MATT -->
+  <meta name="description" content="This page showcases the rankings of students who took part in extracurricular activities featuring Microbit">
+  <link rel="icon" href="m.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./rankstyle.css">
+  <script src="./rank.js"></script>
+</head>
+<body>
+
+<!-- Defining the confetti function -->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.1.2/dist/confetti.browser.min.js"></script>
+<script>
+	var end = Date.now() + (6 * 1000);
+	var colors = ['#000', '#ff0000', '#f3f3f3'];
+	(function frame() {
+		confetti({
+			particleCount: 2,
+			angle: 60,
+			spread: 55,
+			origin: {
+				x: 0
+			},
+			colors: colors
+		});
+		confetti({
+			particleCount: 3,
+			angle: 120,
+			spread: 55,
+			origin: {
+				x: 1
+			},
+			colors: colors
+		});
+		if (Date.now() < end) {
+			requestAnimationFrame(frame);
+		}
+	}());
+</script>
+
+<!-- Container for kids-->
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div style="display: none;"></div>
+</head>
+    <body class="page-leaderboard">
+        <header class="header__sidenav slideout-menu" id="nav--mobile">
+            <div class="header__sidenav--logo"></div>
+        </header>
+            </div>
+            <header class="header"></header>
+            <section class="hero hero--inverse"></section>
+            <section class="leaderboard-progress">
+                <div class="contain text-center">
+                    <br><br><br>
+                    <img alt="Img-Ranking" class="mb-2" src="https://cdn-icons-png.flaticon.com/512/1534/1534560.png">
+                    <h2>Ranking - Actividades Voluntarias</h2>
+                    <p class="lead">Enhorabuena a todos los participantes</p>
+                </div>
+            </section>
+            <section class="ranking">
+                <div class="contain">
+                    <div class="ranking-table">
+                        <div class="ranking-table-header-row">
+
+                            <!-- Criteria -->
+                            <div class="ranking-table-header-data h6">Progreso</div>
+                            <div class="ranking-table-header-data h6">Nombre</div>
+                            <div class="ranking-table-header-data h6">Puntos</div>
+                        </div>
+                        
+                        <!-- Names -->
+
+                        <!-- First -->
+                        <div class="ranking-table-row-leader-1">
+                            <div class="ranking-table-data-leader-1">
+                                <div class="medal-gold"></div>
+                            </div>
+                            <div class="ranking-table-data">
+                                A F
+</div>
+                            <div class="ranking-table-data">
+                                <div class="points">480</div>
+                            </div>
+                        </div>
+
+                        <!-- Second -->
+                        <div class="ranking-table-row-leader-2">
+                            <div class="ranking-table-data-leader-2">
+                                <div class="medal-silver"></div>
+                            </div>
+                            <div class="ranking-table-data">
+                                Z P
+</div>
+                            <div class="ranking-table-data">
+                                <div class="points">460</div>
+                            </div>
+                        </div>
+
+                        <!-- Third -->
+                        <div class="ranking-table-row-leader-3">
+                            <div class="ranking-table-data-leader-3">
+                                <div class="medal-bronze"></div>
+                            </div>
+                            <div class="ranking-table-data">
+                                C C
+</div>
+                            <div class="ranking-table-data">
+                                <div class="points">450</div>
+                            </div>
+                        </div>
+
+                        <!-- Table slot -->
+
+                        <!-- Begin body structure-->
+                        <div class="ranking-table-body">
+                        <!-- Begin body structure-->
+                        
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    4
+</div>
+                                <div class="ranking-table-data">
+                                    J P
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">450</div>
+                                </div>
+                            </div>
+
+                        <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    5
+</div>
+                                <div class="ranking-table-data">
+                                    I M
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">450</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    6
+</div>
+                                <div class="ranking-table-data">
+                                    S G
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">430</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    7
+</div>
+                                <div class="ranking-table-data">
+                                    S B
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">400</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    8
+</div>
+                                <div class="ranking-table-data">
+                                    C R
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">390</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    9
+</div>
+                                <div class="ranking-table-data">
+                                    E G
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">390</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    10
+</div>
+                                <div class="ranking-table-data">
+                                    C T
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">390</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    11
+</div>
+                                <div class="ranking-table-data">
+                                    A T
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">390</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    12
+</div>
+                                <div class="ranking-table-data">
+                                    D C
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">360</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    13
+</div>
+                                <div class="ranking-table-data">
+                                    A R
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">360</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    14
+</div>
+                                <div class="ranking-table-data">
+                                    Sa P
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">360</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    15
+</div>
+                                <div class="ranking-table-data">
+                                    Se P
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">340</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    16
+</div>
+                                <div class="ranking-table-data">
+                                    N L
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">340</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    17
+</div>
+                                <div class="ranking-table-data">
+                                    S U
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">340</div>
+                                </div>
+                                </div>
+
+                                <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    18
+</div>
+                                <div class="ranking-table-data">
+                                    Li P
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">290</div>
+                                </div>
+                            </div>
+
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    19
+</div>
+                                <div class="ranking-table-data">
+                                    M N
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">290</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    20
+</div>
+                                <div class="ranking-table-data">
+                                    M B
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">290</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    21
+</div>
+                                <div class="ranking-table-data">
+                                    R T
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">290</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    22
+</div>
+                                <div class="ranking-table-data">
+                                    M S
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">270</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    23
+</div>
+                                <div class="ranking-table-data">
+                                    Lu P
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">270</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    24
+</div>
+                                <div class="ranking-table-data">
+                                    D S
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">270</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    25
+</div>
+                                <div class="ranking-table-data">
+                                    S O
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">260</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    26
+</div>
+                                <div class="ranking-table-data">
+                                    E R
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">260</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    27
+</div>
+                                <div class="ranking-table-data">
+                                    M R
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">240</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    28
+</div>
+                                <div class="ranking-table-data">
+                                    L B
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">250</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    29
+</div>
+                                <div class="ranking-table-data">
+                                    O S
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">240</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                            <div class="ranking-table-row">
+                                <div class="ranking-table-data">
+                                    30
+</div>
+                                <div class="ranking-table-data">
+                                    L L
+</div>
+                                <div class="ranking-table-data">
+                                    <div class="points">240</div>
+                                </div>
+                            </div>
+                            <!-- Table slot -->
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+   </body>
+   <footer>
+    &copy; Manish Raj Moriche
+  </footer>
+</html>

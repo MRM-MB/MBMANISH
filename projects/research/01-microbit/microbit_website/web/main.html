@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- MATT -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MB Manish</title>
+  <!-- MATT -->
+  <meta name="description" content="This website serves as a valuable resource where you can access information about the micro:bit and its implications in various fields. It features activities and resources showcasing their outcomes. The entire content of the website is in Spanish, as its primary objective is to provide an additional learning resource about the micro:bit to a specific group of Spanish students. Made by Manish Raj Moriche.">
+  <link rel="icon" href="./m.png" type="image/x-icon">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./myfile.js"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0ZQV6V047"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L0ZQV6V047');
+</script>
+
+</head>
+<body>
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <a onclick="window.open('https://sites.google.com/view/microbitmanish/mejoras-implementadas', '_blank')">Clase 7 - Implementación de mejoras</a>
+  </div>
+  <img src="hand.png" alt="microbit.img" class="bottom-left-image">
+
+  <div class="background"></div>
+  <header class="reveal-text" onclick="startAnimation()">
+    <h1 class="gradient-text">Micro:bit</h1>
+    &nbsp;
+    <button type="button" class="b1" onclick="window.open('https://makecode.microbit.org/', '_blank')">Makecode</button>
+    &nbsp;
+    <button type="button" class="b2" onclick="window.open('https://sites.google.com/view/microbitmanish/microbit', '_blank')">Página Web</button>
+    &nbsp;
+
+    <!----------------------------------------------FORM AVAILABLE------------------------------------------------------->
+    <!--<button type="button" class="b3" onclick="window.open('https://forms.gle/EXGZzoPD6FkmDDDYA', '_blank')">Cuestionario del día</button>-->
+
+    <!----------------------------------------------FORM UNAVAILABLE------------------------------------------------------->
+    <!--MATT-->
+    <button class="b3" onclick="customAlert.alert('Hoy no hay que realizar el cuestionario','Cuestionario del día')">Cuestionario del día</button>
+  
+  </header>
+  <div class="dropdown">
+    <div class="dropdown-content" style="display: none;">
+      <!--MATT-->
+      <button class="ba" onclick="customAlert.alert('Finalizada, accede al formulario para ver tus correcciones. <a href=\'https://makecode.microbit.org/_RwMh5WitYcsA\' target=\'_blank\' class=\'solution-link\'>Solución</a>', 'Actividad voluntaria 1')">Actividad 1</button>
+      <button class="bb" onclick="customAlert.alert('Finalizada, accede al formulario para ver tus correcciones. <a href=\'https://makecode.microbit.org/_eLui2rD3MUTP\' target=\'_blank\' class=\'solution-link\'>Solución</a>', 'Actividad voluntaria 2')">Actividad 2</button>
+      <button class="bc" onclick="customAlert.alert('Finalizada, accede al formulario para ver tus correcciones. <a href=\'https://makecode.microbit.org/_g71TL3LcUL0o\' target=\'_blank\' class=\'solution-link\'>Solución</a>', 'Actividad voluntaria 3')">Actividad 3</button>
+      <button class="bd" onclick="customAlert.alert('Finalizada, accede al formulario para ver tus correcciones. <a href=\'https://makecode.microbit.org/_hTTeY10Yebjt\' target=\'_blank\' class=\'solution-link\'>Solución</a>', 'Actividad voluntaria 4')">Actividad 4</button>
+      <button class="be" onclick="customAlert.alert('Finalizada, accede al formulario para ver tus correcciones. <a href=\'https://makecode.microbit.org/_7HsdF5WYUUsp\' target=\'_blank\' class=\'solution-link\'>Solución</a>', 'Actividad voluntaria 5')">Actividad 5</button>
+
+      <!----------------------------------------------ACTIVITY AVAILABLE------------------------------------------------------->
+      <!--OPEN IN A NEW TAB BUTTON SAMPLE-->
+      <!--<button type="button" class="be" style="display: none;" onclick="window.open('./error_act/index.html', '_blank')">Actividad voluntaria 1</button>-->
+      
+      <!--OPEN IN SAME TAB BUTTON SAMPLE-->
+      <!--<a href="./error_act/index.html"><button class="be">Actividad voluntaria 5</button></a>-->
+
+      <!----------------------------------------------ACTIVITY UNAVAILABLE------------------------------------------------------->
+      <!--<button class="ba" onclick="customAlert.alert('Esta actividad voluntaria ya se ha cerrado','Actividad voluntaria')">Actividad voluntaria 1</button>-->
+
+      <br><br>
+      <a href="./ranking/rank.html">
+        <button class="rank">Ranking</button>
+      </a>
+    </div>
+    <footer>
+      &copy; Manish Raj Moriche <button type="button" class="b4" onclick="toggleDropdown()">+</button>
+    </footer>
+  </div>
+
+  <!--ALERT BUTTON JS-->
+  <script>
+  function CustomAlert(){
+  this.alert = function(message,title){
+    document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
+
+    let dialogoverlay = document.getElementById('dialogoverlay');
+    let dialogbox = document.getElementById('dialogbox');
+    
+    let winH = window.innerHeight;
+    dialogoverlay.style.height = winH+"px";
+    
+    // Calculate the height of the dialog box
+    let dialogboxHeight = dialogbox.offsetHeight;
+    // Position the dialog box vertically at the center of the window
+    dialogbox.style.top = (winH - dialogboxHeight) / 2.5 + "px";
+
+    dialogoverlay.style.display = "block";
+    dialogbox.style.display = "block";
+    
+    document.getElementById('dialogboxhead').style.display = 'block';
+
+    if(typeof title === 'undefined') {
+      document.getElementById('dialogboxhead').style.display = 'none';
+    } else {
+      document.getElementById('dialogboxhead').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> '+ title;
+    }
+    document.getElementById('dialogboxbody').innerHTML = message;
+    document.getElementById('dialogboxfoot').innerHTML = '<button class="pure-material-button-contained active" onclick="customAlert.ok()">OK</button>';
+  }
+  
+  this.ok = function(){
+    document.getElementById('dialogbox').style.display = "none";
+    document.getElementById('dialogoverlay').style.display = "none";
+  }
+}
+
+let customAlert = new CustomAlert();
+
+</script>
+
+</body>
+</html>
