@@ -198,3 +198,84 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+// Video Lightbox Logic
+document.addEventListener('DOMContentLoaded', function() {
+    // Create Video Lightbox Elements dynamically
+    const videoLightbox = document.createElement('div');
+    videoLightbox.id = 'video-lightbox';
+    videoLightbox.className = 'lightbox';
+    videoLightbox.innerHTML = `
+        <span class='close-lightbox'>&times;</span>
+        <video class='lightbox-content' id='lightbox-video' controls autoplay></video>
+    `;
+    document.body.appendChild(videoLightbox);
+
+    const lightboxVideo = document.getElementById('lightbox-video');
+    const closeBtn = videoLightbox.querySelector('.close-lightbox');
+
+    // Select all videos that should be expandable
+    const videos = document.querySelectorAll('video');
+
+    videos.forEach(video => {
+        // Add visual cue
+        video.style.cursor = 'pointer';
+        video.title = 'Click to expand';
+
+        video.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Pause the background video
+            this.pause();
+
+            // Show lightbox
+            videoLightbox.style.display = 'flex';
+            
+            // Set source
+            const currentSrc = this.currentSrc || this.src;
+            if (currentSrc) {
+                lightboxVideo.src = currentSrc;
+            } else {
+                lightboxVideo.innerHTML = this.innerHTML;
+            }
+            
+            // Play the lightbox video
+            setTimeout(() => {
+                lightboxVideo.play().catch(e => console.log('Autoplay prevented:', e));
+            }, 100);
+        });
+    });
+
+    // Close Logic
+    const closeVideoLightbox = () => {
+        videoLightbox.style.display = 'none';
+        lightboxVideo.pause();
+        lightboxVideo.src = ''; 
+        
+        // Resume all background videos
+        videos.forEach(v => {
+            if (v.hasAttribute('autoplay')) {
+                v.play().catch(e => console.log('Resume prevented:', e));
+            }
+        });
+    };
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeVideoLightbox);
+    }
+
+    videoLightbox.addEventListener('click', function(e) {
+        if (e.target === videoLightbox) {
+            closeVideoLightbox();
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && videoLightbox.style.display === 'flex') {
+            closeVideoLightbox();
+        }
+    });
+});
+
