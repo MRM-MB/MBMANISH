@@ -1398,7 +1398,7 @@ article img {
 }
 
 .new-project::before {
-  content: 'NEW';
+  content: 'AWARD';
   position: absolute;
   top: -11px;
   left: 20px;

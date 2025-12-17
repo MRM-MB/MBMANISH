@@ -5,8 +5,8 @@
     <meta name="og:site_name" content="MB Manish" />
     <link rel="canonical" href="index.html"/>
     <link rel="stylesheet" href="../../../styles.css" type="text/css"/>
-    <title>Planets Collision Simulation | MB Manish</title>
-    <meta name="description" content="Planets collision simulation created in Blender 2.8."/>
+    <title>Crab Keychain | MB Manish</title>
+    <meta name="description" content="A lightweight, one-piece 3D printable crab keychain designed in Blender."/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="shortcut icon" href="../../../images/favicon.png" type="image/png"/>
 </head>
@@ -34,37 +34,48 @@
 
     <article class="page wrapper post-page">
         <a class="back" href="../index.html">Back to 3D Projects</a>
-        <h1 class="blog-header">Planets Collision Simulation</h1>
+        <h1 class="blog-header">Crab Keychain</h1>
         
         <div class="metadata">
             <ul class="tags">
                 <li class="variant-b"><a href="../../../tags/models-animations/index.html">3D Models & Animations</a></li>
+                <li class="variant-d"><a href="../../../tags/printing/index.html">3D Printing</a></li>
             </ul>
-            <span class="post-date">17 Jan 2020</span>
+            <span class="post-date">06 May 2021</span>
         </div>
 
-        <video class="hero-video-post" width="100%" autoplay loop muted playsinline preload="auto">
-            <source src="../../../images/projects/3D/planets/planets.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <img class="hero-image-post" style="width: 100%; max-height: 450px; object-fit: cover; display: block;" src="../../../images/projects/3D/crab/crab_keychain.png" alt="Crab Keychain Render">
 
         <div class="project-actions-bar" style="margin-top: 1rem; margin-bottom: 2rem; padding: 1rem;">
             <div class="button-container">
-                <a class="social-button demo-button" href="#" id="download-project-btn" style="min-width: 280px; white-space: nowrap;">🔗 Download Animation</a>
+                <a class="social-button demo-button" href="#" id="download-project-btn" style="min-width: 280px; white-space: nowrap;">🔗 Download Files</a>
             </div>
         </div>
 
         <div class="content page-content m-top">
+            <style>
+                .page-content li { color: var(--text-primary); }
+                .page-content li::marker { color: var(--dark-green); }
+            </style>
             
-            <p>This animation was created in <strong>Blender 2.8</strong>. It features a collision simulation involving two spheres with textures.</p>
+            <p>This project was created as an assignment for my <strong>Technology Design</strong> class. The objective was to design a <strong>lightweight, one-piece 3D printable object</strong> that could be worn or carried by a user.</p>
 
-            <h3 style="color: var(--dark-green)">Simulation & Modifiers</h3>
-            <p>I utilized <strong>Blender's particle system</strong> combined with the <strong>Explode Modifier</strong> to break the mesh apart upon impact. To guide the debris outward and create the shockwave effect, I used a hidden <strong>Torus mesh</strong> with a <strong>Collision Modifier</strong>.</p>
-            
-            <p>For the planetary surfaces, I applied <strong>Subdivision Surface</strong> for smoothness and <strong>Displacement</strong> to create geometric depth from the textures.</p>
+            <h3 style="color: var(--dark-green)">Concept & Sketches</h3>
+            <p>I decided to create a stylized crab keychain. I started by sketching out the design on paper to visualize the shape and proportions.</p>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 1.5rem 0; max-width: var(--max-p-width); width: 100%;">
+                <img class="hero-image-post" style="flex: 1; min-width: 0; margin: 0; height: auto;" src="../../../images/projects/3D/crab/crab_pencil-1.png" alt="Crab Sketch 1">
+                <img class="hero-image-post" style="flex: 1; min-width: 0; margin: 0; height: auto;" src="../../../images/projects/3D/crab/crab_pencil-2.png" alt="Crab Sketch 2">
+            </div>
 
-            <h3 style="color: var(--dark-green)">Environment & Composition</h3>
-            <p>To place the event in the vastness of space, I used a <strong>starry background image</strong> found on the internet. The animation of the planets approaching each other was achieved using <strong>keyframes</strong>, while the physics simulation required <strong>baking</strong> the particle cache to ensure the explosion and debris scattering played back smoothly during the final render.</p>
+            <h3 style="color: var(--dark-green)">Modeling in Blender</h3>
+            <p>I used <strong>Blender</strong> to bring the sketches to life. The challenge was to ensure the model was printable in a single piece without the use of support, while keeping it lightweight.</p>
+            <img class="hero-image-post" style="max-width: var(--max-p-width);" src="../../../images/projects/3D/crab/full_view.png" alt="Blender Full View">
+            <p>I focused on creating a clean topology and ensuring the keychain hole was sturdy enough for daily use.</p>
+            <img class="hero-image-post" style="max-width: var(--max-p-width);" src="../../../images/projects/3D/crab/front.png" alt="Blender Front View">
+
+            <h3 style="color: var(--dark-green)">Final Result</h3>
+            <p>The final design is a compact and durable keychain. It captures the essence of a crab in a simplified, printable form.</p>
+            <img class="hero-image-post" style="max-width: var(--max-p-width);" src="../../../images/projects/3D/crab/crab_keychain_2.png" alt="Crab Keychain Render 2">
 
         </div>
     </article>
@@ -73,16 +84,16 @@
     <div id="project-modal" class="modal-overlay">
         <div class="modal">
             <h3>Download Project Files</h3>
-            <p>You are about to download <strong>Planets_Manish.zip</strong>. This archive contains:</p>
+            <p>You are about to download <strong>crab_keychain.zip</strong>. This archive contains:</p>
             <ul style="text-align: left; margin-bottom: 1.5rem; color: #555;">
-                <li>• The original <strong>Blender 2.8 Project File</strong> (.blend)</li>
-                <li>• The <strong>Background Image</strong> used in the scene</li>
-                <li>• A <strong>GIF version</strong> of the final animation</li>
+                <li>• <strong>Sketch Images</strong> of the design process</li>
+                <li>• <strong>Blender Screenshots</strong> of the model</li>
+                <li>• The printable <strong>STL File</strong></li>
             </ul>
-            <p>Simply extract the folder to explore the setup!</p>
+            <p>Ready to print your own crab?</p>
             <div class="modal-buttons">
                 <button id="cancel-download-project" class="modal-btn cancel">Cancel</button>
-                <a href="planets_animation.zip" id="confirm-download-project" class="modal-btn confirm" download>Download ZIP</a>
+                <a href="crab_keychain.zip" id="confirm-download-project" class="modal-btn confirm" download>Download ZIP</a>
             </div>
         </div>
     </div>
