@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="og:site_name" content="MB Manish" />
+    <link rel="canonical" href="index.html"/>
+    <title>Solar Tracker | MB Manish</title>
+    <meta name="description" content="A sustainable solar tracker project built with C and recycled materials."/>
+    <link rel="stylesheet" href="../../../styles.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../../../images/favicon.png" type="image/png" />
+</head>
+
+<body class="item">
+	<header>
+        <div class="wrapper">
+            <nav>
+                <ul>
+                    <li><a href="../../../about/index.html">ABOUT</a></li>
+                    <li class="selected"><a href="../../../projects/index.html">PROJECTS</a></li>
+                    <li><a href="../../../posts/index.html">RESUME</a></li>
+                </ul>
+            </nav>
+            <a href="../../../index.html">
+                <div class="hero-container"><img class="header-image-small" src="../../../images/avatar.jpg" alt="Avatar" />
+                    <div class="hero-text-container justify-center">
+                        <div class="name"><p>Manish Raj Moriche</p></div>
+                        <hr>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </header>
+	<article class="page wrapper post-page"><a class="back" href="../index.html">Back to overview</a>
+		<h1 class="blog-header">Solar Tracker</h1>
+		<div class="metadata">
+			<ul class="tags">
+                <li class="variant-c"><a href="../../../tags/c/index.html">C</a></li>
+			</ul><span class="post-date">04 May 2023</span></div>
+            
+            <video class="hero-video-post" width="100%" autoplay loop muted playsinline preload="auto">
+                <source src="../../../images/projects/programming/solar_tracker/solar_tracker-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+		<div class="content page-content m-top">
+            <style>
+                .page-content li { color: var(--text-primary); }
+                .page-content li::marker { color: var(--dark-green); }
+            </style>
+
+			<p>This project was built for a competition in Madrid about creating a <strong>solar tracker</strong> using sustainable and as many reusable materials as possible, except for the microcontroller board used to program it. The project was a collaborative effort by a group of 4 students.</p>
+            
+            <h3 style="color: var(--dark-green)">Sustainable Design & Materials</h3>
+            <p>We used scrap metal, leftover wood that was about to be thrown away, and even plastic bottles to create our own filament. This recycled filament was used to print the 3D piece that sustained one of our servomotors, making use of reusable materials as much as possible.</p>
+            
+            <p>Below you can see early sketches of the design and how the mechanical components would move and look:</p>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 1.5rem 0; max-width: var(--max-p-width); width: 100%;">
+                <img class="hero-image-post" style="flex: 1; min-width: 0; margin: 0; height: auto;" src="../../../images/projects/programming/solar_tracker/solar_sketch1.webp" alt="Solar Tracker Sketch 1">
+                <img class="hero-image-post" style="flex: 1; min-width: 0; margin: 0; height: auto;" src="../../../images/projects/programming/solar_tracker/solar_sketch2.webp" alt="Solar Tracker Sketch 2">
+            </div>
+
+            <h3 style="color: var(--dark-green)">How It Works</h3>
+            <p>The entire system used <strong>4 LDRs (Light Dependent Resistors)</strong> to check light increments in all four directions. This allowed the system to achieve maximum solar gain from the solar panel to charge a small battery we had included.</p>
+            
+            <img class="hero-image-post" style="max-width: var(--max-p-width);" src="../../../images/projects/programming/solar_tracker/components.webp" alt="Solar Tracker Components Sketch">
+
+            <p>Two servo motors were controlled by the board based on the light intensity coming through the LDRs. All the logic was <strong>coded in C</strong> on an Elegoo board.</p>
+
+            <h3 style="color: var(--dark-green)">My Role & Outcome</h3>
+            <p>I was in charge of programming the Elegoo board in C and helping design the 3D printed piece. If you want to check out some of my other 3D prints, head to the <a href="../../../tags/printing/index.html">3D Printing tag</a>.</p>
+            
+            <p>The rest of the moving components were precisely cut and designed with leftover materials that were recycled or given a second life.</p>
+
+            <p>Unfortunately, we didn't win the competition, but we had a great time sharpening our collaboration, 3D design, mechanical design, and programming skills. Our mechanical design high school teacher gave us an <strong>honorable shoutout for best functional design</strong> in our class.</p>
+
+		</div>
+		
+		<footer>
+            <!-- Copyright -->
+            <div class="wrapper">
+                <p id="copyright">Copyright © MB Manish <span id="year"></span>.</p>
+            </div>
+            <br>
+        </footer>
+        <!-- Link to script.js file -->
+        <script src="../../../script.js"></script>
+</body>
+</html>

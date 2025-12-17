@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="og:site_name" content="MB Manish" />
+    <link rel="canonical" href="index.html"/>
+    <link rel="stylesheet" href="../../../styles.css" type="text/css"/>
+    <title>Monkey 3D Print | MB Manish</title>
+    <meta name="description" content="My first ever 3D print designed in Blender: a support-free, assemble-able monkey figure."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="../../../images/favicon.png" type="image/png"/>
+</head>
+<body class="item">
+    <header>
+        <div class="wrapper">
+            <nav>
+                <ul>
+                    <li><a href="../../../about/index.html">ABOUT</a></li>
+                    <li class="selected"><a href="../../../projects/index.html">PROJECTS</a></li>
+                    <li><a href="../../../posts/index.html">RESUME</a></li>
+                </ul>
+            </nav>
+            <a href="../../../index.html">
+                <div class="hero-container">
+                    <img class="header-image-small" src="../../../images/avatar.jpg" alt="Avatar" />
+                    <div class="hero-text-container justify-center">
+                        <div class="name"><p>Manish Raj Moriche</p></div>
+                        <hr>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <article class="page wrapper post-page">
+        <a class="back" href="../index.html">Back to 3D Projects</a>
+        <h1 class="blog-header">Monkey 3D Print</h1>
+        
+        <div class="metadata">
+            <ul class="tags">
+                <li class="variant-b"><a href="../../../tags/models-animations/index.html">3D Models & Animations</a></li>
+                <li class="variant-d"><a href="../../../tags/printing/index.html">3D Printing</a></li>
+            </ul>
+            <span class="post-date">02 Feb 2020</span>
+        </div>
+
+        <img class="hero-image-post" style="width: 100%; max-height: 450px; object-fit: cover; display: block;" src="../../../images/projects/3D/monkey/monkey1.webp" alt="Monkey Assembled">
+
+        <div class="project-actions-bar" style="margin-top: 1rem; margin-bottom: 2rem; padding: 1rem;">
+            <div class="button-container">
+                <a class="social-button demo-button" href="#" id="download-project-btn" style="min-width: 280px; white-space: nowrap;">🔗 Download Files</a>
+            </div>
+        </div>
+
+        <div class="content page-content m-top">
+            <style>
+                .page-content li { color: var(--text-primary); }
+                .page-content li::marker { color: var(--dark-green); }
+            </style>
+            
+            <p>This was my <strong>first ever 3D print</strong> that I did for my high school technology class. The mission was to create a simple print that required <strong>no supports</strong>.</p>
+
+            <h3 style="color: var(--dark-green)">Concept & Inspiration</h3>
+            <p>I got the idea of a printable assembled monkey where the pieces would be printed flat and then it can be assembled with ease. This idea came from seeing some of my brother's toy figures that followed similar concepts and his Lego toys of assembly idea.</p>
+            
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 1.5rem 0; max-width: var(--max-p-width); width: 100%;">
+                <img class="hero-image-post" style="flex: 1; min-width: 0; margin: 0; height: auto;" src="../../../images/projects/3D/monkey/monkey2.webp" alt="Monkey Parts">
+                <img class="hero-image-post" style="flex: 1; min-width: 0; margin: 0; height: auto;" src="../../../images/projects/3D/monkey/monkey3.webp" alt="Monkey Assembly">
+            </div>
+
+            <h3 style="color: var(--dark-green)">Design & Printing</h3>
+            <p>I designed the model in <strong>Blender</strong>. The challenge was to ensure all parts could be printed flat on the build plate to avoid the need for support structures, while still fitting together snugly after printing.</p>
+            
+            <p>The final result is a fun, assemble-able figure that demonstrates the capabilities of 3D printing for creating interlocking parts.</p>
+
+        </div>
+    </article>
+
+    <!-- Download Modal -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal">
+            <h3>Download Project Files</h3>
+            <p>You are about to download <strong>monkey_print.zip</strong>. This archive contains:</p>
+            <ul style="text-align: left; margin-bottom: 1.5rem; color: #555;">
+                <li>• The printable <strong>STL File</strong></li>
+                <li>• Images of the assembly process</li>
+            </ul>
+            <p>Ready to print your own monkey?</p>
+            <div class="modal-buttons">
+                <button id="cancel-download-project" class="modal-btn cancel">Cancel</button>
+                <a href="monkey_print.zip" id="confirm-download-project" class="modal-btn confirm" download>Download ZIP</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p id="copyright">Copyright © MB Manish <span id="year"></span>.</p>
+        </div>
+        <br>
+    </footer>
+    <script src="../../../script.js"></script>
+    <script>
+        // Modal Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadBtn = document.getElementById('download-project-btn');
+            const modal = document.getElementById('project-modal');
+            const cancelBtn = document.getElementById('cancel-download-project');
+            const confirmBtn = document.getElementById('confirm-download-project');
+
+            if (downloadBtn && modal) {
+                downloadBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                });
+
+                cancelBtn.addEventListener('click', function() {
+                    modal.classList.remove('active');
+                });
+
+                confirmBtn.addEventListener('click', function() {
+                    modal.classList.remove('active');
+                });
+
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
