@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="og:site_name" content="MB Manish" />
+    <link rel="canonical" href="index.html"/>
+    <title>Programming | MAT - CS50 Final Project</title>
+    <meta name="description" content="Manish Raj Moriche | Programming"/>
+    <link rel="stylesheet" href="../../../styles.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../../../images/favicon.png" type="image/png" />
+</head>
+
+<body class="item">
+	<header>
+        <div class="wrapper">
+            <nav>
+                <ul>
+                    <li><a href="../../../about/index.html">ABOUT</a></li>
+                    <li class="selected"><a href="../../../projects/index.html">PROJECTS</a></li>
+                    <li><a href="../../../posts/index.html">RESUME</a></li>
+                </ul>
+            </nav>
+            <a href="../../../index.html">
+                <div class="hero-container"><img class="header-image-small" src="../../../images/avatar.jpg" alt="Avatar" />
+                    <div class="hero-text-container justify-center">
+                        <div class="name"><p>Manish Raj Moriche</p></div>
+                        <hr>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </header>
+	<article class="page wrapper post-page"><a class="back" href="../index.html">Back to overview</a>
+		<h1 class="blog-header">MAT - CS50 Final Project</h1>
+		<div class="metadata">
+			<ul class="tags">
+                <li class="variant-f"><a href="../../../tags/javascript/index.html">Javascript</a></li>
+			</ul><span class="post-date">24 Jul 2022</span></div>
+            
+            <video class="hero-video-post" width="100%" autoplay loop muted playsinline preload="auto">
+                <source src="../../../images/projects/programming/cs50/MAT_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="project-actions-bar">
+                <div class="button-container">
+                    <a class="social-button github-button" href="https://github.com/MRM-MB/MAT-CS50.git" target="_blank">GitHub</a>
+                </div>
+                <p class="cta-text">🚀 Explore the source code and implementation details</p>
+            </div>
+
+		<div class="content page-content m-top">
+            <style>
+                .page-content li { color: var(--text-primary); }
+                .page-content li::marker { color: var(--dark-green); }
+            </style>
+
+			<p><strong>MAT (My Application Transfer)</strong> was submitted as my final project for CS50x 2022. It demonstrates the application of web development concepts learned throughout the course, specifically focusing on backend development with Node.js and database management.</p>
+            
+            <h3 style="color: var(--dark-green)">About The Project</h3>
+            <p>MAT is designed as a simple, efficient file sharing solution intended for use on a local network (LAN). It serves as a "common space" for offices or small groups to easily transfer files between machines without the need for external cloud services, accounts, or complex setups.</p>
+            
+            <h3 style="color: var(--dark-green)">Core Philosophy</h3>
+            <p>The goal was to create a tool that is strictly for transferring files.</p>
+            <ul>
+                <li><span style="color: var(--text-primary)"><strong>No Account Required:</strong> Users do not need to register or provide personal data.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Privacy Focused:</strong> No emails, names, or tracking.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Simple Workflow:</strong> Upload -> Get Link -> Share -> Download.</span></li>
+            </ul>
+
+            <h3 style="color: var(--dark-green)">Features</h3>
+            <ul>
+                <li><span style="color: var(--text-primary)"><strong>File Upload:</strong> Supports files up to 500MB.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Wide Format Support:</strong> Compatible with a vast array of file types including Videos, Audio, Images, Code files, and Documents.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Password Protection:</strong> Users can optionally secure their uploads with a password.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Security:</strong> Passwords are hashed using bcrypt. Files are stored securely on the server's filesystem.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Download Tracking:</strong> Keeps track of how many times a file has been downloaded.</span></li>
+            </ul>
+
+            <h3 style="color: var(--dark-green)">Technologies Used</h3>
+            <p>This project is built using a robust JavaScript stack:</p>
+            <ul>
+                <li><span style="color: var(--text-primary)"><strong>Runtime:</strong> Node.js</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Framework:</strong> Express.js</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Database:</strong> MySQL with Sequelize ORM</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Templating:</strong> EJS</span></li>
+                <li><span style="color: var(--text-primary)"><strong>File Handling:</strong> Multer</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Security:</strong> Bcrypt</span></li>
+            </ul>
+
+		</div>
+		
+		<footer>
+            <!-- Copyright -->
+            <div class="wrapper">
+                <p id="copyright">Copyright © MB Manish <span id="year"></span>.</p>
+            </div>
+            <br>
+        </footer>
+        <!-- Link to script.js file -->
+        <script src="../../../script.js"></script>
+</body>
+</html>
