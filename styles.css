@@ -3065,3 +3065,34 @@ html.dark-mode .gallery-item:hover {
   display: block;
 }
 
+
+/* PDF Modal Styles */
+.pdf-modal {
+  max-width: 90%;
+  width: 900px;
+  height: 85vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-modal iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  flex-grow: 1;
+}
+
+.pdf-modal .close-modal-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.pdf-modal .close-modal-btn:hover {
+  color: #177c72;
+}
