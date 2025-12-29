@@ -8,6 +8,7 @@
     <title>Manish | About</title>
     <meta name="description" content="Manish Raj Moriche | About"/>
     <link rel="stylesheet" href="../styles.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
 </head>
@@ -34,19 +35,29 @@
         </div>
     </header>
     <div class="page wrapper overview section-overview about-page">
-        <h2 class="section-header pad-top">About</h2>
+        <div class="header-flex-wrapper pad-top">
+            <h2 class="section-header">About</h2>
+            <div class="location-badge">📍 Studying at SDU in Sønderborg, Denmark <span class="fi fi-dk"></span></div>
+        </div>
         <article class="content">
             <div class="about-index">
                 <img class="logo" src="../images/avatar.jpg" alt="Avatar" />
                 <div class="info">
-                    <p><strong>Hi, I'm Manish.</strong> I am a Software Engineering student at SDU Sønderborg with hands-on experience in programming, research projects, educational technology, and mentoring.</p>
+                    <p><strong>Hi, I'm Manish.</strong> I'm a <span class="dynamic-age"></span>-year-old software engineering student and a Singapore-born <span class="fi fi-sg"></span> Spanish <span class="fi fi-es"></span> national, with a Spanish mother and a Singaporean father.</p>
                 </div>
             </div>
-            <p>My core technical expertise lies in <a href="../tags/javascript/index.html">JavaScript</a>, <a href="../tags/csharp/index.html">C#</a>, and <a href="../tags/python/index.html">Python</a>. Outside of programming, I also express my creativity through 2D and 3D design and printing.</p>
+            <p>My expertise includes <a href="../tags/javascript/index.html" class="tech-pill">JavaScript</a> (<span class="tech-pill">React</span> and <span class="tech-pill">Node.js</span>), <a href="../tags/csharp/index.html" class="tech-pill">C#</a>, and <a href="../tags/python/index.html" class="tech-pill">Python</a>. In addition to software development, I channel my creativity through 2D and 3D design and printing.</p>
             <p>You can check out my projects <a href="../projects/index.html">here</a>.</p>
 
             <h3 style="color: #177c72;">Experience</h3>
-            <div class="timeline">
+            
+            <div class="tab-container">
+                <button class="tab-button active" data-tab="work-research">Work & Research</button>
+                <button class="tab-button" data-tab="education">Education</button>
+            </div>
+
+            <div id="work-research" class="tab-content active">
+                <div class="timeline">
                 
                 <div class="timeline-item">
                     <div class="timeline-content">
@@ -89,6 +100,28 @@
                         <a href="#" id="resume-download-btn" class="resume-link">Download Resume</a>
                     </div>
                 </div>
+                </div>
+            </div>
+
+            <div id="education" class="tab-content">
+                <div class="timeline education-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="entry-date">2024 – 2028 (Expected)</span>
+                            <h4 class="entry-title">BEng in Software Engineering</h4>
+                            <p class="entry-subtext">University of Southern Denmark (SDU) • Sønderborg, Denmark</p>
+                            <span class="gpa-badge">Current GPA: 10 <span style="margin-left: 12px; font-weight: normal; opacity: 0.8;">(7-point Danish Scale)</span></span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="entry-date">2022 – 2024</span>
+                            <h4 class="entry-title">European Baccalaureate (Year 12) - Science and Technology</h4>
+                            <p class="entry-subtext">IES Las Musas • Madrid, Spain</p>
+                            <span class="gpa-badge">Final Grade: 8.5 <span style="margin-left: 12px; font-weight: normal; opacity: 0.8;">(10-point Scale)</span></span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Resume Download Modal -->
@@ -116,9 +149,7 @@
                     <a class="social-button github-button" href="https://github.com/MRM-MB" target="_blank">GitHub</a>
                 </li>
             </ul>
-            <h3 style="color: #177c72;">A Little Bit More About Me</h3>
-            <p>I'm a <span class="dynamic-age"></span>-year-old student. I am a Singapore-born Spanish national with a Spanish mother and Singaporean father, which has given me a unique perspective on diverse cultures and global experiences.</p>
-            <p>This website serves as a portfolio of my personal projects, highlighting my technical and engineering-oriented approach.</p>
+
         </article>
     </div>
     <footer>

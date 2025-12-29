@@ -132,6 +132,105 @@
 			"isBackground": false,
 			"problemMatcher": [],
 			"group": "build"
+		},
+		{
+			"label": "append_css_location_badge",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Header Flex Wrapper for About Page */\n.header-flex-wrapper {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline;\n  flex-wrap: wrap;\n  gap: 1rem;\n}\n\n.location-badge {\n  background-color: #177c72;\n  color: white;\n  padding: 8px 20px;\n  border-radius: 50px;\n  font-size: 0.95rem;\n  font-weight: 600;\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n  white-space: nowrap;\n}\n\n@media (max-width: 600px) {\n  .header-flex-wrapper {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  \n  .location-badge {\n    margin-bottom: 1rem;\n    font-size: 0.85rem;\n  }\n}\n"
+			],
+			"isBackground": false,
+			"group": "none"
+		},
+		{
+			"label": "append_css_fix_underline",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Fix for About header underline shrinking due to flexbox */\n.header-flex-wrapper .section-header:after {\n  width: 60px;\n  min-width: 100%; /* Ensure it's at least as wide as the text */\n}\n"
+			],
+			"isBackground": false,
+			"group": "none"
+		},
+		{
+			"label": "append_css_dark_mode_location",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Dark Mode for Location Badge */\nhtml.dark-mode .location-badge {\n  background-color: rgba(45, 212, 191, 0.1);\n  border-color: #2dd4bf;\n  color: #2dd4bf;\n  box-shadow: 0 2px 8px rgba(45, 212, 191, 0.15);\n}\n"
+			],
+			"isBackground": false,
+			"group": "none"
+		},
+		{
+			"label": "append_css_dark_mode_tech_pill",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Dark Mode for Tech Pills */\nhtml.dark-mode .tech-pill {\n  background-color: rgba(45, 212, 191, 0.1);\n  color: #4fffd3;\n  border-color: rgba(45, 212, 191, 0.3);\n  text-shadow: 0 0 8px rgba(79, 255, 211, 0.4);\n}\n\nhtml.dark-mode .tech-pill:hover {\n  background-color: rgba(45, 212, 191, 0.2);\n  color: #ffffff;\n  text-shadow: 0 0 12px rgba(79, 255, 211, 0.6);\n  box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);\n}\n"
+			],
+			"isBackground": false,
+			"group": "none"
+		},
+		{
+			"label": "append_css_tabs",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Tabs Styles */\n.tab-container {\n  display: flex;\n  justify-content: center;\n  gap: 1rem;\n  margin-bottom: 2rem;\n}\n\n.tab-button {\n  background-color: transparent;\n  border: 2px solid #177c72;\n  color: #177c72;\n  padding: 10px 24px;\n  border-radius: 30px;\n  font-weight: bold;\n  cursor: pointer;\n  transition: all 0.3s ease;\n  font-family: inherit;\n  font-size: 1rem;\n}\n\n.tab-button:hover {\n  background-color: rgba(23, 124, 114, 0.1);\n}\n\n.tab-button.active {\n  background-color: #177c72;\n  color: white;\n}\n\n.tab-content {\n  display: none;\n  animation: fadeIn 0.5s ease;\n}\n\n.tab-content.active {\n  display: block;\n}\n\n@keyframes fadeIn {\n  from { opacity: 0; transform: translateY(10px); }\n  to { opacity: 1; transform: translateY(0); }\n}\n\n/* Dark mode support for tabs */\nhtml.dark-mode .tab-button {\n  border-color: #2dd4bf;\n  color: #2dd4bf;\n}\n\nhtml.dark-mode .tab-button:hover {\n  background-color: rgba(45, 212, 191, 0.1);\n}\n\nhtml.dark-mode .tab-button.active {\n  background-color: rgba(45, 212, 191, 0.2);\n  color: #4fffd3;\n  box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);\n}\n"
+			],
+			"isBackground": false,
+			"group": "none"
+		},
+		{
+			"label": "append_js_tabs",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\script.js",
+				"\n        // Tab Switching Logic\n        const tabButtons = document.querySelectorAll('.tab-button');\n        const tabContents = document.querySelectorAll('.tab-content');\n\n        if (tabButtons.length > 0) {\n            tabButtons.forEach(button => {\n                button.addEventListener('click', () => {\n                    // Remove active class from all buttons and contents\n                    tabButtons.forEach(btn => btn.classList.remove('active'));\n                    tabContents.forEach(content => content.classList.remove('active'));\n\n                    // Add active class to clicked button and corresponding content\n                    button.classList.add('active');\n                    const targetId = button.getAttribute('data-tab');\n                    document.getElementById(targetId).classList.add('active');\n                });\n            });\n        }\n"
+			],
+			"isBackground": false,
+			"group": "none"
+		},
+		{
+			"label": "append_css_capsule_timeline",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Capsulized Timeline Items */\n.timeline-item {\n  background-color: white;\n  border-radius: 16px;\n  padding: 0;\n  margin-bottom: 1.5rem;\n  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);\n  border: 1px solid #f1f5f9;\n  transition: transform 0.2s ease, box-shadow 0.2s ease;\n  overflow: hidden;\n}\n\n.timeline-item:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);\n}\n\n.timeline-content {\n  padding: 1.5rem;\n  background-color: transparent !important;\n  border: none !important;\n  box-shadow: none !important;\n}\n\n/* Remove old timeline lines */\n.timeline::after {\n  display: none;\n}\n\n.timeline-item::after {\n  display: none;\n}\n\n/* Dark Mode for Capsules */\nhtml.dark-mode .timeline-item {\n  background-color: #161b22;\n  border-color: #30363d;\n  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);\n}\n\nhtml.dark-mode .timeline-item:hover {\n  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);\n  border-color: #2dd4bf;\n}\n"
+			],
+			"isBackground": false,
+			"group": "none"
+		},
+		{
+			"label": "append_css_capsulized",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* \n   ----------------------\n   Capsulized Redesign \n   ----------------------\n*/\n\n/* 1. Segmented Control Tabs */\n.tab-container {\n  display: inline-flex;\n  background-color: #f1f5f9;\n  padding: 6px;\n  border-radius: 50px;\n  gap: 0; /* No gap, padding handles spacing */\n  margin: 0 auto 3rem auto; /* Center it */\n  position: relative;\n  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);\n  border: 1px solid #e2e8f0;\n  width: auto; /* Fit content */\n  justify-content: center;\n  left: 50%;\n  transform: translateX(-50%);\n}\n\n.tab-button {\n  border: none;\n  background: transparent;\n  color: #64748b;\n  padding: 10px 28px;\n  border-radius: 40px;\n  font-size: 0.95rem;\n  font-weight: 600;\n  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n  box-shadow: none;\n}\n\n.tab-button:hover {\n  background-color: rgba(0,0,0,0.03);\n  color: #334155;\n}\n\n.tab-button.active {\n  background-color: white;\n  color: #177c72;\n  box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);\n  transform: scale(1.02);\n}\n\n/* Dark Mode Tabs */\nhtml.dark-mode .tab-container {\n  background-color: #161b22;\n  border-color: #30363d;\n  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);\n}\n\nhtml.dark-mode .tab-button {\n  color: #8b949e;\n  border: none; /* Reset border */\n}\n\nhtml.dark-mode .tab-button:hover {\n  background-color: rgba(255,255,255,0.03);\n  color: #c9d1d9;\n}\n\nhtml.dark-mode .tab-button.active {\n  background-color: #21262d;\n  color: #2dd4bf;\n  box-shadow: 0 4px 12px rgba(0,0,0,0.3);\n}\n\n\n/* 2. Capsulized Timeline Items */\n.timeline {\n  max-width: 800px; /* Narrower for better reading */\n  margin: 0 auto;\n}\n\n/* Remove the vertical line */\n.timeline::after {\n  display: none;\n}\n\n/* Card Style for Items */\n.timeline-item {\n  background-color: white;\n  border-radius: 16px;\n  padding: 0; /* Reset padding */\n  margin-bottom: 1.5rem;\n  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);\n  border: 1px solid #f1f5f9;\n  transition: transform 0.2s ease, box-shadow 0.2s ease;\n  overflow: hidden;\n  width: 100%;\n}\n\n.timeline-item:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);\n}\n\n/* Remove the dots */\n.timeline-item::after {\n  display: none;\n}\n\n/* Content Styling */\n.timeline-content {\n  padding: 1.5rem;\n  background-color: transparent; /* Remove inner bg */\n  border: none;\n  box-shadow: none;\n  border-radius: 0;\n}\n\n.timeline-date {\n  display: inline-block;\n  font-size: 0.8rem;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  color: #64748b;\n  margin-bottom: 0.5rem;\n  background-color: #f8fafc;\n  padding: 4px 10px;\n  border-radius: 6px;\n}\n\n.timeline-content h4.entry-title {\n  font-size: 1.1rem;\n  color: #1e293b;\n  margin-bottom: 0.25rem;\n  font-weight: 700;\n}\n\n.entry-subtext {\n  color: #177c72;\n  font-weight: 500;\n  font-size: 0.9rem;\n  margin-bottom: 0.75rem;\n  display: block;\n}\n\n.entry-details {\n  border-left: none; /* Remove side border */\n  padding-left: 0;\n  margin-left: 0;\n  color: #475569;\n  font-size: 0.95rem;\n  max-height: none; /* Always show details or use JS for accordion if needed, but for now let's show them cleanly */\n  opacity: 1;\n  margin-top: 0;\n}\n\n/* Dark Mode for Capsules */\nhtml.dark-mode .timeline-item {\n  background-color: #161b22;\n  border-color: #30363d;\n  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);\n}\n\nhtml.dark-mode .timeline-item:hover {\n  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);\n  border-color: #2dd4bf;\n}\n\nhtml.dark-mode .timeline-date {\n  background-color: #21262d;\n  color: #8b949e;\n  text-shadow: none; /* Remove glow from date pill */\n}\n\nhtml.dark-mode .timeline-content h4.entry-title {\n  color: #e6edf3;\n}\n\nhtml.dark-mode .entry-subtext {\n  color: #2dd4bf;\n}\n\nhtml.dark-mode .entry-details {\n  color: #8b949e;\n}\n"
+			],
+			"isBackground": false,
+			"group": "none"
+		},
+		{
+			"label": "append_css_education",
+			"type": "shell",
+			"command": "Add-Content",
+			"args": [
+				"c:\\Users\\manis\\Desktop\\MBMANISH\\styles.css",
+				"\n/* Education Timeline Specifics */\n.education-timeline .entry-details {\n  max-height: none;\n  opacity: 1;\n  margin-top: 10px;\n  border-left: none;\n  padding-left: 0;\n}\n\n.gpa-badge {\n  display: inline-block;\n  background-color: rgba(23, 124, 114, 0.1);\n  color: #177c72;\n  padding: 4px 12px;\n  border-radius: 6px;\n  font-weight: 600;\n  font-size: 0.9rem;\n  margin-top: 8px;\n  border: 1px solid rgba(23, 124, 114, 0.2);\n}\n\nhtml.dark-mode .gpa-badge {\n  background-color: rgba(45, 212, 191, 0.1);\n  color: #4fffd3;\n  border-color: rgba(45, 212, 191, 0.3);\n  box-shadow: 0 0 10px rgba(45, 212, 191, 0.1);\n}\n"
+			],
+			"isBackground": false,
+			"group": "none"
 		}
 	]
 }
