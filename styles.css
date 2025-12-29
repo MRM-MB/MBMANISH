@@ -3163,8 +3163,8 @@ html.dark-mode .gallery-item:hover {
 }
 
 .location-badge {
- background-color: #177c72;
- color: white;
+ background-color: transparent;
+ color: #177c72;
  border: 2px solid #177c72;
  padding: 6px 16px;
  border-radius: 50px;
@@ -3173,7 +3173,7 @@ html.dark-mode .gallery-item:hover {
  display: inline-flex;
  align-items: center;
  gap: 8px;
- box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+ box-shadow: none;
  white-space: nowrap;
 }
 
