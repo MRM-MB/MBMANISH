@@ -328,3 +328,179 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Tinder-like Card Stack Logic
+document.addEventListener('DOMContentLoaded', function() {
+    const cardsContainer = document.getElementById('tinder-cards');
+    const messageContainer = document.getElementById('tinder-message');
+    const reloadBtn = document.getElementById('reload-cards');
+    
+    if (!cardsContainer || !messageContainer) return;
+
+    let cards = Array.from(document.querySelectorAll('.tinder-card'));
+    let isDragging = false;
+    let isHovering = false;
+    let startX = 0;
+    let currentX = 0;
+    let currentCard = null;
+    
+    // Pre-calculate random "messy" positions for the stack slots
+    const stackSlots = [];
+    for(let i = 0; i < 10; i++) {
+        stackSlots.push({
+            x: (Math.random() * 20) - 10, // Small random offset
+            y: (Math.random() * 20) - 10,
+            rot: (Math.random() * 10) - 5
+        });
+    }
+
+    // Directions for corner spreading: TL, TR, BL, BR
+    const corners = [
+        {x: -1, y: -1}, 
+        {x: 1, y: -1}, 
+        {x: -1, y: 1}, 
+        {x: 1, y: 1}
+    ];
+
+    function initCards() {
+        cards.forEach((card, index) => {
+            card.style.zIndex = cards.length - index;
+            // Reset event listeners
+            card.onmousedown = startDrag;
+            card.ontouchstart = startDrag;
+        });
+        
+        // Add hover effects to the container
+        cardsContainer.addEventListener('mouseenter', () => {
+            isHovering = true;
+            updateStack();
+        });
+        
+        cardsContainer.addEventListener('mouseleave', () => {
+            isHovering = false;
+            updateStack();
+        });
+        
+        messageContainer.classList.remove('active');
+        cardsContainer.style.display = 'block';
+        updateStack();
+    }
+
+    function startDrag(e) {
+        if (this !== cards[0]) return; // Only top card is draggable
+        
+        isDragging = true;
+        currentCard = this;
+        startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
+        currentX = startX;
+        
+        currentCard.style.transition = 'none';
+        
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('touchmove', onDrag, { passive: false });
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchend', endDrag);
+    }
+
+    function onDrag(e) {
+        if (!isDragging) return;
+        
+        if(e.type === 'touchmove') {
+             e.preventDefault(); 
+        }
+        
+        currentX = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
+        const deltaX = currentX - startX;
+        const rotate = deltaX * 0.1;
+        
+        currentCard.style.transform = 'translateX(' + deltaX + 'px) rotate(' + rotate + 'deg)';
+    }
+
+    function endDrag(e) {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        const deltaX = currentX - startX;
+        const threshold = 100;
+        
+        currentCard.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+        
+        if (Math.abs(deltaX) > threshold) {
+            const throwDir = deltaX > 0 ? 1 : -1;
+            currentCard.style.transform = 'translateX(' + (throwDir * 500) + 'px) rotate(' + (throwDir * 45) + 'deg)';
+            currentCard.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentCard.remove();
+                cards.shift();
+                
+                if (cards.length === 0) {
+                    showEndMessage();
+                } else {
+                    updateStack();
+                }
+            }, 300);
+        } else {
+            currentCard.style.transform = 'scale(1) rotate(0deg)';
+        }
+        
+        document.removeEventListener('mousemove', onDrag);
+        document.removeEventListener('touchmove', onDrag);
+        document.removeEventListener('mouseup', endDrag);
+        document.removeEventListener('touchend', endDrag);
+    }
+
+    function updateStack() {
+        cards.forEach((card, index) => {
+            card.style.zIndex = cards.length - index;
+            card.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            
+            if (index === 0) {
+                if (!isDragging) card.style.transform = 'scale(1) rotate(0deg)';
+            } else {
+                const slot = stackSlots[index] || {x:0, y:0, rot:0};
+                const corner = corners[index % 4]; // Cycle through corners
+                
+                let tx, ty, rot, scale;
+
+                if (isHovering) {
+                    // Expand towards corners
+                    // Spread factor increases with index to prevent overlap
+                    const spread = 20 + (index * 4); // Reduced spread on hover
+                    tx = slot.x + (corner.x * spread);
+                    ty = slot.y + (corner.y * spread * 0.5); // Less vertical spread
+                    rot = slot.rot + (corner.x * 5); // Rotate towards outside
+                    scale = 1; // Full size on hover
+                } else {
+                    // Compact messy stack
+                    // Increased spread to show background cards more
+                    tx = slot.x + (corner.x * 12);
+                    ty = slot.y + (corner.y * 8);
+                    rot = slot.rot;
+                    scale = 1 - (index * 0.05);
+                }
+                
+                card.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) rotate(' + rot + 'deg) scale(' + scale + ')';
+            }
+        });
+    }
+
+    function showEndMessage() {
+        cardsContainer.style.display = 'none';
+        messageContainer.classList.add('active');
+    }
+
+    reloadBtn.addEventListener('click', () => {
+        cardsContainer.innerHTML = `
+            <div class="tinder-card"><img class="header-image" src="images/avatar/avatar_1.svg" alt="Manish’s portrait" draggable="false"/></div>
+            <div class="tinder-card"><img class="header-image" src="images/avatar/avatar_2.svg" alt="Manish’s portrait" draggable="false"/></div>
+            <div class="tinder-card"><img class="header-image" src="images/avatar/avatar_3.svg" alt="Manish’s portrait" draggable="false"/></div>
+            <div class="tinder-card"><img class="header-image" src="images/avatar/avatar_4.svg" alt="Manish’s portrait" draggable="false"/></div>
+            <div class="tinder-card"><img class="header-image" src="images/avatar/avatar_5.svg" alt="Manish’s portrait" draggable="false"/></div>
+        `;
+        cards = Array.from(document.querySelectorAll('.tinder-card'));
+        initCards();
+    });
+
+    initCards();
+});
+
