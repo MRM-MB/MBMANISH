@@ -89,6 +89,14 @@
 html {
   background-color: var(--background-color);
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevent horizontal scroll from flying cards */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
 }
 
 a {
@@ -281,6 +289,7 @@ header > div {
   width: 250px;
   height: 250px;
   margin: 0 auto;
+  overflow: visible; /* Ensure cards can fly out visually */
 }
 
 .tinder-cards {
@@ -340,7 +349,7 @@ header > div {
   align-items: center;
   text-align: center;
   background-color: var(--background-color);
-  border: none; /* Remove dashed border */
+  border: none;
   z-index: 5;
   opacity: 0;
   pointer-events: none;
@@ -353,11 +362,55 @@ header > div {
   pointer-events: all;
 }
 
-.tinder-message p {
-  font-size: 0.9rem;
-  color: #177c72;
-  margin-bottom: 1rem;
+.end-quote {
+  font-size: 1.1rem;
   font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.check-work-container {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--dark-green);
+  animation: fadeIn 1s ease 0.5s forwards; /* Delay appearance slightly */
+  opacity: 0;
+}
+
+.check-work-container p {
+  font-size: 0.85rem;
+  margin: 0;
+  font-weight: 500;
+  color: var(--dark-green);
+}
+
+.bounce-arrow {
+  font-size: 1.2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+html.dark-mode .check-work-container,
+html.dark-mode .check-work-container p {
+  color: var(--light-green);
 }
 
 .tinder-actions {
@@ -403,8 +456,8 @@ header > div {
 
 /* Dark mode support */
 html.dark-mode .tinder-message {
-  background-color: #161b22;
-  border-color: #2dd4bf;
+  background-color: var(--background-color); /* Blend with page background */
+  border-color: transparent; /* Remove border if any */
 }
 
 html.dark-mode .tinder-card {
