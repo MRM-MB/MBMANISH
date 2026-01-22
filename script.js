@@ -1,13 +1,12 @@
-        // JavaScript to update the year dynamically
+        /* --- DYNAMIC YEAR & AGE CALCULATION --- */
+        // Update the footer year and calculate current age based on birthdate
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Function to calculate age
         function calculateAge(birthDate) {
             const today = new Date();
             let age = today.getFullYear() - birthDate.getFullYear();
             const monthDifference = today.getMonth() - birthDate.getMonth();
 
-            // Adjust age if the birthday hasn't occurred yet this year
             if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
                 age--;
             }
@@ -15,23 +14,21 @@
             return age;
         }
 
-        // Birthdate
-        const birthDate = new Date(2005, 3, 27); // Months are 0-indexed in JavaScript (April is 3)
+        const birthDate = new Date(2005, 3, 27);
         const age = calculateAge(birthDate);
 
-        // Update the HTML with the calculated age
         const ageElement = document.getElementById('age');
         if (ageElement) {
             ageElement.textContent = age;
         }
         
-        // Also update any elements with class 'dynamic-age'
         const ageElements = document.querySelectorAll('.dynamic-age');
         ageElements.forEach(element => {
             element.textContent = age;
         });
 
-        // Resume Modal Logic
+        /* --- RESUME MODAL --- */
+        // Manage the interactions for the resume download confirmation modal
         document.addEventListener('DOMContentLoaded', function() {
             const resumeBtn = document.getElementById('resume-download-btn');
             const modal = document.getElementById('resume-modal');
@@ -50,10 +47,8 @@
 
                 confirmBtn.addEventListener('click', function() {
                     modal.classList.remove('active');
-                    // The download will proceed as it's an anchor tag
                 });
 
-                // Close modal when clicking outside
                 modal.addEventListener('click', function(e) {
                     if (e.target === modal) {
                         modal.classList.remove('active');
@@ -62,9 +57,11 @@
             }
         });
 
-        // Game Download Modal Logic
+        /* --- GAME DOWNLOAD MODAL --- */
+        // Handle the confirmation logic before downloading game files
         document.addEventListener('DOMContentLoaded', function() {
             const gameBtn = document.getElementById('game-download-btn');
+
             const gameModal = document.getElementById('game-modal');
             const gameCancelBtn = document.getElementById('cancel-game-download');
             const gameConfirmBtn = document.getElementById('confirm-game-download');
@@ -91,9 +88,9 @@
             }
         });
 
-        // Image Lightbox Logic
+        /* --- IMAGE LIGHTBOX --- */
+        // Create a full-screen viewer for images and handle opening/closing interactions
         document.addEventListener('DOMContentLoaded', function() {
-            // Create Lightbox Elements dynamically
             const lightbox = document.createElement('div');
             lightbox.id = 'image-lightbox';
             lightbox.className = 'lightbox';
@@ -103,25 +100,21 @@
             const lightboxImg = document.getElementById('lightbox-img');
             const closeBtn = lightbox.querySelector('.close-lightbox');
 
-            // Select images for lightbox (excluding project thumbnails as per request)
             const images = document.querySelectorAll('.top-image, .side-image, .image-container img, .hero-image-post, .project-screenshot');
 
             images.forEach(img => {
-                // Ensure the parent anchor doesn't trigger navigation when image is clicked
                 img.addEventListener('click', function(e) {
-                    e.preventDefault(); // Prevent default link behavior
-                    e.stopPropagation(); // Stop event bubbling
+                    e.preventDefault();
+                    e.stopPropagation();
                     
                     lightbox.style.display = 'flex';
                     lightboxImg.src = this.src;
                     lightboxImg.alt = this.alt;
                 });
                 
-                // Optional: Add a visual cue that the image is clickable
                 img.style.cursor = 'zoom-in';
             });
 
-            // Close Logic
             const closeLightbox = () => {
                 lightbox.style.display = 'none';
             };
@@ -136,40 +129,37 @@
                 }
             });
             
-            // Close on Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && lightbox.style.display === 'flex') {
                     closeLightbox();
                 }
             });
         });
-// Dark Mode Logic
+
+/* --- DARK MODE --- */
+// Manage theme switching, persist changes to localStorage, and ensure icons match the state
 document.addEventListener('DOMContentLoaded', function() {
     const toggleBtn = document.getElementById('theme-toggle');
     
-    // Icons
     const sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
     const moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
 
-    // Check saved preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     let isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
-    // Apply initial theme
     if (isDark) {
         document.documentElement.classList.add('dark-mode');
     }
 
-    // Function to update icon
     const updateIcon = (dark) => {
         if (toggleBtn) {
             toggleBtn.innerHTML = dark ? sunIcon : moonIcon;
         } else {
-            // Fallback for pages with old structure (inject button)
             injectLegacyToggle(dark);
         }
     };
+
 
     updateIcon(isDark);
 
@@ -182,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Legacy Injection Logic (for pages without #theme-toggle)
+    // Inject the toggle button dynamically on backward-compatible pages
     function injectLegacyToggle(initialDark) {
         const navList = document.querySelector('nav ul');
         if (navList && !document.querySelector('.theme-toggle-btn')) {
@@ -208,7 +198,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Inject Background Effects
+/* --- BACKGROUND EFFECTS --- */
+// Add ambient background layers for visual depth
 document.addEventListener('DOMContentLoaded', function() {
     if (!document.getElementById('bg-effects')) {
         const bgEffects = document.createElement('div');
@@ -223,9 +214,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Video Lightbox Logic
+/* --- VIDEO LIGHTBOX --- */
+// Manage a pop-up player for video content, handling autoplay and pausing background videos
 document.addEventListener('DOMContentLoaded', function() {
-    // Create Video Lightbox Elements dynamically
     const videoLightbox = document.createElement('div');
     videoLightbox.id = 'video-lightbox';
     videoLightbox.className = 'lightbox';
@@ -238,11 +229,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxVideo = document.getElementById('lightbox-video');
     const closeBtn = videoLightbox.querySelector('.close-lightbox');
 
-    // Select all videos that should be expandable
     const videos = document.querySelectorAll('video');
 
     videos.forEach(video => {
-        // Add visual cue
         video.style.cursor = 'pointer';
         video.title = 'Click to expand';
 
@@ -250,11 +239,10 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             e.stopPropagation();
 
-            // Pause the background video
             this.pause();
 
-            // Show lightbox
             videoLightbox.style.display = 'flex';
+
             
             // Set source
             const currentSrc = this.currentSrc || this.src;
@@ -303,7 +291,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Tab Switching Logic
+/* --- TAB SWITCHING --- */
+// Handle content visibility when switching between different tabs
 document.addEventListener('DOMContentLoaded', function() {
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -312,11 +301,9 @@ document.addEventListener('DOMContentLoaded', function() {
         tabButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
-                // Remove active class from all buttons and contents
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
 
-                // Add active class to clicked button and corresponding content
                 button.classList.add('active');
                 const targetId = button.getAttribute('data-tab');
                 const targetContent = document.getElementById(targetId);
@@ -328,7 +315,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Tinder-like Card Stack Logic
+/* --- INTERACTIVE CARD STACK --- */
+// Enable gesture-based card swiping (Tinder-style) with physics-based dragging and throwing
 document.addEventListener('DOMContentLoaded', function() {
     const cardsContainer = document.getElementById('tinder-cards');
     const messageContainer = document.getElementById('tinder-message');
@@ -343,17 +331,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentX = 0;
     let currentCard = null;
     
-    // Pre-calculate random "messy" positions for the stack slots
     const stackSlots = [];
     for(let i = 0; i < 10; i++) {
         stackSlots.push({
-            x: (Math.random() * 20) - 10, // Small random offset
+            x: (Math.random() * 20) - 10, 
             y: (Math.random() * 20) - 10,
             rot: (Math.random() * 10) - 5
         });
     }
 
-    // Directions for corner spreading: TL, TR, BL, BR
     const corners = [
         {x: -1, y: -1}, 
         {x: 1, y: -1}, 
@@ -364,12 +350,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function initCards() {
         cards.forEach((card, index) => {
             card.style.zIndex = cards.length - index;
-            // Reset event listeners
             card.onmousedown = startDrag;
             card.ontouchstart = startDrag;
         });
         
-        // Add hover effects to the container
         cardsContainer.addEventListener('mouseenter', () => {
             isHovering = true;
             updateStack();
@@ -386,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function startDrag(e) {
-        if (this !== cards[0]) return; // Only top card is draggable
+        if (this !== cards[0]) return; 
         
         isDragging = true;
         currentCard = this;
@@ -458,21 +442,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!isDragging) card.style.transform = 'scale(1) rotate(0deg)';
             } else {
                 const slot = stackSlots[index] || {x:0, y:0, rot:0};
-                const corner = corners[index % 4]; // Cycle through corners
+                const corner = corners[index % 4]; 
                 
                 let tx, ty, rot, scale;
 
                 if (isHovering) {
-                    // Expand towards corners
-                    // Spread factor increases with index to prevent overlap
-                    const spread = 20 + (index * 4); // Reduced spread on hover
+                    const spread = 20 + (index * 4); 
                     tx = slot.x + (corner.x * spread);
-                    ty = slot.y + (corner.y * spread * 0.5); // Less vertical spread
-                    rot = slot.rot + (corner.x * 5); // Rotate towards outside
-                    scale = 1; // Full size on hover
+                    ty = slot.y + (corner.y * spread * 0.5); 
+                    rot = slot.rot + (corner.x * 5); 
+                    scale = 1; 
                 } else {
-                    // Compact messy stack
-                    // Increased spread to show background cards more
                     tx = slot.x + (corner.x * 12);
                     ty = slot.y + (corner.y * 8);
                     rot = slot.rot;
@@ -505,70 +485,99 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-/* Project Page Decoration - Scroll & Hover Interaction */
+/* --- PROJECT DECORATION LOGIC --- */
+// Coordinate the scroll-reactive portrait, handling hover states, theme switching, and image preloading
 document.addEventListener('DOMContentLoaded', function() {
     const projectDecoration = document.querySelector('.project-decoration');
+    const projectLevitate = document.querySelector('.project-levitate');
+    
     if (projectDecoration) {
         let lastScrollTop = 0;
         let isHovered = false;
-        let isScrollingDown = false; // Default to false (showing base)
+        let isScrollingDown = false; 
 
-        // Paths relative to projects/index.html
-        const hoverSrc = '../images/decoration/light/portrait-hover.svg';
-        const baseSrc = '../images/decoration/light/portrait-base.svg';
+        const paths = {
+            light: {
+                base: '../images/decoration/light/portrait-base.svg',
+                hover: '../images/decoration/light/portrait-hover.svg',
+                elements: '../images/decoration/light/portrait-elements.svg'
+            },
+            dark: {
+                base: '../images/decoration/dark/portrait-base.svg',
+                hover: '../images/decoration/dark/portrait-hover.svg',
+                elements: '../images/decoration/dark/portrait-elements.svg'
+            }
+        };
 
-        // Preload hover image to prevent flickering
-        const preloadImg = new Image();
-        preloadImg.src = hoverSrc;
+        const preloadImages = () => {
+             ['light', 'dark'].forEach(mode => {
+                 Object.values(paths[mode]).forEach(src => {
+                     const img = new Image();
+                     img.src = src;
+                 });
+             });
+        };
+        preloadImages();
 
-        function updateImage() {
-            // Logic: Hover inverts the state determined by scroll direction.
-            // If scrolling down (Active) -> Hover makes it Base.
-            // If scrolling up (Base) -> Hover makes it Active.
-            // This acts like an XOR: showActive = isScrollingDown XOR isHovered
+        function getMode() {
+            return document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
+        }
+
+        function updateImages() {
+            const mode = getMode();
             
-            const showActive = (isScrollingDown !== isHovered);
+            if (projectLevitate) {
+                const elementsSrc = paths[mode].elements;
+                if (!projectLevitate.src.includes(elementsSrc.substring(3))) {
+                     projectLevitate.src = elementsSrc;
+                }
+            }
 
-            if (showActive) {
-                if (!projectDecoration.src.endsWith('portrait-hover.svg')) {
-                    projectDecoration.src = hoverSrc;
-                }
-            } else {
-                if (!projectDecoration.src.endsWith('portrait-base.svg')) {
-                    projectDecoration.src = baseSrc;
-                }
+            const showActive = (isScrollingDown !== isHovered);
+            const targetSrc = showActive ? paths[mode].hover : paths[mode].base;
+            
+            const currentSrc = projectDecoration.src;
+            if (!currentSrc.includes(targetSrc.substring(3))) { 
+                 projectDecoration.src = targetSrc;
             }
         }
 
-        // Hover Handlers
+        updateImages();
+
         projectDecoration.addEventListener('mouseenter', () => {
             isHovered = true;
-            updateImage();
+            updateImages();
         });
 
         projectDecoration.addEventListener('mouseleave', () => {
             isHovered = false;
-            updateImage();
+            updateImages();
         });
 
-        // Scroll Handler
         window.addEventListener('scroll', function() {
             let st = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Ignore negative scrolling (iOS bounce)
             if (st < 0) return;
-            
-            // Debounce/Check threshold specific to avoid jitter? 
-            // For now, raw direction is fine.
-            
+
             if (st > lastScrollTop) {
                 isScrollingDown = true;
             } else {
                 isScrollingDown = false;
             }
             
-            updateImage();
+            updateImages();
             lastScrollTop = st;
         }, { passive: true });
+
+        // Watch for class changes on the html element to trigger image updates
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    updateImages();
+                }
+            });
+        });
+        
+        observer.observe(document.documentElement, { attributes: true });
     }
 });
