@@ -1347,7 +1347,10 @@ article img {
 }
 
 @media (min-width: 800px) {
-  /* .post-thumb height is now fixed globally */
+  /* Place 3D Animations (3rd item) in the bottom right (2nd column) */
+  .item-list.grid > li:nth-child(3) {
+    grid-column: 2;
+  }
 }
 
 /**
