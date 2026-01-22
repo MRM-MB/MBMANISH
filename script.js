@@ -504,3 +504,71 @@ document.addEventListener('DOMContentLoaded', function() {
     initCards();
 });
 
+
+/* Project Page Decoration - Scroll & Hover Interaction */
+document.addEventListener('DOMContentLoaded', function() {
+    const projectDecoration = document.querySelector('.project-decoration');
+    if (projectDecoration) {
+        let lastScrollTop = 0;
+        let isHovered = false;
+        let isScrollingDown = false; // Default to false (showing base)
+
+        // Paths relative to projects/index.html
+        const hoverSrc = '../images/decoration/light/portrait-hover.svg';
+        const baseSrc = '../images/decoration/light/portrait-base.svg';
+
+        // Preload hover image to prevent flickering
+        const preloadImg = new Image();
+        preloadImg.src = hoverSrc;
+
+        function updateImage() {
+            // Logic: Hover inverts the state determined by scroll direction.
+            // If scrolling down (Active) -> Hover makes it Base.
+            // If scrolling up (Base) -> Hover makes it Active.
+            // This acts like an XOR: showActive = isScrollingDown XOR isHovered
+            
+            const showActive = (isScrollingDown !== isHovered);
+
+            if (showActive) {
+                if (!projectDecoration.src.endsWith('portrait-hover.svg')) {
+                    projectDecoration.src = hoverSrc;
+                }
+            } else {
+                if (!projectDecoration.src.endsWith('portrait-base.svg')) {
+                    projectDecoration.src = baseSrc;
+                }
+            }
+        }
+
+        // Hover Handlers
+        projectDecoration.addEventListener('mouseenter', () => {
+            isHovered = true;
+            updateImage();
+        });
+
+        projectDecoration.addEventListener('mouseleave', () => {
+            isHovered = false;
+            updateImage();
+        });
+
+        // Scroll Handler
+        window.addEventListener('scroll', function() {
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Ignore negative scrolling (iOS bounce)
+            if (st < 0) return;
+            
+            // Debounce/Check threshold specific to avoid jitter? 
+            // For now, raw direction is fine.
+            
+            if (st > lastScrollTop) {
+                isScrollingDown = true;
+            } else {
+                isScrollingDown = false;
+            }
+            
+            updateImage();
+            lastScrollTop = st;
+        }, { passive: true });
+    }
+});

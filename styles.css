@@ -3677,21 +3677,61 @@ html.dark-mode .icon-link:hover {
   border: none;
 }
 
-/* Project Page Decoration */
-.project-decoration {
+.decoration-stack {
+  position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.decoration-stack > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center strictly */
+}
+
+/* Original project decoration */
+.project-decoration {
+  width: 150%;
+  height: auto;
   object-fit: contain;
   display: block;
-  margin: auto;
-  transform: scale(1.4);
+  transform: translate(-50%, -50%) rotate(20deg) translateY(60px) !important; /* Keep original transform + centering */
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  backface-visibility: hidden;
+}
+
+.project-levitate {
+  width: 150%;
+  height: auto;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  background: transparent;
+  pointer-events: none;
+  z-index: 2;
+  animation: levitate 5s ease-in-out infinite;
+}
+
+@keyframes levitate {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(20deg) translateY(60px);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(20deg) translateY(53px);
+  }
 }
 
 .decoration-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 @media (max-width: 800px) {
@@ -3701,4 +3741,20 @@ html.dark-mode .icon-link:hover {
 }
 
 
+
+
+/* Smooth Scroll Transition Styles */
+.project-decoration.project-active {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 1; /* Sit above base */
+}
+
+.project-decoration.project-active.visible {
+  opacity: 1;
+}
+
+.project-decoration.project-base {
+  z-index: 0;
+}
 
