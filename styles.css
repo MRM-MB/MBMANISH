@@ -1346,28 +1346,6 @@ article img {
   }
 }
 
-@media (min-width: 800px) {
-  /* Custom Grid for 3 items (Projects Page) */
-  
-  /* Item 1 (Programming): Top Right */
-  .item-list.grid > li:first-child:nth-last-child(3) {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  
-  /* Item 2 (Research): Bottom Left */
-  .item-list.grid > li:first-child:nth-last-child(3) + li {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  
-  /* Item 3 (3D): Bottom Right */
-  .item-list.grid > li:first-child:nth-last-child(3) + li + li {
-    grid-column: 2;
-    grid-row: 2;
-  }
-}
-
 /**
   ----------------------
   Tags
@@ -3697,6 +3675,29 @@ html.dark-mode .icon-link:hover {
   color: var(--light-green);
   box-shadow: none;
   border: none;
+}
+
+/* Project Page Decoration */
+.project-decoration {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  transform: scale(1.4);
+}
+
+.decoration-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  .decoration-item {
+    display: none;
+  }
 }
 
 
