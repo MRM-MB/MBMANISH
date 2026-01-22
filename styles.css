@@ -1347,9 +1347,24 @@ article img {
 }
 
 @media (min-width: 800px) {
-  /* Place 3D Animations (3rd item) in the bottom right (2nd column) */
-  .item-list.grid > li:nth-child(3) {
+  /* Custom Grid for 3 items (Projects Page) */
+  
+  /* Item 1 (Programming): Top Right */
+  .item-list.grid > li:first-child:nth-last-child(3) {
     grid-column: 2;
+    grid-row: 1;
+  }
+  
+  /* Item 2 (Research): Bottom Left */
+  .item-list.grid > li:first-child:nth-last-child(3) + li {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  /* Item 3 (3D): Bottom Right */
+  .item-list.grid > li:first-child:nth-last-child(3) + li + li {
+    grid-column: 2;
+    grid-row: 2;
   }
 }
 
