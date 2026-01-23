@@ -148,6 +148,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     let isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
+    const updateAvatar = (dark) => {
+        const avatars = document.querySelectorAll('.header-image-small, .logo');
+        avatars.forEach(img => {
+            if (img.src.includes('avatar.svg') || img.src.includes('avatar-dark.svg')) {
+                 if (dark) {
+                     if (img.src.includes('avatar.svg') && !img.src.includes('avatar-dark.svg')) {
+                         img.src = img.src.replace('avatar.svg', 'avatar-dark.svg');
+                     }
+                 } else {
+                     if (img.src.includes('avatar-dark.svg')) {
+                         img.src = img.src.replace('avatar-dark.svg', 'avatar.svg');
+                     }
+                 }
+            }
+        });
+    };
+    
+    updateAvatar(isDark);
+
     if (isDark) {
         document.documentElement.classList.add('dark-mode');
     }
@@ -168,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.documentElement.classList.toggle('dark-mode');
             isDark = document.documentElement.classList.contains('dark-mode');
             updateIcon(isDark);
+            updateAvatar(isDark);
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     }
@@ -192,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.documentElement.classList.toggle('dark-mode');
                 const currentDark = document.documentElement.classList.contains('dark-mode');
                 btn.innerHTML = currentDark ? sunIcon : moonIcon;
+                updateAvatar(currentDark);
                 localStorage.setItem('theme', currentDark ? 'dark' : 'light');
             });
         }

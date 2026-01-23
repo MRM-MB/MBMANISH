@@ -2843,6 +2843,17 @@ html.dark-mode .header-image-small {
     filter: none; /* Don't dim the avatar/logo */
 }
 
+/* Adjust avatar-dark size */
+img[src*="avatar-dark.svg"].header-image-small {
+    height: 105px;
+    width: auto;
+}
+
+.index-about-me img[src*="avatar-dark.svg"] {
+    height: 190px;
+    width: auto;
+}
+
 html.dark-mode .timeline-date {
     color: var(--light-green);
 }
