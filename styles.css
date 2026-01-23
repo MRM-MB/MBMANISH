@@ -3732,10 +3732,10 @@ html.dark-mode .icon-link:hover {
 
 @keyframes levitate {
   0%, 100% {
-    transform: translate(-50%, -50%) rotate(20deg) translateY(60px);
+    transform: translate(-50%, -50%) rotate(20deg) translateY(63px);
   }
   50% {
-    transform: translate(-50%, -50%) rotate(20deg) translateY(53px);
+    transform: translate(-50%, -50%) rotate(20deg) translateY(49px);
   }
 }
 
