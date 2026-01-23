@@ -2845,7 +2845,7 @@ html.dark-mode .header-image-small {
 
 /* Adjust avatar-dark size */
 img[src*="avatar-dark.svg"].header-image-small {
-    height: 105px;
+    height: 90px;
     width: auto;
 }
 
