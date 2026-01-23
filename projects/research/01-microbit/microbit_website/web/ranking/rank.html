@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" >
 <head>
   <title>MB Manish - Ranking</title>
@@ -10,6 +10,15 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./rankstyle.css">
   <script src="./rank.js"></script>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
 </head>
 <body>
 
@@ -49,6 +58,15 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <div style="display: none;"></div>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
 </head>
     <body class="page-leaderboard">
         <header class="header__sidenav slideout-menu" id="nav--mobile">
@@ -473,3 +491,4 @@
     &copy; Manish Raj Moriche
   </footer>
 </html>
+
