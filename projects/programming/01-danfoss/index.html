@@ -64,6 +64,37 @@
             <h3 style="color: var(--dark-green)">The Solution</h3>
             <p>The application processes dynamic data, such as <strong>hourly electricity prices</strong>, <strong>heat demand</strong>, and <strong>CO₂ emissions</strong>, to generate optimized production schedules. It allows operators to visualize complex data and make informed decisions based on real-time constraints.</p>
 
+            <h3 style="color: var(--dark-green)">Optimization Scenarios & Verification</h3>
+            <p>
+                <strong>Scenario 1:</strong> Simple heat production using only boilers, where cost is largely dependent on fuel.<br>
+                <strong>Scenario 2:</strong> Complex production with CHP units where selling electricity offsets costs, requiring optimization.
+            </p>
+            <p>Scenario 2 needed mathematical formulas because dynamic electricity prices make the cost function non-linear, unlike Scenario 1. We verified our optimization logic by <strong>creating MATLAB simulations</strong> before application coding.</p>
+            
+            <p><strong>Verification Files:</strong></p>
+            <ul>
+                <li><span style="color: var(--text-primary)"><code>Scenario2Graph</code>: Showcases machinery cost optimization for heat demand (allows manual entry).</span></li>
+                <li><span style="color: var(--text-primary)"><code>Scenario2GraphAnimation</code>: Visualizes efficiency using Danfoss data (electricity price, heat demand) to verify the formula over time.</span></li>
+            </ul>
+
+            <img class="top-image" src="../../../images/projects/programming/danfoss/danfoss_matlab.png" alt="MATLAB Validation Graphs" />
+
+            <div style="text-align: center;">
+                 <a class="pill-button" href="#" id="game-download-btn">🔗 Download Simulation Files</a>
+            </div>
+
+            <!-- Download Modal -->
+            <div id="game-modal" class="modal-overlay">
+                <div class="modal">
+                    <h3>Download Simulation</h3>
+                    <p>You are about to download the MATLAB Simulation Files (ZIP). Please remember to <strong>unzip the folder</strong>.</p>
+                    <div class="modal-buttons">
+                        <button id="cancel-game-download" class="modal-btn cancel">Cancel</button>
+                        <a href="MATLAB_Danfoss.zip" download="MATLAB_Danfoss.zip" id="confirm-game-download" class="modal-btn confirm">Download</a>
+                    </div>
+                </div>
+            </div>
+
             <h3 style="color: var(--dark-green)">System Architecture</h3>
             <p>To ensure scalability and maintainability, the system is divided into five distinct modules:</p>
             <ul>
@@ -79,7 +110,7 @@
             <img class="top-image" src="../../../images/projects/programming/danfoss/danfoss2.webp" alt="Danfoss Optimizer Dashboard" />
 
             <h3 style="color: var(--dark-green)">Technical Approach</h3>
-            <p>The project was built with a strong focus on code quality, using <strong>C#</strong> and the <code>MVVM</code> pattern while adhering to <code>SOLID principles</code>. We utilized <code>LiveCharts2</code> for visualization and followed <strong>Agile Scrum methodologies</strong> to manage the development process.</p>
+            <p>The project was built with a strong focus on code quality, using <strong>C#</strong>, the <strong>Avalonia</strong> framework for the UI, and the <code>MVVM</code> pattern while adhering to <code>SOLID principles</code>. We utilized <code>LiveCharts2</code> for visualization and followed <strong>Agile Scrum methodologies</strong> to manage the development process.</p>
             
             <img class="top-image" src="../../../images/projects/programming/danfoss/danfoss_team.webp" alt="Project Team" />
 
