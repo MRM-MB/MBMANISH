@@ -602,3 +602,23 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(document.documentElement, { attributes: true });
     }
 });
+
+// Hover functionality for project videos
+document.addEventListener('DOMContentLoaded', function() {
+    const videoContainers = document.querySelectorAll('.media-container');
+
+    videoContainers.forEach(container => {
+        const video = container.querySelector('video');
+        if (video) {
+            container.addEventListener('mouseenter', () => {
+                video.play().catch(e => console.log('Video play failed:', e));
+            });
+
+            container.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0; // Reset video to start
+            });
+        }
+    });
+});
+

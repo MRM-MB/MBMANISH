@@ -3769,3 +3769,62 @@ html.dark-mode .icon-link:hover {
   z-index: 0;
 }
 
+
+/* Video Hover Styles */
+.media-container {
+  /* Behave exactly like the anchor in other pages */
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--image-border-radius);
+  overflow: hidden;
+  transform: translateZ(0); 
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  line-height: 0;
+}
+
+/* Image acts as the layout master */
+.media-container .post-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 220px; /* Restore fixed height */
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.post-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.media-container:hover .post-video {
+  opacity: 1;
+}
+
+
+/* Extra spacing for 3D Projects list */
+.spaced-list .course-card {
+  margin: 3rem 0;
+}
+
+
+.spaced-list .tags {
+  padding-top: 0;
+}
+
