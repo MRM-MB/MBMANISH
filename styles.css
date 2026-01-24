@@ -3782,6 +3782,7 @@ html.dark-mode .icon-link:hover {
   overflow: hidden;
   transform: translateZ(0); 
   -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
   line-height: 0;
 }
 
@@ -3820,7 +3821,7 @@ html.dark-mode .icon-link:hover {
 
 /* Extra spacing for 3D Projects list */
 .spaced-list .course-card {
-  margin: 3rem 0;
+  margin: 3.2rem 0;
 }
 
 
