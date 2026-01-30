@@ -53,9 +53,10 @@
 
             <div class="project-actions-bar">
                 <div class="button-container">
+                    <a class="social-button demo-button" href="https://mat-cs50.onrender.com/" target="_blank">🔗 Live Demo</a>
                     <a class="social-button github-button" href="https://github.com/MRM-MB/MAT-CS50.git" target="_blank">GitHub</a>
                 </div>
-                <p class="cta-text">🚀 Explore the source code and implementation details</p>
+                <p class="cta-text">🚀 Experience the app in action or explore the source code</p>
             </div>
 
 		<div class="content page-content m-top">
@@ -66,38 +67,28 @@
 
 			<p><code>MAT (My Application Transfer)</code> was submitted as my final project for <code>CS50x 2022</code>. This course was provided by Harvard University, and by completing it with this final project, I was awarded the following certificate: <a href="../../../images/projects/programming/cs50/CS50x_Manish.pdf" target="_blank" class="standard-link">View Certificate</a>.</p>
 
-            <p>It demonstrates the application of web development concepts learned throughout the course, specifically focusing on backend development with <code>Node.js</code> and database management.</p>
-            
-            <h3 style="color: var(--dark-green)">About The Project</h3>
-            <p>MAT is designed as a simple, efficient file sharing solution intended for use on a local network (LAN). It serves as a "common space" for offices or small groups to easily transfer files between machines without the need for external cloud services, accounts, or complex setups.</p>
+            <p>MAT is designed as a simple, efficient file sharing solution intended for use on a local network (LAN). It provides a quick way to upload files (up to 500MB), generate a link, and share it with others on the same network without needing accounts or external cloud services.</p>
             
             <h3 style="color: var(--dark-green)">Core Philosophy</h3>
-            <p>The goal was to create a tool that is strictly for transferring files.</p>
             <ul>
-                <li><span style="color: var(--text-primary)"><strong>No Account Required:</strong> Users do not need to register or provide personal data.</span></li>
-                <li><span style="color: var(--text-primary)"><strong>Privacy Focused:</strong> No emails, names, or tracking.</span></li>
-                <li><span style="color: var(--text-primary)"><strong>Simple Workflow:</strong> Upload -> Get Link -> Share -> Download.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>No Account Required:</strong> Just upload and share.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Privacy Focused:</strong> No emails, names, or tracking involved.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Simple Workflow:</strong> Upload → Get Link → Share → Download.</span></li>
             </ul>
 
             <h3 style="color: var(--dark-green)">Features</h3>
             <ul>
-                <li><span style="color: var(--text-primary)"><strong>File Upload:</strong> Supports files up to 500MB.</span></li>
-                <li><span style="color: var(--text-primary)"><strong>Wide Format Support:</strong> Compatible with a vast array of file types including Videos, Audio, Images, Code files, and Documents.</span></li>
-                <li><span style="color: var(--text-primary)"><strong>Password Protection:</strong> Users can optionally secure their uploads with a password.</span></li>
-                <li><span style="color: var(--text-primary)"><strong>Security:</strong> Passwords are hashed using <code>bcrypt</code>. Files are stored securely on the server's filesystem.</span></li>
-                <li><span style="color: var(--text-primary)"><strong>Download Tracking:</strong> Keeps track of how many times a file has been downloaded.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Password Protection:</strong> Optional security for shared links.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Download Tracking:</strong> Monitors how many times a file is accessed.</span></li>
+                <li><span style="color: var(--text-primary)"><strong>Ephemeral Storage (Demo):</strong> The live demo resets periodically, so links are temporary.</span></li>
             </ul>
 
-            <h3 style="color: var(--dark-green)">Technologies Used</h3>
-            <p>This project is built using a robust JavaScript stack:</p>
-            <ul>
-                <li><span style="color: var(--text-primary)"><strong>Runtime:</strong> <code>Node.js</code></span></li>
-                <li><span style="color: var(--text-primary)"><strong>Framework:</strong> <code>Express.js</code></span></li>
-                <li><span style="color: var(--text-primary)"><strong>Database:</strong> <code>MySQL</code> with <code>Sequelize ORM</code></span></li>
-                <li><span style="color: var(--text-primary)"><strong>Templating:</strong> <code>EJS</code></span></li>
-                <li><span style="color: var(--text-primary)"><strong>File Handling:</strong> <code>Multer</code></span></li>
-                <li><span style="color: var(--text-primary)"><strong>Security:</strong> <code>Bcrypt</code></span></li>
-            </ul>
+            <h3 style="color: var(--dark-green)">Technologies</h3>
+            <p>Built with <code>Node.js</code>, <code>Express.js</code>, <code>MySQL</code>, and <code>EJS</code>.</p>
+
+            <p><em>For detailed installation instructions, local LAN setup guide, and technical specifications, please refer to the project's <a href="https://github.com/MRM-MB/MAT-CS50/blob/main/README.md" target="_blank" class="standard-link">GitHub README</a>.</em></p>
+            
+            <p>You can try the live demo above, or clone the repository to run it on your own network for persistent storage.</p>
 
 		</div>
 		
