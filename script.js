@@ -622,3 +622,110 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+/* --- AUTO TAG RANKING (PROGRAMMING) --- */
+// Replace tag lists with top-used tags from the programming projects page
+document.addEventListener('DOMContentLoaded', function() {
+    const tagLists = document.querySelectorAll('ul[data-tags-source]');
+    if (!tagLists.length) return;
+
+    tagLists.forEach(list => {
+        const sourcePath = list.getAttribute('data-tags-source');
+        const limitValue = list.getAttribute('data-tags-limit');
+        const limit = Number.isFinite(parseInt(limitValue, 10)) ? parseInt(limitValue, 10) : 4;
+
+        if (!sourcePath) return;
+
+        const sourceUrl = new URL(sourcePath, window.location.href);
+        const cacheKey = 'tag-rank:' + sourceUrl.pathname + ':' + limit;
+
+        const renderList = (items) => {
+            if (!Array.isArray(items) || !items.length) return;
+
+            const current = Array.from(list.querySelectorAll('li > a')).map(a => (a.textContent || '').trim());
+            const next = items.map(item => item.label);
+            if (current.length && current.join('|') === next.join('|')) return;
+
+            list.innerHTML = '';
+            items.forEach(item => {
+                const li = document.createElement('li');
+                if (item.variantClass) {
+                    li.className = item.variantClass;
+                }
+
+                const link = document.createElement('a');
+                link.href = item.href;
+                link.textContent = item.label;
+
+                li.appendChild(link);
+                list.appendChild(li);
+            });
+
+            list.style.visibility = 'visible';
+        };
+
+        const cachedRaw = localStorage.getItem(cacheKey);
+        if (cachedRaw) {
+            try {
+                const cachedItems = JSON.parse(cachedRaw);
+                renderList(cachedItems);
+            } catch (e) {
+                localStorage.removeItem(cacheKey);
+            }
+        }
+
+        fetch(sourceUrl)
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const tagLinks = doc.querySelectorAll('.item-list.courses .tags li a');
+
+                if (!tagLinks.length) return;
+
+                const counts = new Map();
+                const meta = new Map();
+
+                tagLinks.forEach(anchor => {
+                    const label = (anchor.textContent || '').trim();
+                    if (!label) return;
+
+                    const parent = anchor.closest('li');
+                    const variantClass = parent ? Array.from(parent.classList).find(cls => cls.startsWith('variant-')) : '';
+                    const href = anchor.getAttribute('href') || '';
+
+                    counts.set(label, (counts.get(label) || 0) + 1);
+
+                    if (!meta.has(label)) {
+                        meta.set(label, { href, variantClass });
+                    }
+                });
+
+                const sorted = Array.from(counts.entries()).sort((a, b) => {
+                    const countDiff = b[1] - a[1];
+                    if (countDiff !== 0) return countDiff;
+                    return a[0].localeCompare(b[0]);
+                });
+
+                const top = sorted.slice(0, limit);
+                if (!top.length) return;
+
+                const items = top.map(([label]) => {
+                    const info = meta.get(label) || { href: '#', variantClass: '' };
+                    const resolvedHref = info.href ? new URL(info.href, sourceUrl).pathname : '#';
+                    return {
+                        label,
+                        href: resolvedHref,
+                        variantClass: info.variantClass || ''
+                    };
+                });
+
+                localStorage.setItem(cacheKey, JSON.stringify(items));
+                renderList(items);
+            })
+            .catch(() => {
+                // Fallback to existing markup if the source page cannot be loaded.
+                list.style.visibility = 'visible';
+            });
+    });
+});
+
