@@ -100,7 +100,7 @@
             const lightboxImg = document.getElementById('lightbox-img');
             const closeBtn = lightbox.querySelector('.close-lightbox');
 
-            const images = document.querySelectorAll('.top-image, .side-image, .image-container img, .hero-image-post, .project-screenshot');
+            const images = document.querySelectorAll('img.top-image, img.side-image, .image-container img, img.hero-image-post, img.project-screenshot');
 
             images.forEach(img => {
                 img.addEventListener('click', function(e) {
@@ -243,14 +243,16 @@ document.addEventListener('DOMContentLoaded', function() {
     videoLightbox.className = 'lightbox';
     videoLightbox.innerHTML = `
         <span class='close-lightbox'>&times;</span>
-        <video class='lightbox-content' id='lightbox-video' controls autoplay></video>
+        <video class='lightbox-content' id='lightbox-video' controls></video>
     `;
     document.body.appendChild(videoLightbox);
 
     const lightboxVideo = document.getElementById('lightbox-video');
     const closeBtn = videoLightbox.querySelector('.close-lightbox');
 
-    const videos = document.querySelectorAll('video');
+    const videos = document.querySelectorAll('video:not(.no-lightbox)');
+
+    let playTimeoutId = null;
 
     videos.forEach(video => {
         video.style.cursor = 'pointer';
@@ -272,20 +274,36 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 lightboxVideo.innerHTML = this.innerHTML;
             }
+
+            // Mirror poster when available to avoid broken icon on close
+            if (this.getAttribute('poster')) {
+                lightboxVideo.setAttribute('poster', this.getAttribute('poster'));
+            } else {
+                lightboxVideo.removeAttribute('poster');
+            }
             
             // Play the lightbox video
-            setTimeout(() => {
-                lightboxVideo.play().catch(e => console.log('Autoplay prevented:', e));
-            }, 100);
+            lightboxVideo.play().catch(e => console.log('Autoplay prevented:', e));
         });
     });
 
     // Close Logic
     const closeVideoLightbox = () => {
+        if (playTimeoutId) {
+            clearTimeout(playTimeoutId);
+            playTimeoutId = null;
+        }
         videoLightbox.style.display = 'none';
         lightboxVideo.pause();
-        lightboxVideo.src = ''; 
-        
+        lightboxVideo.currentTime = 0;
+
+        // Clear source after hiding to avoid broken icon flash
+        setTimeout(() => {
+            lightboxVideo.removeAttribute('src');
+            lightboxVideo.removeAttribute('poster');
+            lightboxVideo.load();
+        }, 0);
+
         // Resume all background videos
         videos.forEach(v => {
             if (v.hasAttribute('autoplay')) {

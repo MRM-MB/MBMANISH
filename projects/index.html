@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
+    <link rel="preload" as="image" href="../images/decoration/light/portrait-base.svg" />
+    <link rel="preload" as="image" href="../images/decoration/light/portrait-hover.svg" />
+    <link rel="preload" as="image" href="../images/decoration/light/portrait-elements.svg" />
+    <link rel="preload" as="image" href="../images/decoration/dark/portrait-base.svg" />
+    <link rel="preload" as="image" href="../images/decoration/dark/portrait-hover.svg" />
+    <link rel="preload" as="image" href="../images/decoration/dark/portrait-elements.svg" />
 </head>
 
 <body>
@@ -48,8 +54,8 @@
             <!-- Decoration Image -->
             <li class="decoration-item">
                 <div class="decoration-stack">
-                    <img class="project-decoration" src="../images/decoration/light/portrait-base.svg" alt="Manish's SVG Portrait" draggable="false" />
-                    <img class="project-levitate" src="../images/decoration/light/portrait-elements.svg" alt="" draggable="false"/>
+                    <img class="project-decoration" src="../images/decoration/light/portrait-base.svg" alt="Manish's SVG Portrait" draggable="false" loading="eager" decoding="sync" fetchpriority="high" />
+                    <img class="project-levitate" src="../images/decoration/light/portrait-elements.svg" alt="" draggable="false" loading="eager" decoding="sync" fetchpriority="high" />
                 </div>
             </li>
 
