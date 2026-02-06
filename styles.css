@@ -1292,6 +1292,10 @@ article img {
   object-fit: cover;
 }
 
+.post-thumb.volcanic-thumb {
+  object-position: 5% center;
+}
+
 .post-card > ul {
   padding: 1.5rem 0.5rem 1rem 0.5rem;
 }
