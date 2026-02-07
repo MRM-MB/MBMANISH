@@ -164,8 +164,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     };
+
+    const updateThemeImages = (dark) => {
+        const themeImages = document.querySelectorAll('[data-theme-src-light][data-theme-src-dark]');
+        themeImages.forEach(img => {
+            const lightSrc = img.getAttribute('data-theme-src-light');
+            const darkSrc = img.getAttribute('data-theme-src-dark');
+            if (!lightSrc || !darkSrc) {
+                return;
+            }
+
+            const nextSrc = dark ? darkSrc : lightSrc;
+            if (img.getAttribute('src') !== nextSrc) {
+                img.setAttribute('src', nextSrc);
+            }
+        });
+    };
     
     updateAvatar(isDark);
+    updateThemeImages(isDark);
 
     if (isDark) {
         document.documentElement.classList.add('dark-mode');
@@ -188,6 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
             isDark = document.documentElement.classList.contains('dark-mode');
             updateIcon(isDark);
             updateAvatar(isDark);
+            updateThemeImages(isDark);
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     }
@@ -213,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const currentDark = document.documentElement.classList.contains('dark-mode');
                 btn.innerHTML = currentDark ? sunIcon : moonIcon;
                 updateAvatar(currentDark);
+                updateThemeImages(currentDark);
                 localStorage.setItem('theme', currentDark ? 'dark' : 'light');
             });
         }
