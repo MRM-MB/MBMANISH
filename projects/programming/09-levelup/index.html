@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="og:site_name" content="MB Manish" />
+    <link rel="canonical" href="index.html"/>
+    <title>Programming | LevelUp (LINAK)</title>
+    <meta name="description" content="Manish Raj Moriche | Programming"/>
+    <link rel="stylesheet" href="../../../styles.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../../../images/favicon.png" type="image/png" />
+</head>
+
+<body class="item">
+	<header>
+        <div class="wrapper">
+            <nav>
+                <ul>
+                    <li><a href="../../../about/index.html">ABOUT</a></li>
+                    <li class="selected"><a href="../../../projects/index.html">PROJECTS</a></li>
+                    <li><a href="../../../posts/index.html">RESUME</a></li>
+                </ul>
+                <div class="header-right">
+                    <a href="mailto:mbmanishweb@gmail.com?subject=MBManish%20%7C%20Website&body=Write%20your%20email%20here%20and%20I%20will%20reach%20out%20to%20you%20as%20soon%20as%20I%20can%20%F0%9F%98%8A%20-%20Manish" class="icon-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/MRM-MB" target="_blank" class="icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
+                </div>
+            </nav>
+            <a href="../../../index.html">
+                <div class="hero-container"><img class="header-image-small" src="../../../images/avatar/svg-art/avatar.svg" alt="Avatar" />
+                    <div class="hero-text-container justify-center">
+                        <div class="name"><p>Manish Raj Moriche</p></div>
+                        <hr>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </header>
+	<article class="page wrapper post-page"><a class="back" href="../index.html">Back to overview</a>
+        <h1 class="blog-header">LevelUp (LINAK) - Semester 3 Project</h1>
+		<div class="metadata">
+			<ul class="tags">
+                <li class="variant-a"><a href="../../../tags/php/index.html">PHP</a></li>
+                <li class="variant-f"><a href="../../../tags/javascript/index.html">Javascript</a></li>
+                <li class="variant-e"><a href="../../../tags/python/index.html">Python</a></li>
+			</ul><span class="post-date">22 Dec 2025</span></div>
+            
+            <video class="hero-video-post" width="100%" autoplay loop muted playsinline preload="auto">
+                <source src="../../../images/projects/programming/levelup/LevelUpDemo.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="project-actions-bar">
+                <div class="button-container">
+                    <a class="social-button demo-button" href="https://levelup-app-div9.onrender.com/" target="_blank">▶ Live Demo</a>
+                    <a class="social-button github-button" href="https://github.com/MRM-MB/LEVELUP" target="_blank">GitHub</a>
+                </div>
+                <p class="cta-text">⬆️ Explore the live demo or dive into the source code</p>
+            </div>
+
+		<div class="content page-content m-top">
+            <p><strong>LevelUp</strong> is a <strong>3rd-semester project</strong> developed at the <strong>University of Southern Denmark (SDU)</strong> in collaboration with the Danish company <strong>LINAK</strong>.</p>
+
+            <h3 style="color: var(--dark-green)">Project Overview</h3>
+            <p>The goal was to build a full-stack system that helps office users follow the Cornell 20:10 sit-stand cycle, track activity, and manage adjustable desks through a web application with gamified rewards and clear usage insights.</p>
+            <p>The solution combines a Laravel web app, a MySQL database, and a desk simulator to coordinate desk control and user activity.</p>
+
+            <h3 style="color: var(--dark-green)">Tech Stack</h3>
+            <p>Built with <code>PHP</code>, <code>JavaScript</code>, <code>Blade</code>, <code>CSS</code>, <code>MicroPython</code>, plus <code>Dockerfile</code> and <code>Shell</code> for setup scripts. The Pico W firmware uses <code>MicroPython</code>, flashed via <code>Thonny</code>.</p>
+
+            <h3 style="color: var(--dark-green)">Hosted Demo (Desk Simulator + App)</h3>
+            <p>Open the simulator first, keep it running, then open the app (it reads from the hosted simulator).</p>
+            <p><a class="standard-link" href="https://levelup-simulator.onrender.com/" target="_blank">Open the simulator</a> · <a class="standard-link" href="https://levelup-app-div9.onrender.com/" target="_blank">Open the LevelUp app</a></p>
+            <p><strong>Demo limits:</strong> No Pico W hardware, demo data resets (new accounts are temporary), and you cannot use the hosted demo with a Pico W. For Pico W use, run the app locally and set <code>WIFI2BLE_BASE_URL</code> (see <code>SETUP.md</code> in the README).</p>
+
+            <h3 style="color: var(--dark-green)">Hardware Integration (Raspberry Pi Pico W)</h3>
+            <p>The system includes a Raspberry Pi Pico W controller for real-time desk feedback, including OLED status, RGB phase indicators, and a physical pause button.</p>
+            <img class="top-image" src="../../../images/projects/programming/levelup/levelup_hardware.png" alt="LevelUp Pico W hardware" />
+            <video class="top-image" controls preload="metadata">
+                <source src="../../../images/projects/programming/levelup/levelup_hardware_demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <h3 style="color: var(--dark-green)">Resources</h3>
+            <p><em>For diagrams, architecture details, and setup steps (including Pico W configuration), please refer to the project report and the GitHub README.</em></p>
+            <div style="text-align: center; margin: 2rem 0;">
+                <a class="pill-button" href="https://drive.google.com/file/d/1UUHDNajd85Ze7BZy2IhMzHk-87bi9Jdt/view?usp=drive_link" target="_blank">📄 Read the Full Report</a>
+            </div>
+            <p style="text-align: center; margin: 0 0 2rem;">
+                <a href="https://github.com/MRM-MB/LEVELUP/blob/main/README.md" target="_blank" class="standard-link">GitHub README</a>
+            </p>
+		</div>
+		
+		<footer>
+            <!-- Copyright -->
+            <div class="wrapper">
+                <p id="copyright">Copyright © MB Manish <span id="year"></span>.</p>
+            </div>
+            <br>
+        </footer>
+
+        <!-- Link to script.js file -->
+        <script src="../../../script.js"></script>
+</body>
+</html>
