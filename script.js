@@ -567,15 +567,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        const preloadImages = () => {
-             ['light', 'dark'].forEach(mode => {
-                 Object.values(paths[mode]).forEach(src => {
-                     const img = new Image();
-                     img.src = src;
-                 });
-             });
+        const loadedSources = new Set();
+
+        const preloadImage = (src) => {
+            if (!src || loadedSources.has(src)) return;
+            const img = new Image();
+            img.decoding = 'async';
+            img.src = src;
+            loadedSources.add(src);
         };
-        preloadImages();
+
+        const preloadCurrentMode = () => {
+            const mode = getMode();
+            const hoverSrc = paths[mode].hover;
+            const elementsSrc = paths[mode].elements;
+
+            const defer = (fn) => {
+                if ('requestIdleCallback' in window) {
+                    window.requestIdleCallback(fn, { timeout: 1500 });
+                } else {
+                    window.setTimeout(fn, 300);
+                }
+            };
+
+            defer(() => {
+                preloadImage(hoverSrc);
+                preloadImage(elementsSrc);
+            });
+        };
 
         function getMode() {
             return document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
@@ -601,6 +620,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         updateImages();
+        preloadCurrentMode();
 
         projectDecoration.addEventListener('mouseenter', () => {
             isHovered = true;
@@ -632,6 +652,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class') {
                     updateImages();
+                    preloadCurrentMode();
                 }
             });
         });
