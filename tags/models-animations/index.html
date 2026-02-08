@@ -1,6 +1,19 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
+        <script>
+            (function() {
+                try {
+                    const saved = localStorage.getItem('theme');
+                    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    if (saved === 'dark' || (!saved && prefersDark)) {
+                        document.documentElement.classList.add('dark-mode');
+                    }
+                } catch (e) {
+                    /* no-op */
+                }
+            })();
+        </script>
     <meta charset="UTF-8" />
     <meta name="og:site_name" content="MB Manish" />
     <link rel="canonical" href="index.html"/>

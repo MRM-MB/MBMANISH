@@ -7,6 +7,19 @@
     <link rel="canonical" href="index.html"/>
     <title>Manish | About</title>
     <meta name="description" content="Manish Raj Moriche | About"/>
+    <script>
+        (function() {
+            try {
+                const saved = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (saved === 'dark' || (!saved && prefersDark)) {
+                    document.documentElement.classList.add('dark-mode');
+                }
+            } catch (e) {
+                /* no-op */
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="../styles.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>

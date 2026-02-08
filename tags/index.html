@@ -3,6 +3,19 @@
 	<meta charset="utf-8">
 
     <head>
+        <script>
+            (function() {
+                try {
+                    const saved = localStorage.getItem('theme');
+                    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    if (saved === 'dark' || (!saved && prefersDark)) {
+                        document.documentElement.classList.add('dark-mode');
+                    }
+                } catch (e) {
+                    /* no-op */
+                }
+            })();
+        </script>
         <meta name="og:site_name" content="MB Manish" />
         <link rel="canonical" href="index.html"/>
         <title>Manish | Tags</title>

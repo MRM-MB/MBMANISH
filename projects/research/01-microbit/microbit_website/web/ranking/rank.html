@@ -56,6 +56,19 @@
 <!-- Container for kids-->
 <html>
     <head>
+        <script>
+            (function() {
+                try {
+                    const saved = localStorage.getItem('theme');
+                    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    if (saved === 'dark' || (!saved && prefersDark)) {
+                        document.documentElement.classList.add('dark-mode');
+                    }
+                } catch (e) {
+                    /* no-op */
+                }
+            })();
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <div style="display: none;"></div>
     <script>

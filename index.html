@@ -4,6 +4,19 @@
    <head>
       <meta name="og:site_name" content="MB Manish" />
       <link rel="canonical" href="index.html"/>
+      <script>
+         (function() {
+            try {
+               const saved = localStorage.getItem('theme');
+               const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+               if (saved === 'dark' || (!saved && prefersDark)) {
+                  document.documentElement.classList.add('dark-mode');
+               }
+            } catch (e) {
+               /* no-op */
+            }
+         })();
+      </script>
       <link rel="stylesheet" href="styles.css" type="text/css"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
       <title>Manish | Home</title>
