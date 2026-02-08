@@ -3723,6 +3723,16 @@ html.dark-mode .icon-link:hover {
   transform: translate(-50%, -50%); /* Center strictly */
 }
 
+html:not(.decoration-ready) .project-decoration,
+html:not(.decoration-ready) .project-levitate {
+  opacity: 0;
+}
+
+html.decoration-ready .project-decoration,
+html.decoration-ready .project-levitate {
+  opacity: 1;
+}
+
 /* Original project decoration */
 .project-decoration {
   width: 150%;

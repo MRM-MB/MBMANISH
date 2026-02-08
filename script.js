@@ -637,7 +637,39 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        let decorationReady = false;
+
+        const waitForImage = (img) => new Promise(resolve => {
+            if (!img) return resolve();
+            if (img.complete && img.naturalWidth > 0) return resolve();
+
+            const onDone = () => {
+                img.removeEventListener('load', onDone);
+                img.removeEventListener('error', onDone);
+                resolve();
+            };
+
+            img.addEventListener('load', onDone);
+            img.addEventListener('error', onDone);
+        });
+
+        const ensureDecorationReady = () => {
+            if (decorationReady) return;
+
+            const tasks = [
+                waitForImage(projectDecoration),
+                waitForImage(projectLevitate)
+            ];
+
+            Promise.all(tasks).then(() => {
+                decorationReady = true;
+                document.documentElement.classList.add('decoration-ready');
+            });
+        };
+
+        document.documentElement.classList.remove('decoration-ready');
         updateImages();
+        ensureDecorationReady();
         preloadCurrentMode();
 
         projectDecoration.addEventListener('mouseenter', () => {
