@@ -1644,7 +1644,7 @@ article img {
 }
 
 .new-red::before {
-  content: 'LATEST UPLOAD';
+  content: 'CURRENTLY BUILDING';
   position: absolute;
   top: -11px;
   left: 20px;
