@@ -1256,7 +1256,18 @@ article img {
   height: 25px;
   display: inline-block;
   background-image: url(images/back-button.svg);
+  background-position: center;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-color: currentColor;
+  -webkit-mask-image: url(images/back-button.svg);
+  mask-image: url(images/back-button.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 @media (max-width: 700px) {
