@@ -1,8 +1,10 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-<head>
+
     <script>
         (function() {
             try {
@@ -10,6 +12,9 @@
                 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (saved === 'dark' || (!saved && prefersDark)) {
                     document.documentElement.classList.add('dark-mode');
+                    document.documentElement.style.backgroundColor = '#0d1117';
+                    document.documentElement.style.color = '#e6edf3';
+                    document.documentElement.style.colorScheme = 'dark';
                 }
             } catch (e) {
                 /* no-op */
@@ -53,7 +58,7 @@
         </div>
     </header>
 	<article class="page wrapper post-page"><a class="back" href="../index.html">Back to overview</a>
-		<h1 class="blog-header">C# Programming - MalmÃ¶ University</h1>
+		<h1 class="blog-header">C# Programming - Malmö University</h1>
 		<div class="metadata">
 			<ul class="tags">
                 <li class="variant-g"><a href="../../../tags/csharp/index.html">C#</a></li>
@@ -65,11 +70,11 @@
                 <div class="button-container">
                     <a class="social-button github-button" href="https://github.com/MRM-MB/MALMO_VT25" target="_blank">GitHub</a>
                 </div>
-                <p class="cta-text">ðŸš€ Explore the source code for all 6 assignments</p>
+                <p class="cta-text">?? Explore the source code for all 6 assignments</p>
             </div>
 
 		<div class="content page-content m-top">
-			<p>This repository contains the coursework for the <strong>C# Programming</strong> course (7.5 ECTS) at <strong>MalmÃ¶ University</strong> (VT25). I completed all 6 assignments and achieved the highest grade (<strong>Grade A</strong>).</p>
+			<p>This repository contains the coursework for the <strong>C# Programming</strong> course (7.5 ECTS) at <strong>Malmö University</strong> (VT25). I completed all 6 assignments and achieved the highest grade (<strong>Grade A</strong>).</p>
             
             <p>The course covers the fundamentals of <code>C#</code> and <code>.NET</code> development, progressing from basic <code>console applications</code> to complex <code>GUI</code> applications using <code>Windows Forms</code> and <code>WPF</code>.</p>
 
@@ -107,7 +112,7 @@
 		<footer>
             <!-- Copyright -->
             <div class="wrapper">
-                <p id="copyright">Copyright Â© MB Manish <span id="year"></span>.</p>
+                <p id="copyright">Copyright © MB Manish <span id="year"></span>.</p>
             </div>
             <br>
         </footer>

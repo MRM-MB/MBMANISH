@@ -1,8 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-<head>
+
     <script>
         (function() {
             try {
@@ -10,6 +12,9 @@
                 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (saved === 'dark' || (!saved && prefersDark)) {
                     document.documentElement.classList.add('dark-mode');
+                    document.documentElement.style.backgroundColor = '#0d1117';
+                    document.documentElement.style.color = '#e6edf3';
+                    document.documentElement.style.colorScheme = 'dark';
                 }
             } catch (e) {
                 /* no-op */
@@ -68,17 +73,17 @@
                 <div class="button-container">
                     <a class="social-button github-button" href="https://github.com/MRM-MB/Danfoss_Optimizer" target="_blank">GitHub</a>
                 </div>
-                <p class="cta-text">🔥 Explore the source code and implementation details</p>
+                <p class="cta-text">?? Explore the source code and implementation details</p>
             </div>
 
 		<div class="content page-content m-top">
-            <p><strong>Danfoss Optimizer</strong> is a software solution developed as a <strong>2nd-semester project</strong> at the <strong>University of Southern Denmark (SDU)</strong> for the Danish company <a href="https://www.danfoss.com/en/" target="_blank" class="standard-link">Danfoss</a>. It was developed by a <strong>6‑person group</strong>, built using <strong>C#</strong> and following strict software engineering principles.</p>
+            <p><strong>Danfoss Optimizer</strong> is a software solution developed as a <strong>2nd-semester project</strong> at the <strong>University of Southern Denmark (SDU)</strong> for the Danish company <a href="https://www.danfoss.com/en/" target="_blank" class="standard-link">Danfoss</a>. It was developed by a <strong>6-person group</strong>, built using <strong>C#</strong> and following strict software engineering principles.</p>
             
             <h3 style="color: var(--dark-green)">The Challenge</h3>
             <p>The project addresses the inefficiencies of manual heat production scheduling for <code>Heatington</code>, a district heating system serving approximately 1600 buildings. The primary goal was to develop an automated system that optimizes the operation of various production units, including heat-only boilers and combined heat and power (CHP) units, to meet hourly heat demand at the <strong>lowest net cost</strong> while considering environmental impact.</p>
 
             <h3 style="color: var(--dark-green)">The Solution</h3>
-            <p>The application processes dynamic data, such as <strong>hourly electricity prices</strong>, <strong>heat demand</strong>, and <strong>CO₂ emissions</strong>, to generate optimized production schedules. It allows operators to visualize complex data and make informed decisions based on real-time constraints.</p>
+            <p>The application processes dynamic data, such as <strong>hourly electricity prices</strong>, <strong>heat demand</strong>, and <strong>CO2 emissions</strong>, to generate optimized production schedules. It allows operators to visualize complex data and make informed decisions based on real-time constraints.</p>
 
             <h3 style="color: var(--dark-green)">Optimization Scenarios & Verification</h3>
             <p>
@@ -96,7 +101,7 @@
             <img class="top-image" src="../../../images/projects/programming/danfoss/danfoss_matlab.png" alt="MATLAB Validation Graphs" />
 
             <div style="text-align: center;">
-                 <a class="pill-button" href="#" id="game-download-btn">🔗 Download Simulation Files</a>
+                 <a class="pill-button" href="#" id="game-download-btn">?? Download Simulation Files</a>
             </div>
 
             <!-- Download Modal -->
@@ -134,14 +139,14 @@
             <p>For a detailed look at the problem analysis, design choices, and implementation details, you can view the full project report.</p>
             
             <div style="text-align: center; margin: 2rem 0;">
-                <a class="pill-button" href="https://drive.google.com/file/d/1tI3mhIH-Bv-MPKnFFxNM3YpC8m9WIAW7/view?usp=sharing" target="_blank">📄 Read the Full Report</a>
+                <a class="pill-button" href="https://drive.google.com/file/d/1tI3mhIH-Bv-MPKnFFxNM3YpC8m9WIAW7/view?usp=sharing" target="_blank">?? Read the Full Report</a>
             </div>
 		</div>
 		
 		<footer>
             <!-- Copyright -->
             <div class="wrapper">
-                <p id="copyright">Copyright © MB Manish <span id="year"></span>.</p>
+                <p id="copyright">Copyright � MB Manish <span id="year"></span>.</p>
             </div>
             <br>
         </footer>

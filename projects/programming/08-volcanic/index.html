@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-<head>
+
     <script>
         (function() {
             try {
@@ -10,6 +12,9 @@
                 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (saved === 'dark' || (!saved && prefersDark)) {
                     document.documentElement.classList.add('dark-mode');
+                    document.documentElement.style.backgroundColor = '#0d1117';
+                    document.documentElement.style.color = '#e6edf3';
+                    document.documentElement.style.colorScheme = 'dark';
                 }
             } catch (e) {
                 /* no-op */

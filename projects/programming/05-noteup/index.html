@@ -1,8 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-<head>
+
     <script>
         (function() {
             try {
@@ -10,6 +12,9 @@
                 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (saved === 'dark' || (!saved && prefersDark)) {
                     document.documentElement.classList.add('dark-mode');
+                    document.documentElement.style.backgroundColor = '#0d1117';
+                    document.documentElement.style.color = '#e6edf3';
+                    document.documentElement.style.colorScheme = 'dark';
                 }
             } catch (e) {
                 /* no-op */
@@ -65,25 +70,25 @@
 
             <div class="project-actions-bar">
                 <div class="button-container">
-                    <a class="social-button demo-button" href="https://noteup-qej0.onrender.com/" target="_blank">▶ Live Demo</a>
+                    <a class="social-button demo-button" href="https://noteup-qej0.onrender.com/" target="_blank">? Live Demo</a>
                     <a class="social-button github-button" href="https://github.com/MRM-MB/NoteUp" target="_blank">GitHub</a>
                 </div>
-                <p class="cta-text">📒 Experience the app in action or explore the source code</p>
+                <p class="cta-text">?? Experience the app in action or explore the source code</p>
             </div>
 
 		<div class="content page-content m-top">
             <h3 style="color: var(--dark-green)">The concept</h3>
             <p><code>NoteUp</code> started as a personal fix for handwritten account notes that were hard to search. I wanted a local app where people can store information, search quickly, and view accounts in a clean, visual layout.</p>
 
-            <p>It supports account storage, password recovery, optional Google login, and automatic inactivity logout. Company‑specific banners and icons make entries easy to scan, with a fallback if assets are missing.</p>
+            <p>It supports account storage, password recovery, optional Google login, and automatic inactivity logout. Company-specific banners and icons make entries easy to scan, with a fallback if assets are missing.</p>
 
             <img class="hero-image-post m-top" style="width: 100%; max-width: var(--max-p-width); margin: 1.5rem auto 0.2rem; display: block;" src="../../../images/projects/programming/noteup/noteup_info.png" alt="NoteUp Overview" />
 
             <h3 style="color: var(--dark-green)">Everyday value</h3>
-            <p>NoteUp keeps everything in one place so you can find the right account fast. If a company logo isn’t available, it shows a default image. There’s also a Python script that lets you paste asset URLs and add companies dynamically.</p>
+            <p>NoteUp keeps everything in one place so you can find the right account fast. If a company logo isn�t available, it shows a default image. There�s also a Python script that lets you paste asset URLs and add companies dynamically.</p>
 
             <h3 style="color: var(--dark-green)">Under the hood</h3>
-            <p>Built with <code>Flask</code> (<code>Python</code>) plus <code>HTML</code>, <code>CSS</code>, and <code>JavaScript</code>. It includes authentication flows, optional Google OAuth, and a 1‑minute inactivity timeout.</p>
+            <p>Built with <code>Flask</code> (<code>Python</code>) plus <code>HTML</code>, <code>CSS</code>, and <code>JavaScript</code>. It includes authentication flows, optional Google OAuth, and a 1-minute inactivity timeout.</p>
 
             <p><strong>Ephemeral Storage (Demo):</strong> The live demo resets periodically, so data does not persist.</p>
 
@@ -93,7 +98,7 @@
 		<footer>
             <!-- Copyright -->
             <div class="wrapper">
-                <p id="copyright">Copyright © MB Manish <span id="year"></span>.</p>
+                <p id="copyright">Copyright � MB Manish <span id="year"></span>.</p>
             </div>
             <br>
         </footer>

@@ -180,9 +180,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     };
+
+    const applyInlineTheme = (dark) => {
+        const rootStyle = document.documentElement.style;
+        if (dark) {
+            rootStyle.backgroundColor = '#0d1117';
+            rootStyle.color = '#e6edf3';
+            rootStyle.colorScheme = 'dark';
+        } else {
+            rootStyle.removeProperty('background-color');
+            rootStyle.removeProperty('color');
+            rootStyle.removeProperty('color-scheme');
+        }
+    };
     
     updateAvatar(isDark);
     updateThemeImages(isDark);
+    applyInlineTheme(isDark);
 
     if (isDark) {
         document.documentElement.classList.add('dark-mode');
@@ -199,6 +213,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateIcon(isDark);
 
+    document.documentElement.classList.add('theme-ready');
+
     if (toggleBtn) {
         toggleBtn.addEventListener('click', function() {
             document.documentElement.classList.toggle('dark-mode');
@@ -206,6 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateIcon(isDark);
             updateAvatar(isDark);
             updateThemeImages(isDark);
+            applyInlineTheme(isDark);
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     }
@@ -232,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 btn.innerHTML = currentDark ? sunIcon : moonIcon;
                 updateAvatar(currentDark);
                 updateThemeImages(currentDark);
+                applyInlineTheme(currentDark);
                 localStorage.setItem('theme', currentDark ? 'dark' : 'light');
             });
         }

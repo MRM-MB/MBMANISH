@@ -1,8 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-<head>
+
     <script>
         (function() {
             try {
@@ -10,6 +12,9 @@
                 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (saved === 'dark' || (!saved && prefersDark)) {
                     document.documentElement.classList.add('dark-mode');
+                    document.documentElement.style.backgroundColor = '#0d1117';
+                    document.documentElement.style.color = '#e6edf3';
+                    document.documentElement.style.colorScheme = 'dark';
                 }
             } catch (e) {
                 /* no-op */
@@ -75,8 +80,8 @@
 			<p>This project examines the impact of integrating <code>computational thinking</code> through the <strong>micro:bit on students in early secondary education.</strong> It highlights how these skills, fostered through <code>STEAM methodologies</code>, <strong>enhance problem-solving abilities</strong> and prepare students for future job prospects across various disciplines.</p>
             <img class="top-image" src="../../../images/projects/research/microbit/microbit_lecture.png" alt="Lecture-img"/>
             <p><strong>I held a seminar on this project</strong> for a group of professors in the education field who were seeking to incorporate the <code>micro:bit</code> microcomputer into their classrooms.</p>
-            <p>🔍 For a detailed view of the <strong>poster</strong>, <a href="https://drive.google.com/file/d/1Yx1X1PiMXQPaUdu7k5F92Bd5K1mlvoPo/view?usp=sharing" target="_blank" class="standard-link">click here</a>.</p>
-            <p><strong>Have a look 👀 at the <a href="microbit_website/index.html" target="_blank" class="standard-link">website</a></strong> I created for students to access their micro:bit activities and resources. It includes information about the micro:bit, a how-to guide, and detailed instructions on recreating the projects that the students developed in the classroom during this research study.</p>
+            <p>?? For a detailed view of the <strong>poster</strong>, <a href="https://drive.google.com/file/d/1Yx1X1PiMXQPaUdu7k5F92Bd5K1mlvoPo/view?usp=sharing" target="_blank" class="standard-link">click here</a>.</p>
+            <p><strong>Have a look ?? at the <a href="microbit_website/index.html" target="_blank" class="standard-link">website</a></strong> I created for students to access their micro:bit activities and resources. It includes information about the micro:bit, a how-to guide, and detailed instructions on recreating the projects that the students developed in the classroom during this research study.</p>
             <p>Currently, the website is in Spanish because it was designed for Spanish-speaking students. However, if you'd like to view the content in your <strong>preferred language</strong> to better understand all the activities with the micro:bit, you can simply right-click and select the "Translate" option.</p>
             <p>Use the password "<strong>microbit</strong>" to log in.</p>
             <p><code><a href="microbit_website/index.html" target="_blank" class="standard-link" style="font-size: 20px;">WEBSITE</a></code></p>
@@ -86,7 +91,7 @@
             <p>This Micro:bit project, which enhances critical thinking and creativity while educating young students about the <code>Sustainable Development Goals</code>, has earned notable recognition:</p>
             <ul>
                 <p>It was awarded by <a href="https://www.uc3m.es/Home" target="_blank" class="standard-link">Carlos III University of Madrid</a>. Explore the <a href="https://drive.google.com/file/d/1GHSAoCVAVjRHZGarcItYiPmtNHKEijTQ/view?usp=sharing" target="_blank" class="standard-link">contest details here</a>.</p>
-                <p>The project was <a href="https://aenui.org/actas/fichas/JENUI_2024_041.html" target="_blank" class="standard-link">published in the prestigious scientific journal "JENUI"</a> by the University of La Coruña.</p>
+                <p>The project was <a href="https://aenui.org/actas/fichas/JENUI_2024_041.html" target="_blank" class="standard-link">published in the prestigious scientific journal "JENUI"</a> by the University of La Coru�a.</p>
                 <p>It has also been recognized by the <a href="https://rua.ua.es/entities/publication/d905f7ec-c139-48bb-a044-c64974b42212" target="_blank" class="standard-link">University of Alicante in Valencia</a> for its contribution to the field.</p>
             </ul>
             <h3>Contributing to 7 of the 17 Development Goals</h3>
@@ -107,7 +112,7 @@
 		<footer>
             <!-- Copyright -->
             <div class="wrapper">
-                <p id="copyright">Copyright © MB Manish <span id="year"></span>.</p>
+                <p id="copyright">Copyright � MB Manish <span id="year"></span>.</p>
             </div>
             <br>
         </footer>

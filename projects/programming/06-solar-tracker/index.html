@@ -1,8 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-<head>
+
     <script>
         (function() {
             try {
@@ -10,6 +12,9 @@
                 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (saved === 'dark' || (!saved && prefersDark)) {
                     document.documentElement.classList.add('dark-mode');
+                    document.documentElement.style.backgroundColor = '#0d1117';
+                    document.documentElement.style.color = '#e6edf3';
+                    document.documentElement.style.colorScheme = 'dark';
                 }
             } catch (e) {
                 /* no-op */
@@ -70,7 +75,7 @@
                 .page-content li::marker { color: var(--dark-green); }
             </style>
 
-            <p>This project was built for a competition in Madrid about creating a <code>solar tracker</code> using sustainable and as many reusable materials as possible, except for the microcontroller board used to program it. It was created by a <strong>4‑member group</strong>.</p>
+            <p>This project was built for a competition in Madrid about creating a <code>solar tracker</code> using sustainable and as many reusable materials as possible, except for the microcontroller board used to program it. It was created by a <strong>4-member group</strong>.</p>
             
             <h3 style="color: var(--dark-green)">Sustainable Design & Materials</h3>
             <p>We used scrap metal, leftover wood that was about to be thrown away, and even plastic bottles to create our own filament. This recycled filament was used to print the 3D piece that sustained one of our servomotors, making use of reusable materials as much as possible.</p>
@@ -100,7 +105,7 @@
 		<footer>
             <!-- Copyright -->
             <div class="wrapper">
-                <p id="copyright">Copyright © MB Manish <span id="year"></span>.</p>
+                <p id="copyright">Copyright � MB Manish <span id="year"></span>.</p>
             </div>
             <br>
         </footer>

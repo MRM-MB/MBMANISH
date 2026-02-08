@@ -185,7 +185,11 @@ body {
   font-family: 'Main';
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: none;
+}
+
+html.theme-ready body {
+  transition: none;
 }
 
 .wrapper {
@@ -2841,8 +2845,8 @@ html.dark-mode .new-red::before {
 
 /* Dark Mode Image Handling */
 html.dark-mode img {
-    filter: brightness(0.85) contrast(1.1);
-    transition: filter 0.3s ease, transform 0.3s ease;
+  filter: brightness(0.85) contrast(1.1);
+  transition: none;
 }
 
 html.dark-mode img:hover {
