@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -6,20 +6,7 @@
 
 
     <script>
-        (function() {
-            try {
-                const saved = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (saved === 'dark' || (!saved && prefersDark)) {
-                    document.documentElement.classList.add('dark-mode');
-                    document.documentElement.style.backgroundColor = '#0d1117';
-                    document.documentElement.style.color = '#e6edf3';
-                    document.documentElement.style.colorScheme = 'dark';
-                }
-            } catch (e) {
-                /* no-op */
-            }
-        })();
+        (function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.add('light-mode');else if(t==='dark'||window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.classList.add('dark-mode');})();
     </script>
     <meta charset="UTF-8"/>
     <meta name="og:site_name" content="MB Manish" />

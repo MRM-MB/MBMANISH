@@ -137,16 +137,21 @@
         });
 
 /* --- DARK MODE --- */
-// Manage theme switching, persist changes to localStorage, and ensure icons match the state
+// Manage theme switching — uses OS preference via CSS @media, manual toggle overrides via class
 document.addEventListener('DOMContentLoaded', function() {
     const toggleBtn = document.getElementById('theme-toggle');
+    const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     
     const sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
     const moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
 
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    // Effective dark state: manual override wins, then OS preference
+    function isDarkActive() {
+        return document.documentElement.classList.contains('dark-mode') ||
+               (!document.documentElement.classList.contains('light-mode') && darkMediaQuery.matches);
+    }
+
+    let isDark = isDarkActive();
 
     const updateAvatar = (dark) => {
         const avatars = document.querySelectorAll('.header-image-small, .logo');
@@ -181,26 +186,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    const applyInlineTheme = (dark) => {
-        const rootStyle = document.documentElement.style;
-        if (dark) {
-            rootStyle.backgroundColor = '#0d1117';
-            rootStyle.color = '#e6edf3';
-            rootStyle.colorScheme = 'dark';
-        } else {
-            rootStyle.removeProperty('background-color');
-            rootStyle.removeProperty('color');
-            rootStyle.removeProperty('color-scheme');
-        }
-    };
+    // Apply the dark/light mode class and update all visuals
+    function applyTheme(dark) {
+        const root = document.documentElement;
+        root.classList.toggle('dark-mode', dark);
+        root.classList.toggle('light-mode', !dark);
+        isDark = dark;
+        updateAvatar(dark);
+        updateThemeImages(dark);
+        updateIcon(dark);
+    }
     
     updateAvatar(isDark);
     updateThemeImages(isDark);
-    applyInlineTheme(isDark);
-
-    if (isDark) {
-        document.documentElement.classList.add('dark-mode');
-    }
 
     const updateIcon = (dark) => {
         if (toggleBtn) {
@@ -210,30 +208,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-
     updateIcon(isDark);
 
     document.documentElement.classList.add('theme-ready');
 
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', function() {
-            document.documentElement.classList.toggle('dark-mode');
-            isDark = document.documentElement.classList.contains('dark-mode');
-            updateIcon(isDark);
-            updateAvatar(isDark);
-            updateThemeImages(isDark);
-            applyInlineTheme(isDark);
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
+    // Toggle handler: stores explicit override, removes the opposite class
+    function handleToggle() {
+        const newDark = !isDark;
+        applyTheme(newDark);
+        localStorage.setItem('theme', newDark ? 'dark' : 'light');
     }
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', handleToggle);
+    }
+
+    // Listen for OS/browser theme changes — follow OS unless user has a manual override
+    darkMediaQuery.addEventListener('change', function(e) {
+        const saved = localStorage.getItem('theme');
+        if (!saved) {
+            // No manual override — follow OS
+            applyTheme(e.matches);
+        }
+    });
 
     // Inject the toggle button dynamically on backward-compatible pages
     function injectLegacyToggle(initialDark) {
         const navList = document.querySelector('nav ul');
         if (navList && !document.querySelector('.theme-toggle-btn')) {
-            const sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
-            const moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
-
             const toggleLi = document.createElement('li');
             const btn = document.createElement('button');
             btn.className = 'theme-toggle-btn';
@@ -244,13 +246,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navList.appendChild(toggleLi);
 
             btn.addEventListener('click', function() {
-                document.documentElement.classList.toggle('dark-mode');
-                const currentDark = document.documentElement.classList.contains('dark-mode');
-                btn.innerHTML = currentDark ? sunIcon : moonIcon;
-                updateAvatar(currentDark);
-                updateThemeImages(currentDark);
-                applyInlineTheme(currentDark);
-                localStorage.setItem('theme', currentDark ? 'dark' : 'light');
+                handleToggle();
+                btn.innerHTML = isDark ? sunIcon : moonIcon;
             });
         }
     }

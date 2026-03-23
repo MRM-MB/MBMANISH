@@ -10,20 +10,7 @@
     <title>Manish | About</title>
     <meta name="description" content="Manish Raj Moriche | About"/>
     <script>
-        (function() {
-            try {
-                const saved = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (saved === 'dark' || (!saved && prefersDark)) {
-                    document.documentElement.classList.add('dark-mode');
-                    document.documentElement.style.backgroundColor = '#0d1117';
-                    document.documentElement.style.color = '#e6edf3';
-                    document.documentElement.style.colorScheme = 'dark';
-                }
-            } catch (e) {
-                /* no-op */
-            }
-        })();
+        (function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.add('light-mode');else if(t==='dark'||window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.classList.add('dark-mode');})();
     </script>
     <link rel="stylesheet" href="../styles.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" >
 <head>
   <title>MB Manish - Ranking</title>
@@ -11,13 +11,7 @@
   <link rel="stylesheet" href="./rankstyle.css">
   <script src="./rank.js"></script>
     <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                document.documentElement.classList.add('dark-mode');
-            }
-        })();
+        (function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.add('light-mode');else if(t==='dark'||window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.classList.add('dark-mode');})();
     </script>
 </head>
 <body>
@@ -57,31 +51,12 @@
 <html>
     <head>
         <script>
-            (function() {
-                try {
-                    const saved = localStorage.getItem('theme');
-                    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    if (saved === 'dark' || (!saved && prefersDark)) {
-                        document.documentElement.classList.add('dark-mode');
-                        document.documentElement.style.backgroundColor = '#0d1117';
-                        document.documentElement.style.color = '#e6edf3';
-                        document.documentElement.style.colorScheme = 'dark';
-                    }
-                } catch (e) {
-                    /* no-op */
-                }
-            })();
+            (function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.add('light-mode');else if(t==='dark'||window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.classList.add('dark-mode');})();
         </script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <div style="display: none;"></div>
     <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                document.documentElement.classList.add('dark-mode');
-            }
-        })();
+        (function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.add('light-mode');else if(t==='dark'||window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.classList.add('dark-mode');})();
     </script>
 </head>
     <body class="page-leaderboard">

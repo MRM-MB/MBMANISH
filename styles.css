@@ -2644,17 +2644,58 @@ Highlights
  ----------------------
  Dark Mode Support
  ----------------------
+ Uses OS/browser preference via @media (prefers-color-scheme: dark).
+ Manual toggle overrides via html.dark-mode / html.light-mode classes.
  */
+
+/* OS/browser dark preference — applies instantly, no JS needed */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-mode) {
+    --background-color: #0d1117;
+    --light-blue-bg: #1e293b;
+    --lightest-blue-bg: #0f172a;
+    --text-blue: #60a5fa;
+    --text-primary: #e6edf3;
+    --light-green: #4fffd3;
+    --dark-green: #2dd4bf;
+    --github-gray: #f0f0f0;
+    --github-gray-hover: #ffffff;
+    color-scheme: dark;
+    background-color: #0d1117;
+    color: #e6edf3;
+  }
+}
+
+/* Manual dark mode override (on a light OS) */
 html.dark-mode {
-  --background-color: #0d1117; /* GitHub Dark Dimmed style - slightly blue-ish black */
+  --background-color: #0d1117;
   --light-blue-bg: #1e293b;
   --lightest-blue-bg: #0f172a;
   --text-blue: #60a5fa;
   --text-primary: #e6edf3;
-  --light-green: #4fffd3; /* Much brighter, neon teal/green */
+  --light-green: #4fffd3;
   --dark-green: #2dd4bf;
   --github-gray: #f0f0f0;
   --github-gray-hover: #ffffff;
+  color-scheme: dark;
+  background-color: #0d1117;
+  color: #e6edf3;
+}
+
+/* Manual light mode override (on a dark OS) */
+html.light-mode {
+  --background-color: hsl(0, 0%, 100%);
+  --light-blue-bg: hsl(208, 51%, 70%);
+  --lightest-blue-bg: hsl(208, 51%, 90%);
+  --text-blue: hsl(219, 45%, 39%);
+  --text-primary: hsl(0, 0%, 0%);
+  --light-green: #21ab9d;
+  --dark-green: #177c72;
+  --github-gray: hsl(0, 0%, 20%);
+  --github-gray-hover: hsl(0, 0%, 10%);
+  color-scheme: light;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 0%);
 }
 
 /* Override hardcoded white backgrounds */
