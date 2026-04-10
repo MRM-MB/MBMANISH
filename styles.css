@@ -1607,10 +1607,20 @@ article img {
 }
 
 @media (min-width: 700px) {
-  .new-project {
+  .new-red {
     grid-template-columns: 1fr 2fr;
   }
-  .new-red {
+}
+
+.new-red img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--image-border-radius);
+}
+
+@media (min-width: 700px) {
+  .new-project {
     grid-template-columns: 1fr 2fr;
   }
 }
@@ -1657,11 +1667,9 @@ article img {
   font-size: 12px;
 }
 
-.new-project img,
-.new-red img {
-  max-height: 240px;
-  max-width: 100%;
-  place-self: center;
+.new-project img {
+  width: 100%;
+  height: 100%;
   border-radius: var(--image-border-radius);
   object-fit: cover;
 }
@@ -3631,8 +3639,107 @@ html.dark-mode .gpa-badge {
  box-shadow: none;
 }
 
+/* Published Research Banner */
+.published-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, rgba(23, 124, 114, 0.06), rgba(23, 124, 114, 0.02));
+  border: 1px solid rgba(23, 124, 114, 0.2);
+  border-left: 4px solid #177c72;
+  border-radius: 8px;
+}
 
+.published-banner .banner-icon {
+  font-size: 1.5rem;
+  color: #177c72;
+  flex-shrink: 0;
+}
 
+.published-banner .banner-content {
+  flex: 1;
+}
+
+.published-banner .banner-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #177c72;
+  margin-bottom: 0.25rem;
+}
+
+.published-banner .banner-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.2rem 0;
+  line-height: 1.4;
+}
+
+.published-banner .banner-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #666);
+  margin: 0;
+}
+
+.published-banner .banner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  background: #177c72;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.published-banner .banner-link:hover {
+  background: #125f57;
+}
+
+html.dark-mode .published-banner {
+  background: linear-gradient(135deg, rgba(79, 255, 211, 0.06), rgba(79, 255, 211, 0.02));
+  border-color: rgba(79, 255, 211, 0.2);
+  border-left-color: #4fffd3;
+}
+
+html.dark-mode .published-banner .banner-icon,
+html.dark-mode .published-banner .banner-label {
+  color: #4fffd3;
+}
+
+html.dark-mode .published-banner .banner-title {
+  color: #e6edf3;
+}
+
+html.dark-mode .published-banner .banner-meta {
+  color: #8b949e;
+}
+
+html.dark-mode .published-banner .banner-link {
+  background: #2dd4bf;
+  color: #0d1117;
+}
+
+html.dark-mode .published-banner .banner-link:hover {
+  background: #4fffd3;
+}
+
+@media (max-width: 600px) {
+  .published-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
 
 
 /* Intro Header Style */
