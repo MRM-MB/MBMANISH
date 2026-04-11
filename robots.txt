@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://manish-sdu.github.io/MBMANISH/sitemap.xml
+Sitemap: https://mbmanish.com/sitemap.xml
