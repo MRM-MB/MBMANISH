@@ -3489,11 +3489,11 @@ html.dark-mode .gallery-item:hover {
   justify-content: center;
   padding: 1rem 1.5rem;
   background: #f8fffe;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid rgba(23, 124, 114, 0.12);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
   font-size: 0.88rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .resume-contact span {
@@ -3524,10 +3524,17 @@ html.dark-mode .gallery-item:hover {
 /* Sections */
 .resume-section {
   margin-bottom: 1.8rem;
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
-  border: none;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.6rem 2rem;
+  border: 1px solid #e8eef3;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.resume-section:hover {
+  box-shadow: 0 6px 24px rgba(23, 124, 114, 0.08);
+  transform: translateY(-2px);
 }
 
 .resume-section-title {
@@ -3536,8 +3543,8 @@ html.dark-mode .gallery-item:hover {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.2rem;
   border-bottom: 2px solid #177c72;
   display: flex;
   align-items: center;
@@ -3545,23 +3552,31 @@ html.dark-mode .gallery-item:hover {
 }
 
 .resume-section-title i {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(23, 124, 114, 0.1);
+  border-radius: 6px;
+  color: #177c72;
 }
 
 .resume-section > p {
   font-size: 0.93rem;
-  line-height: 1.7;
-  color: #444;
+  line-height: 1.75;
+  color: #4a5568;
 }
 
 /* Entries (Experience, Education, Projects) */
 .resume-entry {
-  padding: 0.8rem 0 0.8rem 1rem;
+  padding: 1rem 1rem 1rem 1.2rem;
   border-left: 3px solid #177c72;
-  margin-bottom: 0.6rem;
-  background: transparent;
-  border-radius: 0;
-  transition: background 0.2s ease;
+  margin-bottom: 0.8rem;
+  background: #f9fcfb;
+  border-radius: 0 10px 10px 0;
+  transition: background 0.2s ease, border-left-color 0.2s ease, box-shadow 0.2s ease;
   position: relative;
 }
 
@@ -3569,16 +3584,19 @@ html.dark-mode .gallery-item:hover {
   content: '';
   position: absolute;
   left: -7px;
-  top: 1.1rem;
+  top: 1.2rem;
   width: 10px;
   height: 10px;
   background: #177c72;
   border-radius: 50%;
   border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(23, 124, 114, 0.2);
 }
 
 .resume-entry:hover {
-  background: rgba(23, 124, 114, 0.03);
+  background: #f0f9f7;
+  border-left-color: #21ab9d;
+  box-shadow: 0 2px 8px rgba(23, 124, 114, 0.06);
 }
 
 .resume-entry-header {
@@ -3600,40 +3618,41 @@ html.dark-mode .gallery-item:hover {
   font-size: 0.88rem;
   color: #177c72;
   font-weight: 600;
-  margin: 2px 0;
+  margin: 3px 0;
 }
 
 .resume-entry-sub {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: #888;
   font-style: italic;
   margin: 2px 0;
 }
 
 .resume-entry-date {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
   flex-shrink: 0;
-  background: #177c72;
-  padding: 3px 12px;
+  background: linear-gradient(135deg, #177c72, #21ab9d);
+  padding: 4px 14px;
   border-radius: 20px;
+  letter-spacing: 0.3px;
 }
 
 .resume-entry-details {
-  margin: 0.5rem 0 0 0;
-  padding-left: 1.2rem;
+  margin: 0.6rem 0 0 0;
+  padding-left: 1rem;
   list-style: none;
 }
 
 .resume-entry-details li {
   font-size: 0.88rem;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 0.25rem;
+  line-height: 1.65;
+  color: #4a5568;
+  margin-bottom: 0.3rem;
   position: relative;
-  padding-left: 0.8rem;
+  padding-left: 1rem;
 }
 
 .resume-entry-details li::before {
@@ -3642,26 +3661,35 @@ html.dark-mode .gallery-item:hover {
   left: 0;
   color: #177c72;
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 /* Skills Grid */
 .resume-skills-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .resume-skill-category {
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
+  background: #f9fcfb;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(23, 124, 114, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.resume-skill-category:hover {
+  box-shadow: 0 2px 8px rgba(23, 124, 114, 0.06);
 }
 
 .resume-skill-category h4 {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  color: #177c72;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 .resume-skill-pills {
@@ -3670,31 +3698,13 @@ html.dark-mode .gallery-item:hover {
   gap: 6px;
 }
 
-/* Languages */
-.resume-languages {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.resume-lang {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.93rem;
-  font-weight: 500;
-  color: #444;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-}
-
-.resume-lang .fi {
-  font-size: 1.2em;
-}
-
 /* Responsive */
 @media (max-width: 640px) {
+  .resume-section {
+    padding: 1.2rem 1.2rem;
+    border-radius: 12px;
+  }
+
   .resume-entry-header {
     flex-direction: column;
     gap: 0.3rem;
@@ -3724,7 +3734,7 @@ html.dark-mode .gallery-item:hover {
 html.dark-mode .resume-contact {
   background: rgba(79, 255, 211, 0.04);
   border-color: rgba(79, 255, 211, 0.12);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 html.dark-mode .resume-contact span {
@@ -3744,10 +3754,25 @@ html.dark-mode .resume-contact a:hover {
   color: #5eead4;
 }
 
+html.dark-mode .resume-section {
+  background: #161b22;
+  border-color: #30363d;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+html.dark-mode .resume-section:hover {
+  box-shadow: 0 6px 24px rgba(79, 255, 211, 0.06);
+}
+
 html.dark-mode .resume-section-title {
   color: #4fffd3 !important;
-  border-bottom-color: rgba(79, 255, 211, 0.4);
-  text-shadow: 0 0 10px rgba(79, 255, 211, 0.2);
+  border-bottom-color: rgba(79, 255, 211, 0.3);
+  text-shadow: 0 0 10px rgba(79, 255, 211, 0.15);
+}
+
+html.dark-mode .resume-section-title i {
+  background: rgba(79, 255, 211, 0.1);
+  color: #4fffd3;
 }
 
 html.dark-mode .resume-section > p {
@@ -3755,20 +3780,24 @@ html.dark-mode .resume-section > p {
 }
 
 html.dark-mode .resume-entry {
-  border-left-color: rgba(79, 255, 211, 0.4);
+  border-left-color: rgba(79, 255, 211, 0.35);
+  background: rgba(79, 255, 211, 0.02);
 }
 
 html.dark-mode .resume-entry::before {
   background: #4fffd3;
-  border-color: #0d1117;
+  border-color: #161b22;
+  box-shadow: 0 0 0 2px rgba(79, 255, 211, 0.15);
 }
 
 html.dark-mode .resume-entry:hover {
-  background: rgba(79, 255, 211, 0.03);
+  background: rgba(79, 255, 211, 0.05);
+  border-left-color: #4fffd3;
+  box-shadow: 0 2px 8px rgba(79, 255, 211, 0.05);
 }
 
 html.dark-mode .resume-entry-title {
-  color: #ffffff;
+  color: #e6edf3;
 }
 
 html.dark-mode .resume-entry-org {
@@ -3780,8 +3809,9 @@ html.dark-mode .resume-entry-sub {
 }
 
 html.dark-mode .resume-entry-date {
-  background: rgba(79, 255, 211, 0.15);
+  background: linear-gradient(135deg, rgba(79, 255, 211, 0.2), rgba(45, 212, 191, 0.3));
   color: #4fffd3;
+  border: 1px solid rgba(79, 255, 211, 0.2);
 }
 
 html.dark-mode .resume-entry-details li {
@@ -3792,12 +3822,17 @@ html.dark-mode .resume-entry-details li::before {
   color: #4fffd3;
 }
 
-html.dark-mode .resume-skill-category h4 {
-  color: #e6edf3;
+html.dark-mode .resume-skill-category {
+  background: rgba(79, 255, 211, 0.03);
+  border-color: rgba(79, 255, 211, 0.08);
 }
 
-html.dark-mode .resume-lang {
-  color: #c9d1d9;
+html.dark-mode .resume-skill-category:hover {
+  box-shadow: 0 2px 8px rgba(79, 255, 211, 0.05);
+}
+
+html.dark-mode .resume-skill-category h4 {
+  color: #4fffd3;
 }
 
 html.dark-mode .resume-download-btn {
