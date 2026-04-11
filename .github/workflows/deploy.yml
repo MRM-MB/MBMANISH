@@ -13,18 +13,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
+      - name: Debug - List remote FTP root
+        run: |
+          lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" ${{ secrets.FTP_SERVER }} -e "ls; ls public_html/; quit" || true
+
       - name: Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /
-          dangerous-clean-slate: true
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.venv/**
-            **/node_modules/**
-            **/.vscode/**
-            **/.hintrc
+        run: |
+          lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" ${{ secrets.FTP_SERVER }} <<EOF
+          set ftp:ssl-allow no
+          set mirror:use-pget-n 5
+          cd public_html
+          glob -a rm -r *
+          glob -a rm *
+          lcd $GITHUB_WORKSPACE
+          mirror --reverse --delete --verbose \
+            --exclude .git/ \
+            --exclude .github/ \
+            --exclude .venv/ \
+            --exclude node_modules/ \
+            --exclude .vscode/ \
+            --exclude .hintrc \
+            --exclude .gitignore \
+            ./ ./
+          quit
+          EOF
