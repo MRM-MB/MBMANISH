@@ -3772,6 +3772,22 @@ html.dark-mode .resume-section-link a:hover {
 
 .tech-pill i {
   font-size: 1em;
+  vertical-align: middle;
+  opacity: 0.85;
+  margin-right: 2px;
+}
+
+.resume-skill-pills .tech-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  font-size: 0.82rem;
+}
+
+.resume-skill-pills .tech-pill i {
+  font-size: 0.9rem;
+  line-height: 1;
 }
 
 
