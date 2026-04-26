@@ -820,7 +820,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const current = Array.from(list.querySelectorAll('li > a')).map(a => (a.textContent || '').trim());
             const next = items.map(item => item.label);
-            if (current.length && current.join('|') === next.join('|')) return;
+            if (current.length && current.join('|') === next.join('|')) {
+                list.style.visibility = 'visible';
+                return;
+            }
 
             list.innerHTML = '';
             items.forEach(item => {
