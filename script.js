@@ -813,7 +813,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const cacheKey = 'tag-rank:v2:' + sourceUrl.pathname + ':' + limit;
 
         const renderList = (items) => {
-            if (!Array.isArray(items) || !items.length) return;
+            if (!Array.isArray(items) || !items.length) {
+                list.style.visibility = 'visible';
+                return;
+            }
 
             const current = Array.from(list.querySelectorAll('li > a')).map(a => (a.textContent || '').trim());
             const next = items.map(item => item.label);
@@ -854,7 +857,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const doc = parser.parseFromString(html, 'text/html');
                 const tagLinks = doc.querySelectorAll('.item-list.courses .tags li a');
 
-                if (!tagLinks.length) return;
+                if (!tagLinks.length) {
+                    list.style.visibility = 'visible';
+                    return;
+                }
 
                 const counts = new Map();
                 const meta = new Map();
@@ -883,7 +889,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 const top = sorted.slice(0, limit);
-                if (!top.length) return;
+                if (!top.length) {
+                    list.style.visibility = 'visible';
+                    return;
+                }
 
                 const items = top.map(([label]) => {
                     const info = meta.get(label) || { href: '#', variantClass: '' };
