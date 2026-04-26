@@ -10,7 +10,7 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="og:site_name" content="MB Manish" />
-    <link rel="canonical" href="index.html"/>
+    <link rel="canonical" href="https://mbmanish.com/projects/programming/11-piececlick/"/>
     <title>Programming | PieceClick</title>
     <meta name="description" content="Manish Raj Moriche | Programming"/>
     <link rel="stylesheet" href="../../../styles.css" type="text/css" />
@@ -48,13 +48,76 @@
         <h1 class="blog-header">PieceClick</h1>
 		<div class="metadata">
 			<ul class="tags">
-			</ul><span class="post-date">19 Apr 2026</span></div>
+                <li class="variant-a"><a href="../../../tags/php/index.html">PHP</a></li>
+                <li class="variant-f"><a href="../../../tags/javascript/index.html">Javascript</a></li>
+			</ul><span class="post-date">30 Apr 2026</span></div>
+
+            <img class="hero-image-post" src="../../../images/projects/programming/piececlick/PieceClick_light.png" data-theme-src-light="../../../images/projects/programming/piececlick/PieceClick_light.png" data-theme-src-dark="../../../images/projects/programming/piececlick/PieceClick_dark.png" alt="PieceClick Browse Builds" />
+
+            <div class="project-actions-bar">
+                <div class="button-container">
+                    <a class="social-button demo-button" href="https://piececlick.io/" target="_blank">&#9654; Live</a>
+                    <a class="social-button report-button" href="https://drive.google.com/file/d/1mrKttspXtmK-j5xdFhWXKc0f9lDd3exj/view?usp=sharing" target="_blank">&#128196; Report</a>
+                </div>
+                <p class="cta-text">&#129513; Visit the live app</p>
+            </div>
 
 		<div class="content page-content m-top">
             <style>
                 .page-content li { color: var(--text-primary); }
                 .page-content li::marker { color: var(--dark-green); }
             </style>
+
+            <p><strong>PieceClick</strong> is a full-stack social platform for LEGO enthusiasts to showcase custom builds, discover enhancements, and connect with other builders. A solo side project built from scratch using <strong>Laravel 12</strong>, deployed on <strong>Render.com</strong> with a complete Docker setup for local development.</p>
+
+            <p>The platform revolves around the concept of a <strong>build</strong>: a LEGO creation assembled (sometimes from multiple compatible sets) that can be photographed, tagged, linked to official LEGO set data via the Rebrickable API, and shared publicly. Users can request specific modifications for their own sets (LED lighting, motorization, 3D-printed display stands, side builds), and builders can fulfil those requests by posting matching builds, triggering an automatic email notification.</p>
+
+            <p><strong>Tech stack:</strong> <code>Laravel 12</code>, <code>PHP 8.2</code>, <code>MySQL 8.0</code>, <code>Blade</code>, <code>Alpine.js</code>, <code>Tailwind CSS</code>, <code>Vite</code>, <code>Laravel Reverb</code>, <code>Laravel Echo</code>, <code>Meilisearch</code> (Laravel Scout), <code>Redis</code>, <code>AWS S3 / Cloudflare R2</code>, <code>Resend</code>, <code>Rebrickable API</code>, <code>Google OAuth 2.0</code>, <code>Sentry</code>, <code>Docker</code>, <code>GitHub Actions</code> CI/CD.</p>
+
+            <h3 style="color: var(--dark-green)">Key Highlights</h3>
+            <ul>
+                <li><span style="color: var(--text-primary)">Build showcase with multi-photo upload, tags, set metadata from the Rebrickable API, and STL file attachments.</span></li>
+                <li><span style="color: var(--text-primary)">Enhancement request system with automatic email notification when a matching build is published.</span></li>
+                <li><span style="color: var(--text-primary)">Real-time notifications via Laravel Reverb (WebSockets) for likes, comments, followers, and fulfilled requests.</span></li>
+                <li><span style="color: var(--text-primary)">Full-text search powered by Meilisearch via Laravel Scout.</span></li>
+                <li><span style="color: var(--text-primary)">Social layer: follow, like, bookmark, threaded comments, and block.</span></li>
+                <li><span style="color: var(--text-primary)">Automated content moderation with community reporting and admin review queue.</span></li>
+                <li><span style="color: var(--text-primary)">Admin dashboard with analytics, user and build management, audit log, CSV exports, and site settings.</span></li>
+                <li><span style="color: var(--text-primary)">Email/password, Google OAuth 2.0, TOTP two-factor authentication, and GDPR data export and deletion.</span></li>
+            </ul>
+
+            <h3 style="color: var(--dark-green)">Build Showcase</h3>
+            <p>Upload builds with multiple photos, descriptions, tags, external links, compatible set numbers, and LEGO set metadata auto-fetched from the Rebrickable API. Images are processed asynchronously via a Redis-backed queue job using PHP's GD extension.</p>
+
+        </div>
+
+        <img class="top-image" src="../../../images/projects/programming/piececlick/post.png" data-theme-src-light="../../../images/projects/programming/piececlick/post.png" data-theme-src-dark="../../../images/projects/programming/piececlick/post-dark.png" alt="PieceClick Build Detail" />
+
+        <div class="content page-content">
+
+            <h3 style="color: var(--dark-green)">My Collection &amp; Enhancement Requests</h3>
+            <p>Users manage their LEGO sets in a personal collection. From any set, they can request enhancements (LED lighting, motorization, 3D-printed display stand, side builds). When a builder publishes a matching build, the requesting user receives an automatic email, closing a request-and-fulfil loop between the community.</p>
+
+        </div>
+
+        <img class="top-image" src="../../../images/projects/programming/piececlick/my_collection.png" data-theme-src-light="../../../images/projects/programming/piececlick/my_collection.png" data-theme-src-dark="../../../images/projects/programming/piececlick/my_collection-dark.png" alt="PieceClick My Collection" />
+
+        <div class="content page-content">
+
+            <h3 style="color: var(--dark-green)">Upload a Build</h3>
+            <p>A structured form lets builders link their creation to one or more official LEGO set numbers, attach <code>.stl</code> files for 3D-printed parts, and tag enhancement types. Set metadata is fetched on demand from the Rebrickable API.</p>
+
+        </div>
+
+        <img class="top-image" src="../../../images/projects/programming/piececlick/upload_build.png" data-theme-src-light="../../../images/projects/programming/piececlick/upload_build.png" data-theme-src-dark="../../../images/projects/programming/piececlick/upload_build-dark.png" alt="PieceClick Upload Build" />
+
+        <div class="content page-content">
+
+            <h3 style="color: var(--dark-green)">Admin Dashboard</h3>
+            <p>A fully-featured admin panel with 30-day trend analytics (Chart.js), user management (ban, suspend, 3-strike system, toggle admin role), build management with bulk actions, flagged content and report review, tag and enhancement tracking, time-windowed announcements, a full audit log, CSV exports, and configurable site settings.</p>
+
+            <h3 style="color: var(--dark-green)">DevOps</h3>
+            <p>Fully Dockerized with separate containers for the app (PHP-FPM + Nginx), MySQL, Redis, queue worker, and Laravel Reverb. <strong>GitHub Actions</strong> runs the CI/CD pipeline. Deploys on Render.com via a <code>render.yaml</code> blueprint with auto-migrations on deploy.</p>
 
 		</div>
 		

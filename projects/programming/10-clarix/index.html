@@ -10,7 +10,7 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="og:site_name" content="MB Manish" />
-    <link rel="canonical" href="index.html"/>
+    <link rel="canonical" href="https://mbmanish.com/projects/programming/10-clarix/"/>
     <title>Programming | Clarix - Danfoss Hackathon</title>
     <meta name="description" content="Manish Raj Moriche | Programming"/>
     <link rel="stylesheet" href="../../../styles.css" type="text/css" />
@@ -48,7 +48,18 @@
         <h1 class="blog-header">Clarix - Danfoss Hackathon</h1>
 		<div class="metadata">
 			<ul class="tags">
+                <li class="variant-e"><a href="../../../tags/python/index.html">Python</a></li>
 			</ul><span class="post-date">19 Apr 2026</span></div>
+
+            <img class="hero-image-post" src="../../../images/projects/programming/clarix/homepage.png" alt="Clarix - Quotation Decision Cockpit" />
+
+            <div class="project-actions-bar">
+                <div class="button-container">
+                    <a class="social-button demo-button" href="https://clarix-danfoss.streamlit.app/" target="_blank">&#9654; Live Demo</a>
+                    <a class="social-button github-button" href="https://github.com/MRM-MB/CLARIX" target="_blank">GitHub</a>
+                </div>
+                <p class="cta-text">&#128279; Try the live demo or explore the source code</p>
+            </div>
 
 		<div class="content page-content m-top">
             <style>
@@ -56,6 +67,60 @@
                 .page-content li::marker { color: var(--dark-green); }
             </style>
 
+            <p><strong>Clarix</strong> is a <strong>Capacity &amp; Sourcing Engine</strong> built during the <strong><a href="https://www.danfoss.com/en/" target="_blank" class="standard-link">Danfoss</a> Hackathon</strong> by a <strong>6-person team</strong>, built on a real operational dataset from Danfoss.</p>
+
+            <h3 style="color: var(--dark-green)">The Challenge</h3>
+            <p>Given a large portfolio of active projects competing for shared manufacturing capacity, there was no single tool that unified <strong>capacity utilisation</strong>, <strong>scenario simulation</strong>, <strong>bottleneck detection</strong>, and <strong>MRP</strong>. Planners had to piece together information from multiple systems.</p>
+
+            <h3 style="color: var(--dark-green)">The Solution</h3>
+            <p>Clarix consolidates this into five Streamlit pages, each addressing a distinct operational concern:</p>
+            <ul>
+                <li><span style="color: var(--text-primary)"><code>Executive Overview</code>: Portfolio-level KPIs, quarterly revenue, and delivery health.</span></li>
+                <li><span style="color: var(--text-primary)"><code>Capacity Planner</code>: Region and project selection with stacked lead time breakdowns across sourcing, production, and transit.</span></li>
+                <li><span style="color: var(--text-primary)"><code>Bottlenecks</code>: Ranked work-centre constraints with utilisation thresholds (warning at 85%, critical at 100%).</span></li>
+                <li><span style="color: var(--text-primary)"><code>Sourcing &amp; MRP</code>: BOM explosion and ATP-offset back-calculations for raw-material requirements.</span></li>
+                <li><span style="color: var(--text-primary)"><code>Ask Clarix</code>: Natural-language queries against the pre-processed canonical tables via the AI agent.</span></li>
+            </ul>
+
+            <h3 style="color: var(--dark-green)">Capacity Planner</h3>
+            <p>Planners select a <strong>region</strong> (e.g. EMEA-West) and one or more projects to see a stacked <strong>lead time breakdown</strong> split into sourcing, production, and transit segments. Bottlenecks surface before a delivery date is committed.</p>
+
+        </div>
+
+        <img class="top-image" src="../../../images/projects/programming/clarix/homepage.png" alt="Clarix Capacity Planner" />
+
+        <div class="content page-content">
+
+            <h3 style="color: var(--dark-green)">Executive Overview</h3>
+            <p>A quarterly snapshot of the full project portfolio: active project counts from Q1 through Q4, expected revenue, and a delivery health score. A dual-line chart plots <strong>Delivery Health %</strong> against <strong>Capacity Risk %</strong> over time.</p>
+
+        </div>
+
+        <img class="top-image" src="../../../images/projects/programming/clarix/data.png" alt="Clarix General Data Dashboard" />
+
+        <div class="content page-content">
+
+            <h3 style="color: var(--dark-green)">Bottlenecks</h3>
+            <p>A plant-level view of <strong>active work centres</strong>, nominal capacity lost to scheduled downtime, and a <strong>maintenance schedule</strong> table with trigger types (corrective vs. preventive), intervals in weeks, and downtime in hours. Utilisation is flagged at 85% (warning) and 100% (critical).</p>
+
+        </div>
+
+        <img class="top-image" src="../../../images/projects/programming/clarix/machinery.png" alt="Clarix Machinery View" />
+
+        <div class="content page-content">
+
+            <h3 style="color: var(--dark-green)">Technical Approach</h3>
+            <p>Clarix is built on <strong>Streamlit</strong> (Python) following a <strong>three-tier, layered architecture</strong>. The <strong>data layer</strong> (<code>clarix.data_loader</code>) ingests and normalises a single Excel workbook (<code>hackathon_dataset.xlsx</code>, 13 sheets, ~26 MB) into eight canonical long-format DataFrames. The <strong>domain engine</strong> (<code>clarix.engine</code>, pure pandas) runs four named scenarios (<code>all_in</code>, <code>expected</code>, <code>high_confidence</code>, <code>monte_carlo</code>), computes capacity utilisation, detects bottlenecks, and back-calculates raw-material requirements via BOM explosion and ATP offset (MRP). The <strong>presentation layer</strong> (<code>app.py</code>) composes five independent Streamlit pages on top of those pre-processed tables. The <strong>AI agent</strong> (<code>clarix.agent</code>) is a tool-calling agent backed by <code>Claude Sonnet 4.5</code> (Anthropic, primary) or <code>Gemini 2.5 Flash</code> (Google, fallback), with a deterministic planner mode when no API key is configured.</p>
+
+            <h3 style="color: var(--dark-green)">The Team</h3>
+            <p>Six people. One hackathon. Way too many snacks, and at least one karaoke session that nobody will forget. A big thank you to our project case owner <a href="https://www.linkedin.com/in/danielparapunov/" target="_blank" class="standard-link">Daniel Parapunov</a> for the challenge and support throughout.</p>
+
+        </div>
+
+        <img class="hero-image-post" src="../../../images/projects/programming/clarix/group_1.jpeg" alt="Clarix team" />
+        <img class="hero-image-post" src="../../../images/projects/programming/clarix/group_2.jpeg" alt="Clarix team outside" />
+
+        <div class="content page-content">
 		</div>
 		
 		<footer>

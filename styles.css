@@ -2642,6 +2642,22 @@ Highlights
   color: white;
 }
 
+.project-actions-bar .report-button {
+  background: transparent;
+  color: #21ab9d;
+  border: 2px solid #21ab9d;
+  box-shadow: none;
+  padding: 12px 48px;
+  min-width: 160px;
+  white-space: nowrap;
+}
+
+.project-actions-bar .report-button:hover {
+  background: #21ab9d;
+  color: white;
+  box-shadow: none;
+}
+
 
 /* 
  ----------------------
@@ -3467,6 +3483,125 @@ html.dark-mode .gallery-item:hover {
 .resume-download-btn:hover {
   background: #136860;
   color: #fff;
+}
+
+.resume-download-bar { gap: 12px; flex-wrap: wrap; }
+.resume-download-btn-secondary {
+  background: transparent;
+  color: #177c72;
+  border: 2px solid #177c72;
+}
+.resume-download-btn-secondary:hover {
+  background: #177c72;
+  color: #fff;
+}
+
+/* --- Resume Side Drawer (Recruiter View) --- */
+.resume-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  visibility: hidden;
+}
+.resume-drawer.active { visibility: visible; pointer-events: auto; }
+
+.resume-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 30, 0.55);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.resume-drawer.active .resume-drawer-backdrop { opacity: 1; }
+
+.resume-drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(680px, 100%);
+  background: #ffffff;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.resume-drawer.active .resume-drawer-panel { transform: translateX(0); }
+
+.resume-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f7f8fa;
+}
+.resume-drawer-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1f2a30;
+}
+.resume-drawer-title i { color: #177c72; }
+
+.resume-drawer-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.resume-drawer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.resume-drawer-btn.primary {
+  background: #177c72;
+  color: #fff;
+}
+.resume-drawer-btn.primary:hover { background: #136860; }
+.resume-drawer-btn.ghost {
+  background: transparent;
+  color: #4b5563;
+  padding: 8px 10px;
+}
+.resume-drawer-btn.ghost:hover { background: #e5e7eb; color: #1f2a30; }
+
+.resume-drawer-body {
+  flex: 1;
+  background: #2b2f33;
+}
+.resume-drawer-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+html.dark-mode .resume-drawer-panel { background: #1a1f24; }
+html.dark-mode .resume-drawer-header {
+  background: #232a30;
+  border-bottom-color: #2f3740;
+}
+html.dark-mode .resume-drawer-title { color: #e5e7eb; }
+html.dark-mode .resume-drawer-btn.ghost { color: #cbd5e1; }
+html.dark-mode .resume-drawer-btn.ghost:hover { background: #2f3740; color: #fff; }
+
+@media (max-width: 600px) {
+  .resume-drawer-panel { width: 100%; }
+  .resume-drawer-header { flex-wrap: wrap; }
 }
 
 /* Contact Info */
@@ -4357,3 +4492,29 @@ html.decoration-ready .project-levitate {
   padding-top: 0;
 }
 
+
+/* --- Section Divider (decorative, with centered label) --- */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 3rem auto 2rem;
+  max-width: var(--max-p-width);
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(23,124,114,0.45), transparent);
+}
+.section-divider-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dark-green);
+  white-space: nowrap;
+}
+html.dark-mode .section-divider-line {
+  background: linear-gradient(to right, transparent, rgba(120,200,190,0.35), transparent);
+}
+html.dark-mode .section-divider-text { color: #78c8be; }

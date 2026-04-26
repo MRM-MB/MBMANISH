@@ -27,8 +27,77 @@
             element.textContent = age;
         });
 
-        /* --- RESUME MODAL --- */
-        // Manage the interactions for the resume download confirmation modal
+        /* --- RESUME SIDE DRAWER --- */
+        // Industry-standard recruiter-friendly resume preview: opens an embedded PDF
+        // viewer in a slide-in side panel without navigating away from the site.
+        document.addEventListener('DOMContentLoaded', function() {
+            const triggers = document.querySelectorAll('[data-resume-trigger]');
+            if (!triggers.length) return;
+
+            // Resolve the resume PDF path from the first trigger's href so it works
+            // from any nesting depth (about/, posts/, etc.).
+            const resumeUrl = triggers[0].getAttribute('href') || '';
+
+            // Build drawer markup once and append to body
+            const drawer = document.createElement('div');
+            drawer.id = 'resume-drawer';
+            drawer.className = 'resume-drawer';
+            drawer.setAttribute('aria-hidden', 'true');
+            drawer.innerHTML = `
+                <div class="resume-drawer-backdrop" data-resume-close></div>
+                <aside class="resume-drawer-panel" role="dialog" aria-label="Resume preview">
+                    <header class="resume-drawer-header">
+                        <div class="resume-drawer-title">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Manish Raj Moriche &middot; Resume</span>
+                        </div>
+                        <div class="resume-drawer-actions">
+                            <a href="${resumeUrl}" download="Manish_Raj_Moriche_Resume.pdf" class="resume-drawer-btn primary">
+                                <i class="fas fa-download"></i> Download PDF
+                            </a>
+                            <a href="${resumeUrl}" target="_blank" rel="noopener" class="resume-drawer-btn ghost" aria-label="Open in new tab">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <button class="resume-drawer-btn ghost" data-resume-close aria-label="Close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </header>
+                    <div class="resume-drawer-body">
+                        <iframe class="resume-drawer-frame" src="${resumeUrl}#view=FitH" title="Resume PDF preview"></iframe>
+                    </div>
+                </aside>
+            `;
+            document.body.appendChild(drawer);
+
+            const open = function() {
+                drawer.classList.add('active');
+                drawer.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            };
+            const close = function() {
+                drawer.classList.remove('active');
+                drawer.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            };
+
+            triggers.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    open();
+                });
+            });
+
+            drawer.addEventListener('click', function(e) {
+                if (e.target.closest('[data-resume-close]')) close();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && drawer.classList.contains('active')) close();
+            });
+        });
+
+        /* --- LEGACY RESUME MODAL (kept for any leftover instances) --- */
         document.addEventListener('DOMContentLoaded', function() {
             const resumeBtn = document.getElementById('resume-download-btn');
             const modal = document.getElementById('resume-modal');
@@ -741,7 +810,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!sourcePath) return;
 
         const sourceUrl = new URL(sourcePath, window.location.href);
-        const cacheKey = 'tag-rank:' + sourceUrl.pathname + ':' + limit;
+        const cacheKey = 'tag-rank:v2:' + sourceUrl.pathname + ':' + limit;
 
         const renderList = (items) => {
             if (!Array.isArray(items) || !items.length) return;
@@ -778,7 +847,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        fetch(sourceUrl)
+        fetch(sourceUrl, { cache: 'no-cache' })
             .then(response => response.text())
             .then(html => {
                 const parser = new DOMParser();
@@ -808,6 +877,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const sorted = Array.from(counts.entries()).sort((a, b) => {
                     const countDiff = b[1] - a[1];
                     if (countDiff !== 0) return countDiff;
+                    if (a[0] === 'Python') return -1;
+                    if (b[0] === 'Python') return 1;
                     return a[0].localeCompare(b[0]);
                 });
 
@@ -831,6 +902,93 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Fallback to existing markup if the source page cannot be loaded.
                 list.style.visibility = 'visible';
             });
+    });
+});
+
+/* --- AUTO TAG PAGE POPULATION --- */
+// Fetches all category index pages and renders matching project cards on tag pages
+document.addEventListener('DOMContentLoaded', function() {
+    const tagWrapper = document.querySelector('.tag-items');
+    if (!tagWrapper) return;
+
+    const tagList = tagWrapper.querySelector('ul.item-list.courses');
+    if (!tagList) return;
+
+    const heading = tagWrapper.querySelector('h2');
+    if (!heading) return;
+
+    const match = (heading.textContent || '').match(/Tagged with\s+(.+)/i);
+    if (!match) return;
+    const tagName = match[1].trim();
+
+    const sources = [
+        '../../projects/programming/index.html',
+        '../../projects/research/index.html',
+        '../../projects/3D/index.html'
+    ];
+
+    const cacheKey = 'tag-auto:' + tagName;
+
+    const renderItems = (html) => {
+        if (!html) return;
+        tagList.innerHTML = html;
+    };
+
+    const cached = sessionStorage.getItem(cacheKey);
+    if (cached) {
+        renderItems(cached);
+        // Don't return — still fetch in background to keep content fresh
+    }
+
+    Promise.all(sources.map(src => {
+        const srcUrl = new URL(src, window.location.href);
+        return fetch(srcUrl, { cache: 'no-cache' })
+            .then(r => r.text())
+            .then(html => ({ html, srcUrl }))
+            .catch(() => null);
+    })).then(results => {
+        const parser = new DOMParser();
+        let outputHTML = '';
+
+        results.forEach(result => {
+            if (!result) return;
+            const { html, srcUrl } = result;
+            const doc = parser.parseFromString(html, 'text/html');
+            const cards = doc.querySelectorAll('.item-list.courses .post-card.course-card');
+
+            cards.forEach(card => {
+                const tagLinks = card.querySelectorAll('.tags li a');
+                const hasTag = Array.from(tagLinks).some(a =>
+                    (a.textContent || '').trim().toLowerCase() === tagName.toLowerCase()
+                );
+                if (!hasTag) return;
+
+                // Resolve all href attributes to absolute paths
+                card.querySelectorAll('[href]').forEach(el => {
+                    const href = el.getAttribute('href');
+                    if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto')) {
+                        el.setAttribute('href', new URL(href, srcUrl).pathname);
+                    }
+                });
+
+                // Resolve src and theme-aware src attributes to absolute paths
+                card.querySelectorAll('[src], [data-theme-src-light], [data-theme-src-dark]').forEach(el => {
+                    ['src', 'data-theme-src-light', 'data-theme-src-dark'].forEach(attr => {
+                        const val = el.getAttribute(attr);
+                        if (val && !val.startsWith('http') && !val.startsWith('data:')) {
+                            el.setAttribute(attr, new URL(val, srcUrl).pathname);
+                        }
+                    });
+                });
+
+                outputHTML += `<li>${card.outerHTML}</li>`;
+            });
+        });
+
+        if (outputHTML) {
+            sessionStorage.setItem(cacheKey, outputHTML);
+            renderItems(outputHTML);
+        }
     });
 });
 
